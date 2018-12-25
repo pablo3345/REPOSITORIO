@@ -38,7 +38,7 @@ public class RepositorioCompetencia {
         public ArrayList<Competencia> getMovimientosRelacionados(Deportista deportistass)
     {
         ArrayList<Competencia> movimientosRelacionados = new ArrayList<>();
-        //cada casillero del Array va a tener una transferecia, que es como un objeto que guarda valores (transferencia puede tener cualquier nombre)
+        //cada casillero del Array va a tener una competencia, que es como un objeto que guarda valores (competencia puede tener cualquier nombre)
         for(Competencia competencia : this.competenciasGuardadas) {
             if 
                     (competencia.getADeportista().equals(deportistass)) 
@@ -46,7 +46,7 @@ public class RepositorioCompetencia {
                  {
                 movimientosRelacionados.add(competencia);
                 
-                //esa cuenta es la cuenta de origen o la cuenta de destino de la transferencia, y la agrega a la lista de movimientos relacionados
+                //ese deportista es de la competencia, y la agrega a la lista de movimientosRelacionados
             }
         }
      
