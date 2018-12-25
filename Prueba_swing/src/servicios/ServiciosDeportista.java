@@ -7,6 +7,7 @@ package servicios;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Competencia;
 import modelo.Deportista;
 import repositorio.RepositorioDeportista;
 
@@ -61,6 +62,18 @@ public class ServiciosDeportista {
   return depor;
   
   }
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+ 
+  
+ 
 
 
 }

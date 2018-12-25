@@ -16,16 +16,16 @@ public class Competencia {
     private String fecha;
     private int cantidadDeKilometros;
     private double tiempoRecorrido;
-    private Deportista arrayDeportista;
+    private Deportista aDeportista;
     
 
-    public Competencia(String pais, String fecha, int cantidadDeKilometros, double tiempoRecorrido, Deportista arrayDeportista) {
+    public Competencia(String pais, String fecha, int cantidadDeKilometros, double tiempoRecorrido, Deportista aDeportista) {
 
         this.pais = pais;
         this.fecha = fecha;
         this.cantidadDeKilometros = cantidadDeKilometros;
         this.tiempoRecorrido = tiempoRecorrido;
-        this.arrayDeportista = arrayDeportista;
+        this.aDeportista = aDeportista;
 
     }
 
@@ -47,14 +47,14 @@ public class Competencia {
         return tiempoRecorrido;
     }
 
-    public Deportista getArrayDeportista() {
+    public Deportista getADeportista() {
       
-        return arrayDeportista;
+        return aDeportista;
     }
 
     @Override
     public String toString() {
-        return pais +" " + fecha + " "+cantidadDeKilometros + " "+tiempoRecorrido + " "+ arrayDeportista +"\n";
+        return pais +" " + fecha + " "+cantidadDeKilometros + " "+tiempoRecorrido + " "+ aDeportista +"\n";
     }
     
     

@@ -73,5 +73,23 @@ public class ServiciosCompetencia {
         return compe;
 
     }
+    
+     public ArrayList<Competencia> obtenerTransferenciasRelacionadas(Deportista deportistaa)    
+    {
+        
+        
+        return this.repositorioCompetencia.getMovimientosRelacionados(deportistaa);
+       
+    }
+    
+   
+    
+   
+    
+    
+    
+    
+  
+   
 
 }

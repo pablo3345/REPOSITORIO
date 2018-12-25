@@ -41,8 +41,9 @@ public class Presentador {
             this.vista.getjTextFieldNombre().setText("");
             this.vista.getjTextFieldApellido().setText("");
             this.vista.getjTextFieldDNI().setText("");
-            
+
             this.vista.getjComboBoxDeportista().addItem(deportistaGuardado);
+            this.vista.getjComboBoxDeportistaYKilometros().addItem(deportistaGuardado);
 
             JOptionPane.showMessageDialog(null, "El deportista se guardo correctamente");
 
@@ -53,25 +54,22 @@ public class Presentador {
     }
 
     public void guardarCompetenciaApretado() {
-       // List<Deportista> arrayDeportista = new ArrayList<>();
-        
-      
-       
+        // List<Deportista> arrayDeportista = new ArrayList<>();
+
         String pais = this.vista.getjTextFieldPais().getText();
         String fecha = this.vista.getjTextFieldFecha().getText();
         String cantidadDeKilometros = this.vista.getjTextFieldCantidadKilometros().getText();
         String tiempoRecorrido = this.vista.getjTextFieldTiempoRecorrido().getText();
-        Deportista depor=   (Deportista) this.vista.getjComboBoxDeportista().getSelectedItem();
-     
+        Deportista depor = (Deportista) this.vista.getjComboBoxDeportista().getSelectedItem();
 
         try {
 
             this.serviciosCompetencia.guardarCompetencia(pais, fecha, cantidadDeKilometros, tiempoRecorrido, (Deportista) depor);
-            
-        this.vista.getjTextFieldPais().setText("");
-        this.vista.getjTextFieldFecha().setText("");
-        this.vista.getjTextFieldCantidadKilometros().setText("");
-        this.vista.getjTextFieldTiempoRecorrido().setText("");
+
+            this.vista.getjTextFieldPais().setText("");
+            this.vista.getjTextFieldFecha().setText("");
+            this.vista.getjTextFieldCantidadKilometros().setText("");
+            this.vista.getjTextFieldTiempoRecorrido().setText("");
 
             JOptionPane.showMessageDialog(null, "la competencia se guardo correctamente");
 
@@ -79,25 +77,53 @@ public class Presentador {
             JOptionPane.showMessageDialog(null, exception.getMessage());
 
         }
-        
 
     }
 
     public void mostrarDeportistaApretado() {
         ArrayList<Deportista> depor1 = new ArrayList<>();
         depor1 = this.serviciosDeportista.mostrarDeportistas();
-        JOptionPane.showMessageDialog(null, depor1);
-       
-        
-        
+        JOptionPane.showMessageDialog(null, depor1.toArray());
+
     }
 
     public void mostrarCompetenciaApretado() {
-         ArrayList<Competencia> compe1 = new ArrayList<>();
-         compe1 = this.serviciosCompetencia.mostrarCompetencia();
-          JOptionPane.showMessageDialog(null, compe1);
-         
-       
+        ArrayList<Competencia> compe1 = new ArrayList<>();
+        compe1 = this.serviciosCompetencia.mostrarCompetencia();
+        JOptionPane.showMessageDialog(null, compe1.toArray());
+
+    }
+
+    public void calcularKilometrosApretado() {
+        int a = 0;
+        int b = 0;
+        Deportista deportistaComboBox = (Deportista) this.vista.getjComboBoxDeportistaYKilometros().getSelectedItem();
+        ArrayList<Competencia> transferenciasRelacionadas = this.serviciosCompetencia.obtenerTransferenciasRelacionadas(deportistaComboBox);
+
+        for (Competencia competencia : transferenciasRelacionadas) {
+
+            a = competencia.getCantidadDeKilometros();
+            b += a;
+
+        }
+
+        JOptionPane.showMessageDialog(null, b);
+
+    }
+
+    public void calcularTiempoApretado() {
+        double c = 0;
+        double d = 0;
+        Deportista deportistaComboBox = (Deportista) this.vista.getjComboBoxDeportistaYKilometros().getSelectedItem();
+        ArrayList<Competencia> transferenciasRelacionadas = this.serviciosCompetencia.obtenerTransferenciasRelacionadas(deportistaComboBox);
+
+        for (Competencia competenciaa : transferenciasRelacionadas) {
+            c = competenciaa.getTiempoRecorrido();
+            d += c;
+
+        }
+
+        JOptionPane.showMessageDialog(null, d);
     }
 
 }
