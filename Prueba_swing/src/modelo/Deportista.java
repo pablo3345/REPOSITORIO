@@ -13,11 +13,11 @@ public class Deportista {
 
     private String nombre;
     private String apellido;
-    private int dni;
+    private String dni;
 
    
 
-    public Deportista(String nombre, String apellido, int dni) {
+    public Deportista(String nombre, String apellido, String dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -34,14 +34,16 @@ public class Deportista {
         return apellido;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
     @Override
     public String toString() {
-        return  nombre + " "+ apellido +" "+ dni+ "\n";
+        return  nombre + " "+ apellido+" " +" El DNI es: "+ dni+ "\n";
     }
+    
+   
     
     
     

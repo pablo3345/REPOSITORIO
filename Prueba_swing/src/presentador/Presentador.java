@@ -5,8 +5,14 @@
  */
 package presentador;
 
+import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.ComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modelo.Competencia;
 import modelo.Deportista;
@@ -23,6 +29,8 @@ public class Presentador {
     private Vista vista;
     private ServiciosDeportista serviciosDeportista;
     private ServiciosCompetencia serviciosCompetencia;
+    
+     
 
     public Presentador(Vista vista) {
         this.vista = vista;
@@ -34,6 +42,7 @@ public class Presentador {
         String nombre = this.vista.getjTextFieldNombre().getText();
         String apellido = this.vista.getjTextFieldApellido().getText();
         String dni = this.vista.getjTextFieldDNI().getText();
+        
 
         try {
             Deportista deportistaGuardado = this.serviciosDeportista.guardarDeportista(nombre, apellido, dni);
@@ -44,6 +53,8 @@ public class Presentador {
 
             this.vista.getjComboBoxDeportista().addItem(deportistaGuardado);
             this.vista.getjComboBoxDeportistaYKilometros().addItem(deportistaGuardado);
+           
+           
 
             JOptionPane.showMessageDialog(null, "El deportista se guardo correctamente");
 
@@ -53,7 +64,7 @@ public class Presentador {
         }
     }
 
-    public void guardarCompetenciaApretado() {
+    public void guardarCompetenciaApretado() throws ParseException {
         // List<Deportista> arrayDeportista = new ArrayList<>();
 
         String pais = this.vista.getjTextFieldPais().getText();
@@ -77,6 +88,7 @@ public class Presentador {
             JOptionPane.showMessageDialog(null, exception.getMessage());
 
         }
+       
 
     }
 
@@ -104,10 +116,13 @@ public class Presentador {
 
             a = competencia.getCantidadDeKilometros();
             b += a;
+          
 
         }
+       
 
         JOptionPane.showMessageDialog(null, b);
+        
 
     }
 
@@ -122,8 +137,65 @@ public class Presentador {
             d += c;
 
         }
-
+       
         JOptionPane.showMessageDialog(null, d);
+        
+        
+    
+
+}
+
+    public void colocarImagenes() {
+        //en el video hizo todo en la vista, hizo un evento (event), con boton derecho del comboBox eligio item y luego itemStateChanged.
+        //video por internet "Poner una imagen en un objeto de java (Netbeans)"
+          int posicion;
+        String lugarImagen;
+        URL url = null;
+        posicion = this.vista. getjComboBoxTorneos().getSelectedIndex();
+        switch (posicion) {
+            case 0:
+                lugarImagen = "/vista/Peru.jpg";
+                url = this.getClass().getResource(lugarImagen);
+                ImageIcon imageIcon = new ImageIcon(url);
+                this.vista.getjLabel16Imagenes().setIcon(imageIcon);
+                break;
+            case 1:
+                lugarImagen = "/vista/Francia.jpg";
+                url = this.getClass().getResource(lugarImagen);
+                ImageIcon imageIconn = new ImageIcon(url);
+                this.vista.getjLabel16Imagenes().setIcon(imageIconn);
+                break;
+            case 2:
+                lugarImagen = "/vista/Brasil.jpg";
+                url = this.getClass().getResource(lugarImagen);
+                ImageIcon imageIconn2 = new ImageIcon(url);
+                this.vista.getjLabel16Imagenes().setIcon(imageIconn2);
+
+                break;
+
+            case 3:
+                lugarImagen = "/vista/Japon.jpg";
+                url = this.getClass().getResource(lugarImagen);
+                ImageIcon imageIconn3 = new ImageIcon(url);
+                this.vista.getjLabel16Imagenes().setIcon(imageIconn3);
+
+                break;
     }
+
+   
+
+   
+
+    }
+
+  
+
+   
+
+    
+
+   
+
+  
 
 }

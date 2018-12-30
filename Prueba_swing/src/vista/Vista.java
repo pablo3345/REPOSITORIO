@@ -5,7 +5,13 @@
  */
 package vista;
 
+import java.net.URL;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import modelo.Competencia;
 import modelo.Deportista;
@@ -16,6 +22,7 @@ import presentador.Presentador;
  * @author pablo
  */
 public final class Vista extends javax.swing.JFrame {
+
     private Presentador presentador;
 
     /**
@@ -23,10 +30,15 @@ public final class Vista extends javax.swing.JFrame {
      */
     public Vista() {
         initComponents();
-         setLocationRelativeTo(null);
-        
-        
+        setLocationRelativeTo(null);
         this.presentador = new Presentador(this);
+
+        getjComboBoxTorneos().addItem("PERU");
+        getjComboBoxTorneos().addItem("FRANCIA");
+        getjComboBoxTorneos().addItem("BRASIL");
+
+        getjComboBoxTorneos().addItem("JAPON");
+
     }
 
     public JTextField getjTextFieldApellido() {
@@ -64,22 +76,14 @@ public final class Vista extends javax.swing.JFrame {
     public JComboBox<Deportista> getjComboBoxDeportistaYKilometros() {
         return jComboBoxDeportistaYKilometros;
     }
-    
-    
 
-   
+    public JComboBox<String> getjComboBoxTorneos() {
+        return jComboBoxTorneos;
+    }
 
-    
-
-   
-    
-
-    
-    
-    
-    
-    
-    
+    public JLabel getjLabel16Imagenes() {
+        return jLabel16Imagenes;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -95,7 +99,7 @@ public final class Vista extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTextFieldFecha = new javax.swing.JTextField();
         jTextFieldPais = new javax.swing.JTextField();
@@ -109,7 +113,7 @@ public final class Vista extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jComboBoxDeportista = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jComboBoxDeportistaYKilometros = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -119,9 +123,17 @@ public final class Vista extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jButtonSalir = new javax.swing.JButton();
         jButtonTiempoRecorrido = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jComboBoxTorneos = new javax.swing.JComboBox<>();
+        jLabel16Imagenes = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(800, 550));
 
         jPanel1.setLayout(null);
         jPanel1.add(jTextFieldApellido);
@@ -155,7 +167,7 @@ public final class Vista extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(260, 400, 219, 42);
+        jButton1.setBounds(110, 440, 219, 42);
 
         jButton3.setBackground(new java.awt.Color(102, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -166,11 +178,11 @@ public final class Vista extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(560, 400, 219, 43);
+        jButton3.setBounds(430, 440, 219, 43);
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/pantalla_proyectoFinal.jpg"))); // NOI18N
-        jPanel1.add(jLabel15);
-        jLabel15.setBounds(0, 0, 830, 480);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/pantalla_proyectoFinal.jpg"))); // NOI18N
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(0, 10, 790, 500);
 
         jTabbedPane1.addTab("DEPORTISTA", jPanel1);
 
@@ -208,7 +220,7 @@ public final class Vista extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("DEPORTISTA:");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(128, 345, 112, 28);
+        jLabel8.setBounds(130, 370, 112, 28);
 
         jButton2.setBackground(new java.awt.Color(102, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -219,10 +231,10 @@ public final class Vista extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(567, 37, 220, 40);
+        jButton2.setBounds(540, 100, 220, 40);
 
         jPanel2.add(jComboBoxDeportista);
-        jComboBoxDeportista.setBounds(280, 344, 291, 34);
+        jComboBoxDeportista.setBounds(280, 360, 291, 34);
 
         jButton4.setBackground(new java.awt.Color(102, 255, 255));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -233,11 +245,11 @@ public final class Vista extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton4);
-        jButton4.setBounds(567, 177, 220, 40);
+        jButton4.setBounds(540, 220, 220, 40);
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo, sin rompecabezas.jpg"))); // NOI18N
-        jPanel2.add(jLabel14);
-        jLabel14.setBounds(0, 0, 830, 480);
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo, sin rompecabezas.jpg"))); // NOI18N
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(0, 10, 790, 510);
 
         jTabbedPane1.addTab("COMPETENCIA", jPanel2);
 
@@ -250,7 +262,7 @@ public final class Vista extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(153, 0, 153));
         jLabel9.setText("SALIR");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(720, 318, 54, 28);
+        jLabel9.setBounds(700, 320, 54, 28);
 
         jButtonCalcular.setBackground(new java.awt.Color(102, 255, 255));
         jButtonCalcular.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -287,7 +299,7 @@ public final class Vista extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButtonSalir);
-        jButtonSalir.setBounds(720, 387, 61, 40);
+        jButtonSalir.setBounds(690, 390, 61, 40);
 
         jButtonTiempoRecorrido.setBackground(new java.awt.Color(102, 255, 255));
         jButtonTiempoRecorrido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -300,21 +312,55 @@ public final class Vista extends javax.swing.JFrame {
         jPanel3.add(jButtonTiempoRecorrido);
         jButtonTiempoRecorrido.setBounds(416, 386, 209, 42);
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo, sin rompecabezas.jpg"))); // NOI18N
-        jPanel3.add(jLabel13);
-        jLabel13.setBounds(0, 0, 830, 480);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo, sin rompecabezas.jpg"))); // NOI18N
+        jPanel3.add(jLabel15);
+        jLabel15.setBounds(0, 10, 790, 510);
 
         jTabbedPane1.addTab("RESULTADO", jPanel3);
+
+        jPanel4.setLayout(null);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("IMAGENES DE ESTADIOS OLIMPICOS");
+        jPanel4.add(jLabel14);
+        jLabel14.setBounds(285, 32, 283, 28);
+
+        jComboBoxTorneos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxTorneosItemStateChanged(evt);
+            }
+        });
+        jPanel4.add(jComboBoxTorneos);
+        jComboBoxTorneos.setBounds(285, 87, 268, 33);
+        jPanel4.add(jLabel16Imagenes);
+        jLabel16Imagenes.setBounds(120, 160, 617, 301);
+
+        jButton5.setBackground(new java.awt.Color(102, 255, 255));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton5.setText("Salir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton5);
+        jButton5.setBounds(22, 421, 61, 40);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo, sin rompecabezas.jpg"))); // NOI18N
+        jPanel4.add(jLabel13);
+        jLabel13.setBounds(0, 0, 790, 520);
+
+        jTabbedPane1.addTab("IMAGENES DE ESTADIO OLIMPICOS", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 839, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -337,7 +383,13 @@ public final class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMostrarCompetencia
 
     private void BotonGuardarCompetencia(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarCompetencia
-        this.presentador.guardarCompetenciaApretado();
+
+        try {
+            this.presentador.guardarCompetenciaApretado();
+        } catch (ParseException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_BotonGuardarCompetencia
 
     private void jButtonMostrarDeportista(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarDeportista
@@ -348,7 +400,15 @@ public final class Vista extends javax.swing.JFrame {
         this.presentador.botonGuardarDeportista();
     }//GEN-LAST:event_BotonGuardarDeportista
 
-    
+    private void jComboBoxTorneosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxTorneosItemStateChanged
+        this.presentador.colocarImagenes();
+
+
+    }//GEN-LAST:event_jComboBoxTorneosItemStateChanged
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,11 +416,13 @@ public final class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonCalcular;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonTiempoRecorrido;
     private javax.swing.JComboBox<Deportista> jComboBoxDeportista;
     private javax.swing.JComboBox<Deportista> jComboBoxDeportistaYKilometros;
+    private javax.swing.JComboBox<String> jComboBoxTorneos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -368,6 +430,9 @@ public final class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel16Imagenes;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -379,6 +444,7 @@ public final class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldCantidadKilometros;
@@ -388,4 +454,5 @@ public final class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPais;
     private javax.swing.JTextField jTextFieldTiempoRecorrido;
     // End of variables declaration//GEN-END:variables
+
 }

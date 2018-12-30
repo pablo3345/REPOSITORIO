@@ -5,8 +5,12 @@
  */
 package servicios;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import modelo.Competencia;
 import modelo.Deportista;
 import repositorio.RepositorioCompetencia;
@@ -21,14 +25,14 @@ public class ServiciosCompetencia {
 
     }
 
-    public void guardarCompetencia(String pais, String fecha, String cantidadDeKilometros, String tiempoRecorrido, Deportista depor) {
-        
+    public void guardarCompetencia(String pais, String fecha, String cantidadDeKilometros, String tiempoRecorrido, Deportista depor) throws ParseException {
+
         int cantidadDeKilometrosParseado = 0;
-        cantidadDeKilometrosParseado =  this.validarcantidaddeKilometros(cantidadDeKilometros);
-       
+        cantidadDeKilometrosParseado = this.validarcantidaddeKilometros(cantidadDeKilometros);
+
         double tiempoRecorridoParseado = 0;
-        
-        tiempoRecorridoParseado =  this.validarTiempoRecorrido(tiempoRecorrido);
+
+        tiempoRecorridoParseado = this.validarTiempoRecorrido(tiempoRecorrido);
 
         Competencia competencia = new Competencia(pais, fecha, cantidadDeKilometrosParseado, tiempoRecorridoParseado, depor);
         this.repositorioCompetencia.guardarCompetencia(competencia);
@@ -55,12 +59,9 @@ public class ServiciosCompetencia {
 
         try {
             double tiempoRecorridoParseado = Double.parseDouble(tiemporecorrido);
-            
+
             return tiempoRecorridoParseado;
-        }
-       
-      
-        catch (NumberFormatException exception) {
+        } catch (NumberFormatException exception) {
             throw new IllegalArgumentException("El tiempo recorrido es incorrecto");
         }
 
@@ -73,23 +74,11 @@ public class ServiciosCompetencia {
         return compe;
 
     }
-    
-     public ArrayList<Competencia> obtenerTransferenciasRelacionadas(Deportista deportistaa)    
-    {
-        
-        
+
+    public ArrayList<Competencia> obtenerTransferenciasRelacionadas(Deportista deportistaa) {
+
         return this.repositorioCompetencia.getMovimientosRelacionados(deportistaa);
-       
+
     }
-    
-   
-    
-   
-    
-    
-    
-    
-  
-   
 
 }

@@ -32,9 +32,10 @@ public class ServiciosDeportista {
       
       
 
-        Deportista deportista = new Deportista(nombre, apellido, dniParseado);
+        Deportista deportista = new Deportista(nombre, apellido, dni);
 
         this.repositorioDeportista.guardarDeportistas(deportista);
+      
 
         return deportista;
     
