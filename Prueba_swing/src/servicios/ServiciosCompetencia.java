@@ -6,11 +6,8 @@
 package servicios;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import javax.swing.JOptionPane;
 import modelo.Competencia;
 import modelo.Deportista;
 import repositorio.RepositorioCompetencia;
@@ -78,6 +75,24 @@ public class ServiciosCompetencia {
     public ArrayList<Competencia> obtenerTransferenciasRelacionadas(Deportista deportistaa) {
 
         return this.repositorioCompetencia.getMovimientosRelacionados(deportistaa);
+
+    }
+
+    public void paisesCorrectos(String pais) {
+        if ("francia".equals(pais)) {
+            JOptionPane.showMessageDialog(null, "pais correcto");
+        } else if ("peru".equals(pais)) {
+            JOptionPane.showMessageDialog(null, "pais correcto");
+
+        } else if ("japon".equals(pais)) {
+            JOptionPane.showMessageDialog(null, "pais correcto");
+
+        } else if ("brasil".equals(pais)) {
+            JOptionPane.showMessageDialog(null, "pais correcto");
+
+        } else {
+            throw new IllegalArgumentException("pais incorrecto");
+        }
 
     }
 

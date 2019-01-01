@@ -5,15 +5,12 @@
  */
 package vista;
 
-import java.net.URL;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import modelo.Competencia;
 import modelo.Deportista;
 import presentador.Presentador;
 
