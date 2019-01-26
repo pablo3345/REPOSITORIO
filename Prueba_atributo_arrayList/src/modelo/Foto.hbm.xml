@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/01/2019 17:53:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Foto" table="foto" catalog="albunesconfotos" optimistic-lock="version">
+        <id name="idfoto" type="java.lang.Integer">
+            <column name="idfoto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="album" class="modelo.Album" fetch="select">
+            <column name="album_idalbum" not-null="true" />
+        </many-to-one>
+        <property name="nombreArchivo" type="string">
+            <column name="nombreArchivo" length="45" not-null="true" />
+        </property>
+        <property name="tamaño" type="int">
+            <column name="tamaño" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
