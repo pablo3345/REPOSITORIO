@@ -91,6 +91,8 @@ public class Presentador {
             this.vistaPrincipal.getjTextFieldCantidadMaxima().setText("");
             this.rellenarComboBox();
             
+           
+            
           
             
             
@@ -126,9 +128,20 @@ public class Presentador {
     }
 
     public void agregarFotosApretado() {
+   
+        Album albun = (Album) this.vistaPrincipal.getjComboBox1Album().getSelectedItem();
      
        
-        Album albun = (Album) this.vistaPrincipal.getjComboBox1Album().getSelectedItem();
+        
+        
+        
+    
+    
+        
+       
+     
+         
+         
         
    
         

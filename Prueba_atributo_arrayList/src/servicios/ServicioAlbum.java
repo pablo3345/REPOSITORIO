@@ -28,8 +28,6 @@ public class ServicioAlbum {
         int cantidadMaximaConvertida = this.parsearCantidadMaxima(cantidadMaxima);
 
         Album album = new Album(nombre, cantidadMaximaConvertida);
-        
-      
 
         this.repositorioAlbum.guardar(album);
 
@@ -56,8 +54,6 @@ public class ServicioAlbum {
             mensaje += "Id: " + albun.getIdalbum() + " "
                     + "Nombre: " + albun.getNombre()
                     + ", Cantidad de fotos: " + albun.getCantidadMaxima()
-                  
-                    
                     + "\n";
 
         }
@@ -86,8 +82,6 @@ public class ServicioAlbum {
         return albunessAlbums;
 
     }
-
-  
 
   
 

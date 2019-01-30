@@ -30,12 +30,10 @@ public class ServicioFoto {
 
         Foto foto = new Foto(album, nombreArchivo, cantidadConvertida, descripcion);
         
-        
-        
-        
+    
 
         this.repositorioFoto.guardarFoto(foto);
-
+     
     }
 
     private int validadTamaño(String cantidad) {
@@ -59,29 +57,25 @@ public class ServicioFoto {
 
             mensaje += "Id Foto: " + foto.getIdfoto() + " "
                     + "Nombre: " + foto.getNombreArchivo()
-                    + " Tamaño: " + foto.getTamaño() 
-                    + " Id album: "+foto.getAlbum().getIdalbum()+" "+
-                    "Descripcion: "+foto.getDescripcion()+
-                   " \n ";
-                    
-                   
-                   
+                    + " Tamaño: " + foto.getTamaño()
+                    + " Id album: " + foto.getAlbum().getIdalbum() + " "
+                    + "Descripcion: " + foto.getDescripcion()
+                    + " \n ";
 
         }
 
         JOptionPane.showMessageDialog(null, mensaje);
     }
-    
-    
+
     public List<Foto> obtenerTodosFotos() {
         List<Foto> albunessAlbums = this.repositorioFoto.obtenerTodos();
 
         return albunessAlbums;
 
     }
-    
+
    
-    
-  
+
+   
 
 }

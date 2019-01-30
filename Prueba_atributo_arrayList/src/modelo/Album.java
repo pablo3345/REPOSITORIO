@@ -73,8 +73,10 @@ public class Album implements java.io.Serializable {
     public void addFoto(Foto foto) {
 
         this.fotos1.add(foto);
+      
 
     }
+   
 
     @Override
     public String toString() {
