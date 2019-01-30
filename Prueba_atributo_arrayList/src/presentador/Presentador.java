@@ -117,7 +117,7 @@ public class Presentador {
         //Obtener todos los albunes de la base de datos
         List<Album> albuness = this.servicioAlbum.obtenerTodos();
 
-        //Crear el modelo con todos los albunes
+        //Crear el modelo con todos los albunes.
         DefaultComboBoxModel<Object> modeloComboBox = new DefaultComboBoxModel<>(albuness.toArray());
 
         //Setearle el modelo
