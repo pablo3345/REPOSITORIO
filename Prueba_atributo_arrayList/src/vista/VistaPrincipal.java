@@ -299,7 +299,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mostrarAlbum
 
     private void botonAgregarFotos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarFotos
-       this.presentador.agregarFotosApretado();
+       this.presentador.obtenerFotosPorAlbum();
     }//GEN-LAST:event_botonAgregarFotos
 
     /**

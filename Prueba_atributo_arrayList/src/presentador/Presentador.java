@@ -112,6 +112,8 @@ public class Presentador {
 
         this.servicioFoto.mostrarInformacionFotos();
     }
+    
+   
 
     private void rellenarComboBox() {
         //Obtener todos los albunes de la base de datos
@@ -127,33 +129,14 @@ public class Presentador {
 
     }
 
-    public void agregarFotosApretado() {
+    public void obtenerFotosPorAlbum() {
    
         Album albun = (Album) this.vistaPrincipal.getjComboBox1Album().getSelectedItem();
-     
+        int idAlbum = albun.getIdalbum();
+                
+        this.servicioFoto.mostrarInformacionFotosPorAlbum(idAlbum);
        
-        
-        
-        
-    
-    
-        
-       
-     
-         
-         
-        
-   
-        
-    
-       
-        
-        
-      
-       
-        
-      
-       
+          
      
        
     

@@ -88,7 +88,7 @@ public class Presentador {
     }
 
     public void mostrarJubiladosApretado() {
-         //me muestra las personas con edades mayores para jubilarse
+         //me muestra las personas con edades mayores para jubilarse ..
        this.servicioEmpleadito.edadLimiteMostrar();
     }
 

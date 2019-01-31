@@ -40,7 +40,7 @@ public class RepositorioFoto {
      
    
   public ArrayList<Foto> obtenerTodos()
-     //ArrayList<Empleado> = significa que el arrayList es solo de empleado
+     //ArrayList<Empleado> = significa que el arrayList es solo de Foto
     {
         ArrayList<Foto> arrayADevolver = null;
         
@@ -54,6 +54,36 @@ public class RepositorioFoto {
          //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
          //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
          arrayADevolver = (ArrayList<Foto>) session.createQuery("FROM Foto").list(); 
+         
+         
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+        
+        return arrayADevolver;
+    }
+  
+   public ArrayList<Foto> obtenerTodosPorAlbum(int idAlbum)
+     //ArrayList<Empleado> = significa que el arrayList es solo de empleado
+    {
+        ArrayList<Foto> arrayADevolver = null;
+        
+       // return this.listaEmpleados.toArray(arrayADevolver);
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        
+        try {
+         tx = session.beginTransaction();
+         //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+         //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
+         //LA consulta debo concatenar el texto + la variable, en este caso el idAlbum porque cambia el contenido segun
+         //lo que seleccionemos 
+         arrayADevolver = (ArrayList<Foto>) session.createQuery("FROM Foto WHERE album = "+idAlbum).list(); 
          
          
          tx.commit();

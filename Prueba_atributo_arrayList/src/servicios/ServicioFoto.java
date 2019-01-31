@@ -29,8 +29,8 @@ public class ServicioFoto {
         int cantidadConvertida = this.validadTamaño(tamaño);
 
         Foto foto = new Foto(album, nombreArchivo, cantidadConvertida, descripcion);
-        
-    
+      
+      
 
         this.repositorioFoto.guardarFoto(foto);
      
@@ -50,8 +50,27 @@ public class ServicioFoto {
     public void mostrarInformacionFotos() {
         //este codigo ya estaba cuando me descargue el trabajo, no agregue nada
         String mensaje = "";
-        //obtiene los empleados desde repositor y los guarda en el array Empleado
+        //obtiene las fotos desde repositor y los guarda en el array fotos
         ArrayList<Foto> fotos = this.repositorioFoto.obtenerTodos();
+
+        for (Foto foto : fotos) {
+
+            mensaje += "Id Foto: " + foto.getIdfoto() + " "
+                    + "Nombre: " + foto.getNombreArchivo()
+                    + " Tamaño: " + foto.getTamaño()
+                    + " Id album: " + foto.getAlbum().getIdalbum() + " "
+                    + "Descripcion: " + foto.getDescripcion()
+                    + " \n ";
+
+        }
+
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+     public void mostrarInformacionFotosPorAlbum(int idAlbum) {
+       
+        String mensaje = "";
+       
+        ArrayList<Foto> fotos = this.repositorioFoto.obtenerTodosPorAlbum(idAlbum);
 
         for (Foto foto : fotos) {
 

@@ -63,12 +63,12 @@ public class Foto implements java.io.Serializable {
         this.descripcion = descripcion;
     }
 
-    public void addFoto(Foto foto) {
+   /* public void addFoto(Foto foto) {
 
         this.album.getFotos1().add(foto);
 
     }
-
+*/
     @Override
     public String toString() {
         return "Foto{" + "nombreArchivo=" + nombreArchivo + ", tama\u00f1o=" + tamaño + '}';
