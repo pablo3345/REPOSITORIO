@@ -43,18 +43,8 @@ public class Presentador {
         int id_album = Integer.parseInt(this.vistaPrincipal.getjTextField_Id_album().getText());
 
         Album album = this.servicioAlbum.getAlbum(id_album);
-        
-         
-        
-       
-        
-        
-        
-        
 
         try {
-            
-            
 
             this.servicioFoto.guardarFoto(album, nombreArchivo, tamaño, descripcion);
 
@@ -63,7 +53,6 @@ public class Presentador {
             this.vistaPrincipal.getjTextFieldTamaño().setText("");
             this.vistaPrincipal.getjTextFieldDescripcion().setText("");
             this.vistaPrincipal.getjTextField_Id_album().setText("");
-            
 
             JOptionPane.showMessageDialog(null, "la foto se guardo correctamente");
 
@@ -77,25 +66,14 @@ public class Presentador {
 
         String nombre = this.vistaPrincipal.getjTextFieldNombre().getText();
         String cantidadMaxima = this.vistaPrincipal.getjTextFieldCantidadMaxima().getText();
-      
-             
 
         try {
-           
-         
-             
 
             this.servicioAlbum.guardarAlbum(nombre, cantidadMaxima);
 
             this.vistaPrincipal.getjTextFieldNombre().setText("");
             this.vistaPrincipal.getjTextFieldCantidadMaxima().setText("");
             this.rellenarComboBox();
-            
-           
-            
-          
-            
-            
 
             JOptionPane.showMessageDialog(null, "el album se guardo correctamente");
 
@@ -112,8 +90,6 @@ public class Presentador {
 
         this.servicioFoto.mostrarInformacionFotos();
     }
-    
-   
 
     private void rellenarComboBox() {
         //Obtener todos los albunes de la base de datos
@@ -124,32 +100,32 @@ public class Presentador {
 
         //Setearle el modelo
         this.vistaPrincipal.getjComboBox1Album().setModel(modeloComboBox);
-        
-        
+        this.vistaPrincipal.getjComboBoxEliminarAlbum().setModel(modeloComboBox);
 
     }
 
     public void obtenerFotosPorAlbum() {
-   
+
         Album albun = (Album) this.vistaPrincipal.getjComboBox1Album().getSelectedItem();
         int idAlbum = albun.getIdalbum();
-                
+
         this.servicioFoto.mostrarInformacionFotosPorAlbum(idAlbum);
-       
-          
-     
-       
-    
-} 
 
+    }
 
+    public void botonEliminarAlbumApretado() {
+        try {
+              Album albunSeleccionado = (Album) this.vistaPrincipal.getjComboBoxEliminarAlbum().getSelectedItem();
             
-           
-           
-}          
-          
-             
-         
-    
+            
+             this.servicioAlbum.eliminarAlbum(albunSeleccionado);
+             this.rellenarComboBox();
+             JOptionPane.showMessageDialog(null, "El album correspondiente ha sido eliminado!");
+        } catch (IllegalArgumentException exception) {
+             JOptionPane.showMessageDialog(null, exception.getMessage());
+            
+        }
 
+    }
 
+}

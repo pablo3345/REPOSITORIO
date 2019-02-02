@@ -82,6 +82,13 @@ public class ServicioAlbum {
         return albunessAlbums;
 
     }
+    
+    public void eliminarAlbum(Album albunSeleccionado){
+    
+    
+    this.repositorioAlbum.eliminarAlbum(albunSeleccionado);
+    
+    }
 
   
 

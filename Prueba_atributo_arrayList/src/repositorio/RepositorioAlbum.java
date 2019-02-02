@@ -60,54 +60,72 @@ public class RepositorioAlbum {
 
         return album;
     }
-    
-       public ArrayList<Album> obtenerTodos()
-     //ArrayList<Empleado> = significa que el arrayList es solo de empleado
+
+    public ArrayList<Album> obtenerTodos() //ArrayList<Empleado> = significa que el arrayList es solo de empleado
     {
         ArrayList<Album> arrayADevolver = null;
-        
-       // return this.listaEmpleados.toArray(arrayADevolver);
-        
+
+        // return this.listaEmpleados.toArray(arrayADevolver);
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        
+
         try {
-         tx = session.beginTransaction();
-         //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
-         //from Empleado es el tipo de consulta HQL  para obtener una lista de todos los Empleado
-         arrayADevolver = (ArrayList<Album>) session.createQuery("FROM Album").list(); 
-         
-         
-         tx.commit();
-      } catch (HibernateException e) {
-         if (tx!=null) tx.rollback();
-         e.printStackTrace(); 
-      } finally {
-         session.close(); 
-      }
-        
+            tx = session.beginTransaction();
+            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+            //from Empleado es el tipo de consulta HQL  para obtener una lista de todos los Empleado
+            arrayADevolver = (ArrayList<Album>) session.createQuery("FROM Album").list();
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
         return arrayADevolver;
     }
-       
-          public List<Album> obtenerTodosenUnList()
-    {
+
+    public List<Album> obtenerTodosenUnList() {
         List<Album> empleadoss = null;//cuando inicia es null
-        
+
         Session session = HibernateUtil.getSessionFactory().openSession();//getSessionFactory() inicia la sesion
         Transaction tx = null;//la transaccion cuando inicia es null
         //aprender a leer esto
         try {
-         tx = session.beginTransaction();
-         empleadoss = (List<Album>) session.createCriteria(Album.class).list();
-         tx.commit();
-      } catch (HibernateException e) {
-         if (tx!=null) tx.rollback();
-         e.printStackTrace(); 
-      } finally {
-         session.close(); 
-      }
-       
+            tx = session.beginTransaction();
+            empleadoss = (List<Album>) session.createCriteria(Album.class).list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
         return empleadoss;
+    }
+
+    public void eliminarAlbum(Album album) {
+        Session session = HibernateUtil.getSessionFactory().openSession();//getSessionFactory() inicia la sesion
+        Transaction tx = null;//la transaccion cuando inicia es null
+        //aprender a leer esto
+        try {
+            tx = session.beginTransaction();
+            session.delete(album);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
 }
