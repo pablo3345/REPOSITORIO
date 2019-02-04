@@ -7,6 +7,7 @@ package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.paint.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import modelo.Album;
@@ -29,11 +30,9 @@ public class ServicioFoto {
         int cantidadConvertida = this.validadTamaño(tamaño);
 
         Foto foto = new Foto(album, nombreArchivo, cantidadConvertida, descripcion);
-      
-      
 
         this.repositorioFoto.guardarFoto(foto);
-     
+
     }
 
     private int validadTamaño(String cantidad) {
@@ -66,10 +65,11 @@ public class ServicioFoto {
 
         JOptionPane.showMessageDialog(null, mensaje);
     }
-     public void mostrarInformacionFotosPorAlbum(int idAlbum) {
-       
+
+    public void mostrarInformacionFotosPorAlbum(int idAlbum) {
+
         String mensaje = "";
-       
+
         ArrayList<Foto> fotos = this.repositorioFoto.obtenerTodosPorAlbum(idAlbum);
 
         for (Foto foto : fotos) {
@@ -93,8 +93,11 @@ public class ServicioFoto {
 
     }
 
-   
+    public void cantidadFotosTotal() {
+        ArrayList<Foto> cantidad = this.repositorioFoto.obtenerTodos();
 
-   
+        JOptionPane.showMessageDialog(null, "La cantidad total de fotos es de " + cantidad.size());
+
+    }
 
 }

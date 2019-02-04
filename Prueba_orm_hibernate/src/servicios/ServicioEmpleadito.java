@@ -6,6 +6,7 @@
 package servicios;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Empleadito;
 import repositorio.RepositorioEmpleado;
@@ -27,12 +28,9 @@ public class ServicioEmpleadito {
         int edadConvertido = this.validadEdad(edad);
 
         Empleadito empleadito = new Empleadito(nombre, apellido, edadConvertido, dni);
+        this.dniRepetidos(empleadito);
 
         this.repositorioEmpleado.guardar(empleadito);
-        
-       
-
-      
 
     }
 
@@ -82,6 +80,22 @@ public class ServicioEmpleadito {
 
             if (empleadito1.getEdad() > 62) {
                 JOptionPane.showMessageDialog(null, "ya esta en edad de jubilarse " + empleadito1);
+
+            }
+          
+         
+          
+
+        }
+
+    }
+
+    private void dniRepetidos(Empleadito empleadito) {
+        ArrayList<Empleadito> dela = this.repositorioEmpleado.obtenerTodos();
+
+        for (Empleadito delas : dela) {
+            if (delas.getDni().equals(empleadito.getDni())) {
+                throw new IllegalArgumentException("dni incorrecto");
 
             }
 

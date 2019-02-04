@@ -115,17 +115,20 @@ public class Presentador {
 
     public void botonEliminarAlbumApretado() {
         try {
-              Album albunSeleccionado = (Album) this.vistaPrincipal.getjComboBoxEliminarAlbum().getSelectedItem();
-            
-            
-             this.servicioAlbum.eliminarAlbum(albunSeleccionado);
-             this.rellenarComboBox();
-             JOptionPane.showMessageDialog(null, "El album correspondiente ha sido eliminado!");
+            Album albunSeleccionado = (Album) this.vistaPrincipal.getjComboBoxEliminarAlbum().getSelectedItem();
+
+            this.servicioAlbum.eliminarAlbum(albunSeleccionado);
+            this.rellenarComboBox();
+            JOptionPane.showMessageDialog(null, "El album correspondiente ha sido eliminado!");
         } catch (IllegalArgumentException exception) {
-             JOptionPane.showMessageDialog(null, exception.getMessage());
-            
+            JOptionPane.showMessageDialog(null, exception.getMessage());
+
         }
 
+    }
+
+    public void fotosTotalApretado() {
+        this.servicioFoto.cantidadFotosTotal();
     }
 
 }

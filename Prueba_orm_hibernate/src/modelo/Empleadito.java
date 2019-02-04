@@ -1,6 +1,9 @@
 package modelo;
 // Generated 12/01/2019 15:35:12 by Hibernate Tools 4.3.1
 
+import javax.swing.JOptionPane;
+
+
 
 
 /**
@@ -75,14 +78,17 @@ public class Empleadito  implements java.io.Serializable {
 //        
 //        }
 //         Empleadito empleadito = (Empleadito) o;
-//        
+//         
+//         
+//       
 //        
 //        return (this.dni.equals(empleadito.getDni()));
+//       
 //    }
 
     @Override
     public String toString() {
-        return this.nombre + " " + this.apellido + " "+ this.dni + ""+ this.edad;
+        return this.nombre + " " + this.apellido + ", "+ this.dni + ", años " + this.edad;
     }
     
     

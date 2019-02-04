@@ -126,6 +126,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jComboBox1Album = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextFieldNombreArchivo = new javax.swing.JTextField();
         jTextFieldTamaño = new javax.swing.JTextField();
@@ -137,10 +138,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField_Id_album = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jButtonCantidadTotalFotos = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButtonEliminar = new javax.swing.JButton();
         jComboBoxEliminarAlbum = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -148,9 +152,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(750, 620));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(685, 300));
 
+        jPanel2.setLayout(null);
+        jPanel2.add(jTextFieldCantidadMaxima);
+        jTextFieldCantidadMaxima.setBounds(250, 231, 232, 40);
+        jPanel2.add(jTextFieldNombre);
+        jTextFieldNombre.setBounds(250, 147, 232, 40);
+
         jLabel6.setText("ALBUNES:");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(40, 70, 90, 42);
 
         jLabel7.setText("CANTIDAD MAXIMA:");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(111, 229, 121, 42);
 
         jButtonMostrarAlbum.setText("Mostrar Album");
         jButtonMostrarAlbum.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +172,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 mostrarAlbum(evt);
             }
         });
+        jPanel2.add(jButtonMostrarAlbum);
+        jButtonMostrarAlbum.setBounds(500, 377, 180, 40);
 
         jButtonGuardarAlbum.setText("Guardar Album");
         jButtonGuardarAlbum.addActionListener(new java.awt.event.ActionListener() {
@@ -165,8 +181,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 guardarAlbum(evt);
             }
         });
+        jPanel2.add(jButtonGuardarAlbum);
+        jButtonGuardarAlbum.setBounds(110, 377, 190, 40);
+
+        jPanel2.add(jComboBox1Album);
+        jComboBox1Album.setBounds(143, 71, 366, 39);
 
         jLabel8.setText("NOMBRE: ");
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(111, 143, 60, 42);
 
         jButton2.setText("Mostrar Fotos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -174,61 +197,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 botonAgregarFotos(evt);
             }
         });
+        jPanel2.add(jButton2);
+        jButton2.setBounds(537, 69, 143, 42);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jButtonGuardarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(200, 200, 200)
-                        .addComponent(jButtonMostrarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(66, 66, 66)
-                                .addComponent(jComboBox1Album, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1Album, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jTextFieldCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(106, 106, 106)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonGuardarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonMostrarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\pablo\\Desktop\\fondo azul.jpg")); // NOI18N
+        jPanel2.add(jLabel11);
+        jLabel11.setBounds(0, 0, 710, 490);
 
         jTabbedPane1.addTab("ALBUM", jPanel2);
 
@@ -255,7 +229,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(140, 420, 174, 33);
+        jButton1.setBounds(30, 420, 174, 40);
 
         jButtonAgregarPersonasFoto.setText("Mostrar Informacion Guardada");
         jButtonAgregarPersonasFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +238,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonAgregarPersonasFoto);
-        jButtonAgregarPersonasFoto.setBounds(390, 420, 192, 36);
+        jButtonAgregarPersonasFoto.setBounds(250, 420, 192, 40);
 
         jLabel5.setText("ID Album:");
         jPanel1.add(jLabel5);
@@ -276,7 +250,22 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(170, 140, 121, 42);
 
+        jButtonCantidadTotalFotos.setText("Total de Fotos");
+        jButtonCantidadTotalFotos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadFotosTotal(evt);
+            }
+        });
+        jPanel1.add(jButtonCantidadTotalFotos);
+        jButtonCantidadTotalFotos.setBounds(480, 420, 200, 40);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\pablo\\Desktop\\fondo azul.jpg")); // NOI18N
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(0, 0, 710, 490);
+
         jTabbedPane1.addTab("FOTO", jPanel1);
+
+        jPanel3.setLayout(null);
 
         jButtonEliminar.setText("Eliminar Album");
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -284,36 +273,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 botonEliminarAlbum(evt);
             }
         });
+        jPanel3.add(jButtonEliminar);
+        jButtonEliminar.setBounds(307, 283, 211, 38);
+
+        jPanel3.add(jComboBoxEliminarAlbum);
+        jComboBoxEliminarAlbum.setBounds(235, 95, 361, 32);
 
         jLabel1.setText("ALBUM:");
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(136, 104, 49, 14);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jComboBoxEliminarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(193, 193, 193))))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxEliminarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(156, 156, 156)
-                .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\pablo\\Desktop\\fondo azul.jpg")); // NOI18N
+        jPanel3.add(jLabel2);
+        jLabel2.setBounds(4, 0, 700, 490);
 
         jTabbedPane1.addTab("ELIMINAR ALBUM", jPanel3);
 
@@ -355,6 +327,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
        this.presentador.botonEliminarAlbumApretado();
     }//GEN-LAST:event_botonEliminarAlbum
 
+    private void cantidadFotosTotal(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadFotosTotal
+        this.presentador.fotosTotalApretado();
+    }//GEN-LAST:event_cantidadFotosTotal
+
     /**
      * @param args the command line arguments
      */
@@ -364,12 +340,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAgregarPersonasFoto;
+    private javax.swing.JButton jButtonCantidadTotalFotos;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardarAlbum;
     private javax.swing.JButton jButtonMostrarAlbum;
     private javax.swing.JComboBox<Object> jComboBox1Album;
     private javax.swing.JComboBox<Object> jComboBoxEliminarAlbum;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

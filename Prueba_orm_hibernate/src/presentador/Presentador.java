@@ -37,6 +37,8 @@ public class Presentador {
         String dni = this.vistaPrincipal.getjTextFieldDni().getText();
 
         try {
+           
+          
             this.servicioEmpleadito.guardarEmpleado(nombre, apellido, edad, dni);
             
            
