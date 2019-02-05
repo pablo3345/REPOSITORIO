@@ -157,15 +157,15 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel11">
+            <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\pablo\Desktop\fondo azul.jpg"/>
+                  <Image iconType="3" name="/vista/fondo azul.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="710" height="490"/>
+                  <AbsoluteConstraints x="4" y="0" width="710" height="490"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -291,10 +291,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel10">
+            <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\pablo\Desktop\fondo azul.jpg"/>
+                  <Image iconType="3" name="/vista/fondo azul.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -356,15 +356,15 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\pablo\Desktop\fondo azul.jpg"/>
+                  <Image iconType="3" name="/vista/fondo azul.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="4" y="0" width="700" height="490"/>
+                  <AbsoluteConstraints x="0" y="0" width="710" height="490"/>
                 </Constraint>
               </Constraints>
             </Component>

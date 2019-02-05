@@ -126,7 +126,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jComboBox1Album = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextFieldNombreArchivo = new javax.swing.JTextField();
         jTextFieldTamaño = new javax.swing.JTextField();
@@ -139,12 +139,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jTextField_Id_album = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jButtonCantidadTotalFotos = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButtonEliminar = new javax.swing.JButton();
         jComboBoxEliminarAlbum = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -200,9 +200,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel2.add(jButton2);
         jButton2.setBounds(537, 69, 143, 42);
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\pablo\\Desktop\\fondo azul.jpg")); // NOI18N
-        jPanel2.add(jLabel11);
-        jLabel11.setBounds(0, 0, 710, 490);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo azul.jpg"))); // NOI18N
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(4, 0, 710, 490);
 
         jTabbedPane1.addTab("ALBUM", jPanel2);
 
@@ -259,9 +259,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel1.add(jButtonCantidadTotalFotos);
         jButtonCantidadTotalFotos.setBounds(480, 420, 200, 40);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\pablo\\Desktop\\fondo azul.jpg")); // NOI18N
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(0, 0, 710, 490);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo azul.jpg"))); // NOI18N
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(0, 0, 710, 490);
 
         jTabbedPane1.addTab("FOTO", jPanel1);
 
@@ -283,9 +283,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel3.add(jLabel1);
         jLabel1.setBounds(136, 104, 49, 14);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\pablo\\Desktop\\fondo azul.jpg")); // NOI18N
-        jPanel3.add(jLabel2);
-        jLabel2.setBounds(4, 0, 700, 490);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo azul.jpg"))); // NOI18N
+        jPanel3.add(jLabel10);
+        jLabel10.setBounds(0, 0, 710, 490);
 
         jTabbedPane1.addTab("ELIMINAR ALBUM", jPanel3);
 
@@ -302,14 +302,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BotonGuardarFoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarFoto
-      this.presentador.guardarFotoApretado();
-    }//GEN-LAST:event_BotonGuardarFoto
-
-    private void mostrarFotosGuardadas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarFotosGuardadas
-      this.presentador.mostrarFotosApretado();
-    }//GEN-LAST:event_mostrarFotosGuardadas
 
     private void guardarAlbum(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAlbum
        this.presentador.guardarAlbumApretado();
@@ -331,6 +323,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.presentador.fotosTotalApretado();
     }//GEN-LAST:event_cantidadFotosTotal
 
+    private void mostrarFotosGuardadas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarFotosGuardadas
+        this.presentador.mostrarFotosApretado();
+    }//GEN-LAST:event_mostrarFotosGuardadas
+
+    private void BotonGuardarFoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarFoto
+        this.presentador.guardarFotoApretado();
+    }//GEN-LAST:event_BotonGuardarFoto
+
     /**
      * @param args the command line arguments
      */
@@ -348,7 +348,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<Object> jComboBoxEliminarAlbum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
