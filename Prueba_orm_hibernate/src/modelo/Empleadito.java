@@ -1,7 +1,6 @@
 package modelo;
 // Generated 12/01/2019 15:35:12 by Hibernate Tools 4.3.1
 
-import javax.swing.JOptionPane;
 
 
 
@@ -17,6 +16,14 @@ public class Empleadito  implements java.io.Serializable {
      private String apellido;
      private int edad;
      private String dni;
+    
+     
+    
+    
+    
+
+     
+   
 
     public Empleadito() {
     }
@@ -26,9 +33,16 @@ public class Empleadito  implements java.io.Serializable {
        this.apellido = apellido;
        this.edad = edad;
        this.dni = dni;
+      
+    
+
+       
+    
+      
     }
 
-  
+   
+   
 
   
    
@@ -67,6 +81,21 @@ public class Empleadito  implements java.io.Serializable {
     public void setDni(String dni) {
         this.dni = dni;
     }
+
+   
+    
+
+   
+
+   
+    
+    
+
+  
+    
+   
+    
+   
 
 //    @Override
 //    public boolean equals(Object o) {

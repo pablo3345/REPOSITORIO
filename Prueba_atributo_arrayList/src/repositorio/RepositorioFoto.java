@@ -80,7 +80,7 @@ public class RepositorioFoto {
         try {
          tx = session.beginTransaction();
          //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
-         //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
+         //from Foto es el tipo de consulta HQL  para obtener una lista de todos las fotos
          //LA consulta debo concatenar el texto + la variable, en este caso el idAlbum porque cambia el contenido segun
          //lo que seleccionemos 
          arrayADevolver = (ArrayList<Foto>) session.createQuery("FROM Foto WHERE album = "+idAlbum).list(); 

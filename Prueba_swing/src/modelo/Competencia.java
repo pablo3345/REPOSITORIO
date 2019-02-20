@@ -22,6 +22,7 @@ public class Competencia {
     private Deportista aDeportista;
     private int hora;
     private int minutos;
+    private Date fechaIngreso;
     
     int hora1 = this.ponerHora();
     int minutos2 = this.ponerMinutod();
@@ -34,6 +35,7 @@ public class Competencia {
         this.cantidadDeKilometros = cantidadDeKilometros;
         this.tiempoRecorrido = tiempoRecorrido;
         this.aDeportista = aDeportista;
+      
 
     }
    
