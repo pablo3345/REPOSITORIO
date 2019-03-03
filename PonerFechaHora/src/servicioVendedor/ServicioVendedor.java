@@ -26,7 +26,9 @@ public class ServicioVendedor {
         
         Vendedor vendedor = new Vendedor(nombre, tiempo);
         
-        this.repositorioVendedor.guardar(vendedor);
+      this.repositorioVendedor.guardar(vendedor);
+        
+     
     
     
     

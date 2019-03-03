@@ -13,6 +13,8 @@ public class Vendedor  implements java.io.Serializable {
      private Integer idvendedor;
      private String nombre;
      private Date horaFecha;
+   
+     
 
     public Vendedor() {
     }
@@ -20,6 +22,8 @@ public class Vendedor  implements java.io.Serializable {
     public Vendedor(String nombre, Date horaFecha) {
        this.nombre = nombre;
        this.horaFecha = horaFecha;
+      
+               
     }
    
     public Integer getIdvendedor() {
@@ -43,6 +47,17 @@ public class Vendedor  implements java.io.Serializable {
     public void setHoraFecha(Date horaFecha) {
         this.horaFecha = horaFecha;
     }
+
+   
+    
+ 
+    
+   
+    
+   
+       
+    
+    
 
     @Override
     public String toString() {
