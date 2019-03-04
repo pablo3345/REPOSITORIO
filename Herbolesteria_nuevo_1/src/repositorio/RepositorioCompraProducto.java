@@ -6,7 +6,9 @@
 package repositorio;
 
 import herbolesteria.util.HibernateUtil;
+import java.util.ArrayList;
 import modelo.CompraProducto;
+import modelo.Proveedor;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,8 +18,8 @@ import org.hibernate.Transaction;
  * @author pablo
  */
 public class RepositorioCompraProducto {
-    
-             public void guardarcompraProducto(CompraProducto compraProducto) {
+
+    public void guardarcompraProducto(CompraProducto compraProducto) {
         //este codigo lo copie de la pagina Tutorial spoint y borre lo que no me sirve
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -36,5 +38,51 @@ public class RepositorioCompraProducto {
         }
 
     }
+
+    public ArrayList<CompraProducto> obtenerTodosCompraProductos() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
+    {
+        ArrayList<CompraProducto> arrayADevolver = null;
+
+        // return this.listaEmpleados.toArray(arrayADevolver);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+            //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
+            arrayADevolver = (ArrayList<CompraProducto>) session.createQuery("FROM CompraProducto").list();
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return arrayADevolver;
+    }
     
+    
+       public void eliminarCompraProducto(CompraProducto compraProducto) {
+        Session session = HibernateUtil.getSessionFactory().openSession();//getSessionFactory() inicia la sesion
+        Transaction tx = null;//la transaccion cuando inicia es null
+        //aprender a leer esto
+        try {
+            tx = session.beginTransaction();
+            session.delete(compraProducto);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
 }

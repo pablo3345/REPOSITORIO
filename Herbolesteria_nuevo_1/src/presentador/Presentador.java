@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import modelo.Compra;
+import modelo.CompraProducto;
 import modelo.Producto;
 import modelo.Proveedor;
 import servicio.ServicioCompra;
@@ -39,6 +40,7 @@ public class Presentador {
         this.rellenarComboBoxCompra_compraProducto();
         this.rellenarComboBoxProductos__Productocompra();
         this.rellenarComboBoxProveedor_compra();
+        this.rellenarComboBoxcompraProducto();
     }
 
     public void guardarProveedorApretado() {
@@ -162,6 +164,8 @@ public class Presentador {
             this.vistaPrincipal.getjTextFieldPrecioUnitario_compra_producto().setText("");
             
              JOptionPane.showMessageDialog(null, "el detalle compra producto se guardo exitosamente!");
+             
+             this.rellenarComboBoxcompraProducto();
            
         } catch (IllegalArgumentException exception) {
              JOptionPane.showMessageDialog(null, exception.getMessage());
@@ -169,6 +173,36 @@ public class Presentador {
         }
       
         
+    }
+    
+       private void rellenarComboBoxcompraProducto() {
+        //Obtener todos los albunes de la base de datos
+        List<CompraProducto> comprassProductoss = this.servicioCompraProducto.obtenerTodosCompraProducto();
+
+        //Crear el modelo con todos los albunes.
+        DefaultComboBoxModel<Object> modeloComboBox = new DefaultComboBoxModel<>(comprassProductoss.toArray());
+
+        //Setearle el modelo
+        this.vistaPrincipal. getjComboBoxeliminar_compraVenta().setModel(modeloComboBox);
+      
+    }
+       
+    
+
+    
+
+    public void eliminar_compraProducto() {
+           try {
+            CompraProducto compraProduseleccionado = (CompraProducto) this.vistaPrincipal. getjComboBoxeliminar_compraVenta().getSelectedItem();
+
+            this.servicioCompraProducto.eliminarCompraProducto(compraProduseleccionado);
+            this.rellenarComboBoxcompraProducto();
+            JOptionPane.showMessageDialog(null, "El detalle compra producto ha sido eliminado!");
+        } catch (IllegalArgumentException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage());
+
+        }
+       
     }
 
     

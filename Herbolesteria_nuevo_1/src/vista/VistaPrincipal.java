@@ -73,6 +73,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public JTextField getjTextFieldPrecioUnitario_compra_producto() {
         return jTextFieldPrecioUnitario_compra_producto;
     }
+
+    public JComboBox<Object> getjComboBoxeliminar_compraVenta() {
+        return jComboBoxeliminar_compraVenta;
+    }
+    
+    
     
     
 
@@ -146,6 +152,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButtonGuardarCompra_venta = new javax.swing.JButton();
         jTextFieldCantidad_compra_producto = new javax.swing.JTextField();
         jTextFieldPrecioUnitario_compra_producto = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jComboBoxeliminar_compraVenta = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        jButtonEliminar_compraProducto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -341,25 +351,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jLabel11.setText("CANTIDAD");
         jPanel4.add(jLabel11);
-        jLabel11.setBounds(130, 200, 90, 10);
+        jLabel11.setBounds(80, 160, 90, 10);
 
         jLabel12.setText("PRECIO UNITARIO");
         jPanel4.add(jLabel12);
-        jLabel12.setBounds(120, 250, 100, 14);
+        jLabel12.setBounds(70, 200, 150, 14);
 
         jPanel4.add(jComboBoxProducto_compraProducto);
-        jComboBoxProducto_compraProducto.setBounds(140, 130, 600, 20);
+        jComboBoxProducto_compraProducto.setBounds(140, 90, 600, 20);
 
         jPanel4.add(jComboBoxCompra_compraProducto);
-        jComboBoxCompra_compraProducto.setBounds(143, 73, 380, 20);
+        jComboBoxCompra_compraProducto.setBounds(140, 40, 380, 20);
 
         jLabel14.setText("COMPRA");
         jPanel4.add(jLabel14);
-        jLabel14.setBounds(40, 80, 65, 14);
+        jLabel14.setBounds(40, 40, 65, 14);
 
         jLabel15.setText("PRODUCTO");
         jPanel4.add(jLabel15);
-        jLabel15.setBounds(30, 130, 75, 14);
+        jLabel15.setBounds(30, 90, 75, 14);
 
         jButtonGuardarCompra_venta.setText("Guardar");
         jButtonGuardarCompra_venta.addActionListener(new java.awt.event.ActionListener() {
@@ -368,11 +378,29 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButtonGuardarCompra_venta);
-        jButtonGuardarCompra_venta.setBounds(330, 420, 160, 23);
+        jButtonGuardarCompra_venta.setBounds(570, 170, 160, 23);
         jPanel4.add(jTextFieldCantidad_compra_producto);
-        jTextFieldCantidad_compra_producto.setBounds(270, 190, 280, 30);
+        jTextFieldCantidad_compra_producto.setBounds(210, 140, 280, 30);
         jPanel4.add(jTextFieldPrecioUnitario_compra_producto);
-        jTextFieldPrecioUnitario_compra_producto.setBounds(270, 250, 280, 30);
+        jTextFieldPrecioUnitario_compra_producto.setBounds(210, 190, 280, 30);
+        jPanel4.add(jSeparator1);
+        jSeparator1.setBounds(10, 270, 740, 10);
+
+        jPanel4.add(jComboBoxeliminar_compraVenta);
+        jComboBoxeliminar_compraVenta.setBounds(250, 300, 310, 20);
+
+        jLabel16.setText("ELIMINAR DETALLE COMPRA_PRODUCTO");
+        jPanel4.add(jLabel16);
+        jLabel16.setBounds(20, 300, 210, 14);
+
+        jButtonEliminar_compraProducto.setText("Eliminar");
+        jButtonEliminar_compraProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminar_compraProductoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButtonEliminar_compraProducto);
+        jButtonEliminar_compraProducto.setBounds(590, 300, 150, 23);
 
         jTabbedPane1.addTab("COMPRA_PRODUCTO", jPanel4);
 
@@ -406,12 +434,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
        this.presentador.guardarCompraProducto_apretado();
     }//GEN-LAST:event_jButtonGuardarCompra_ventaActionPerformed
 
+    private void jButtonEliminar_compraProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminar_compraProductoActionPerformed
+       this.presentador.eliminar_compraProducto();
+    }//GEN-LAST:event_jButtonEliminar_compraProductoActionPerformed
+
     /**
      * @param args the command line arguments
      */
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEliminar_compraProducto;
     private javax.swing.JButton jButtonGuardarCompra_venta;
     private javax.swing.JButton jButtonGuardarProveedor;
     private javax.swing.JButton jButtonGuardar_Producto;
@@ -419,6 +452,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<Object> jComboBoxCompra_compraProducto;
     private javax.swing.JComboBox<Object> jComboBoxProducto_compraProducto;
     private javax.swing.JComboBox<Object> jComboBoxProveedor_compra;
+    private javax.swing.JComboBox<Object> jComboBoxeliminar_compraVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -426,6 +460,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -438,6 +473,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldCantidad_compra_producto;
     private javax.swing.JTextField jTextFieldCosto_producto;

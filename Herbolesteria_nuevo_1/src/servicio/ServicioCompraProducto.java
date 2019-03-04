@@ -5,6 +5,7 @@
  */
 package servicio;
 
+import java.util.List;
 import modelo.Compra;
 import modelo.CompraProducto;
 import modelo.Producto;
@@ -56,6 +57,24 @@ public class ServicioCompraProducto {
             throw new IllegalArgumentException("precio unitario incorrecto");
         }
     
+    
+    }
+    
+    public List<CompraProducto> obtenerTodosCompraProducto(){
+        
+        List<CompraProducto> todos = this.repositorioCompraProducto.obtenerTodosCompraProductos();
+        
+        return todos;
+    
+    
+    
+    
+    }
+    
+     public void eliminarCompraProducto(CompraProducto compraProductoseleccionado){
+    
+    
+    this.repositorioCompraProducto.eliminarCompraProducto(compraProductoseleccionado);
     
     }
     

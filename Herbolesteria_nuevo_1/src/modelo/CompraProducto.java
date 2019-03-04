@@ -61,6 +61,13 @@ public class CompraProducto  implements java.io.Serializable {
         this.precioUnitario = precioUnitario;
     }
 
+    @Override
+    public String toString() {
+        return  id + ", compra=" + compra.getIdCompra() + ", producto=" + producto.getIdproducto() + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + '}';
+    }
+    
+    
+
   
     
     
