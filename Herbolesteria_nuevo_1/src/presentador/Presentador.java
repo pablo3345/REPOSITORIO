@@ -30,6 +30,7 @@ public class Presentador {
     private ServicioCompra servicioCompra;
     private ServicioProducto servicioProducto;
     private ServicioCompraProducto servicioCompraProducto;
+   
 
     public Presentador(VistaPrincipal vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -82,50 +83,50 @@ public class Presentador {
         Calendar cal = Calendar.getInstance();
 
         java.sql.Timestamp fecha = new java.sql.Timestamp(cal.getTimeInMillis());
-        
+
         try {
             this.servicioCompra.guardarCompra(proveedor, montoTotal, fecha);
-            
-           this.vistaPrincipal.getjTextFieldMonto_Total_compra().setText("");
-           
-           this.rellenarComboBoxCompra_compraProducto();
-           
-           JOptionPane.showMessageDialog(null, "la compra se guardo correctamente");
+
+            this.vistaPrincipal.getjTextFieldMonto_Total_compra().setText("");
+
+            this.rellenarComboBoxCompra_compraProducto();
+
+            JOptionPane.showMessageDialog(null, "la compra se guardo correctamente");
+
         } catch (IllegalArgumentException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage());
         }
     }
 
     public void guardarProductoApretado() {
-        String nombre = this.vistaPrincipal. getjTextFieldNombre_producto().getText();
+        String nombre = this.vistaPrincipal.getjTextFieldNombre_producto().getText();
         String costo = this.vistaPrincipal.getjTextFieldCosto_producto().getText();
         String ganancia = this.vistaPrincipal.getjTextFieldGanancia_producto().getText();
         String stockMinimo = this.vistaPrincipal.getjTextFieldStockMinimo_producto().getText();
-        String stockActual = this.vistaPrincipal. getjTextFieldStockActual_producto().getText();
-        String tipo = this.vistaPrincipal. getjTextFieldTipo_producto().getText();
-        
+        String stockActual = this.vistaPrincipal.getjTextFieldStockActual_producto().getText();
+        String tipo = this.vistaPrincipal.getjTextFieldTipo_producto().getText();
+
         try {
             this.servicioProducto.guardarProducto(nombre, costo, ganancia, stockMinimo, stockActual, tipo);
-            
-        this.vistaPrincipal. getjTextFieldNombre_producto().setText("");
-        this.vistaPrincipal.getjTextFieldCosto_producto().setText("");
-        this.vistaPrincipal.getjTextFieldGanancia_producto().setText("");
-        this.vistaPrincipal.getjTextFieldStockMinimo_producto().setText("");
-        this.vistaPrincipal. getjTextFieldStockActual_producto().setText("");
-        this.vistaPrincipal. getjTextFieldTipo_producto().setText("");
-        
-        this.rellenarComboBoxProductos__Productocompra();
-        
-        JOptionPane.showMessageDialog(null, "el producto se guardo correctamente");
-            
-            
+
+            this.vistaPrincipal.getjTextFieldNombre_producto().setText("");
+            this.vistaPrincipal.getjTextFieldCosto_producto().setText("");
+            this.vistaPrincipal.getjTextFieldGanancia_producto().setText("");
+            this.vistaPrincipal.getjTextFieldStockMinimo_producto().setText("");
+            this.vistaPrincipal.getjTextFieldStockActual_producto().setText("");
+            this.vistaPrincipal.getjTextFieldTipo_producto().setText("");
+
+            this.rellenarComboBoxProductos__Productocompra();
+
+            JOptionPane.showMessageDialog(null, "el producto se guardo correctamente");
+
         } catch (IllegalArgumentException e) {
             JOptionPane.showInternalMessageDialog(null, e.getMessage());
         }
-       
+
     }
-    
-      private void rellenarComboBoxCompra_compraProducto() {
+
+    private void rellenarComboBoxCompra_compraProducto() {
         //Obtener todos los albunes de la base de datos
         List<Compra> comprass = this.servicioCompra.obtenerCompra();
 
@@ -134,11 +135,10 @@ public class Presentador {
 
         //Setearle el modelo
         this.vistaPrincipal.getjComboBoxCompra_compraProducto().setModel(modeloComboBox);
-      
+
     }
-      
-      
-        private void rellenarComboBoxProductos__Productocompra() {
+
+    private void rellenarComboBoxProductos__Productocompra() {
         //Obtener todos los albunes de la base de datos
         List<Producto> productosss = this.servicioProducto.obtenerProductos();
 
@@ -146,36 +146,36 @@ public class Presentador {
         DefaultComboBoxModel<Object> modeloComboBox = new DefaultComboBoxModel<>(productosss.toArray());
 
         //Setearle el modelo
-        this.vistaPrincipal. getjComboBoxProducto_compraProducto().setModel(modeloComboBox);
-      
+        this.vistaPrincipal.getjComboBoxProducto_compraProducto().setModel(modeloComboBox);
+        this.vistaPrincipal.getjComboBoxStockActual_producto_compProd().setModel(modeloComboBox);
+        this.vistaPrincipal.getjComboBoxEliminarProducto().setModel(modeloComboBox);
 
     }
 
     public void guardarCompraProducto_apretado() {
-        Compra compras = (Compra) this.vistaPrincipal. getjComboBoxCompra_compraProducto().getSelectedItem();
+        Compra compras = (Compra) this.vistaPrincipal.getjComboBoxCompra_compraProducto().getSelectedItem();
         Producto productos = (Producto) this.vistaPrincipal.getjComboBoxProducto_compraProducto().getSelectedItem();
         String cantidad = this.vistaPrincipal.getjTextFieldCantidad_compra_producto().getText();
         String precioUnitarioo = this.vistaPrincipal.getjTextFieldPrecioUnitario_compra_producto().getText();
-        
+
         try {
             this.servicioCompraProducto.guardarCompraProducto(compras, productos, cantidad, precioUnitarioo);
-            
+
             this.vistaPrincipal.getjTextFieldCantidad_compra_producto().setText("");
             this.vistaPrincipal.getjTextFieldPrecioUnitario_compra_producto().setText("");
-            
-             JOptionPane.showMessageDialog(null, "el detalle compra producto se guardo exitosamente!");
-             
-             this.rellenarComboBoxcompraProducto();
-           
+
+            JOptionPane.showMessageDialog(null, "el detalle compra producto se guardo exitosamente!");
+
+            this.rellenarComboBoxcompraProducto();
+
         } catch (IllegalArgumentException exception) {
-             JOptionPane.showMessageDialog(null, exception.getMessage());
-            
+            JOptionPane.showMessageDialog(null, exception.getMessage());
+
         }
-      
-        
+
     }
-    
-       private void rellenarComboBoxcompraProducto() {
+
+    private void rellenarComboBoxcompraProducto() {
         //Obtener todos los albunes de la base de datos
         List<CompraProducto> comprassProductoss = this.servicioCompraProducto.obtenerTodosCompraProducto();
 
@@ -183,17 +183,13 @@ public class Presentador {
         DefaultComboBoxModel<Object> modeloComboBox = new DefaultComboBoxModel<>(comprassProductoss.toArray());
 
         //Setearle el modelo
-        this.vistaPrincipal. getjComboBoxeliminar_compraVenta().setModel(modeloComboBox);
-      
-    }
-       
-    
+        this.vistaPrincipal.getjComboBoxeliminar_compraVenta().setModel(modeloComboBox);
 
-    
+    }
 
     public void eliminar_compraProducto() {
-           try {
-            CompraProducto compraProduseleccionado = (CompraProducto) this.vistaPrincipal. getjComboBoxeliminar_compraVenta().getSelectedItem();
+        try {
+            CompraProducto compraProduseleccionado = (CompraProducto) this.vistaPrincipal.getjComboBoxeliminar_compraVenta().getSelectedItem();
 
             this.servicioCompraProducto.eliminarCompraProducto(compraProduseleccionado);
             this.rellenarComboBoxcompraProducto();
@@ -202,9 +198,36 @@ public class Presentador {
             JOptionPane.showMessageDialog(null, exception.getMessage());
 
         }
-       
+
     }
 
-    
+    public void calcularStockActualApretado() {
+//        Producto producto = (Producto) this.vistaPrincipal.getjComboBoxProducto_compraProducto().getSelectedItem();
+//
+//        this.servicioCompraProducto.actualizarStock(producto.getIdproducto());
+
+        Producto producto1 = (Producto) this.vistaPrincipal.getjComboBoxProducto_compraProducto().getSelectedItem();
+        int idProducto = producto1.getIdproducto();
+        this.servicioCompraProducto.actualizarStock(idProducto, producto1);
+        
+      
+
+    }
+
+    public void eliminarProductoApretado() {
+        Producto producto = (Producto) this.vistaPrincipal.getjComboBoxEliminarProducto().getSelectedItem();
+        try {
+            this.servicioProducto.eliminarCompraProducto(producto);
+            this.rellenarComboBoxcompraProducto();
+            this.rellenarComboBoxProductos__Productocompra();
+            JOptionPane.showMessageDialog(null, "el producto ha sido eliminado");
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            
+         
+
+        }
+    }
 
 }

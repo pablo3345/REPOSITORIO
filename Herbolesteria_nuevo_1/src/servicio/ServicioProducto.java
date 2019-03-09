@@ -5,7 +5,10 @@
  */
 package servicio;
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import modelo.CompraProducto;
 import modelo.Producto;
 import repositorio.RepositorioProducto;
 
@@ -95,6 +98,15 @@ public class ServicioProducto {
     
     
     }
+    
+      public void eliminarCompraProducto(Producto producto){
+    
+    
+    this.repositorioProducto.eliminarProducto(producto);
+    
+    }
+    
+  
     
    
     

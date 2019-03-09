@@ -63,8 +63,14 @@ public class CompraProducto  implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return  id + ", compra=" + compra.getIdCompra() + ", producto=" + producto.getIdproducto() + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + '}';
+        return  "cantidad del pedido=" + cantidad + ", precioUnitario=" + precioUnitario + '}';
     }
+
+  
+
+ 
+
+   
     
     
 
