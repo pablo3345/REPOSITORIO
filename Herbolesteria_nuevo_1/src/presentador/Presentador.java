@@ -5,10 +5,12 @@
  */
 package presentador;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Compra;
 import modelo.CompraProducto;
 import modelo.Producto;
@@ -30,7 +32,6 @@ public class Presentador {
     private ServicioCompra servicioCompra;
     private ServicioProducto servicioProducto;
     private ServicioCompraProducto servicioCompraProducto;
-   
 
     public Presentador(VistaPrincipal vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -42,6 +43,8 @@ public class Presentador {
         this.rellenarComboBoxProductos__Productocompra();
         this.rellenarComboBoxProveedor_compra();
         this.rellenarComboBoxcompraProducto();
+       
+
     }
 
     public void guardarProveedorApretado() {
@@ -160,6 +163,8 @@ public class Presentador {
 
         try {
             this.servicioCompraProducto.guardarCompraProducto(compras, productos, cantidad, precioUnitarioo);
+            
+           
 
             this.vistaPrincipal.getjTextFieldCantidad_compra_producto().setText("");
             this.vistaPrincipal.getjTextFieldPrecioUnitario_compra_producto().setText("");
@@ -209,8 +214,6 @@ public class Presentador {
         Producto producto1 = (Producto) this.vistaPrincipal.getjComboBoxProducto_compraProducto().getSelectedItem();
         int idProducto = producto1.getIdproducto();
         this.servicioCompraProducto.actualizarStock(idProducto, producto1);
-        
-      
 
     }
 
@@ -224,10 +227,49 @@ public class Presentador {
 
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
-            
-         
 
         }
+    }
+
+    public void llenarTablaApretado() {
+        //obtengo todo compraProducto
+        ArrayList<CompraProducto> compraProducto = this.servicioCompraProducto.obtenerParaLaTabla();
+        //creo el modelo de la tabla
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.vistaPrincipal.getjTableTabla().getModel();
+
+        //Limpiar los movimientos mostrados anteriormente
+        for (int fila = 0; fila < modeloTabla.getRowCount(); fila++) {
+           // modeloTabla.removeRow(0);
+             modeloTabla.setRowCount(0);//en ingles significa establecer el numero de filas, sirve para vaciar la tabla
+          
+
+        }
+
+        for (CompraProducto compProducto : compraProducto) {
+            Object[] datosCompraProducto = {compProducto.getId().toString(), compProducto.getCompra().getIdCompra().toString(), compProducto.getProducto().getIdproducto().toString(), compProducto.getCantidad(),
+                compProducto.getPrecioUnitario()};
+
+            modeloTabla.addRow(datosCompraProducto);
+
+        }
+        
+       
+        
+        
+        
+        
+    }
+    
+    public void calcularCantidadDeProductos(){
+    Compra compraSeleccionada = (Compra) this.vistaPrincipal.getjComboBoxCompra_compraProducto().getSelectedItem();
+    int idCompra = compraSeleccionada.getIdCompra();
+     
+              this.servicioCompraProducto.obtenerCompraProductoPorCompra(idCompra, compraSeleccionada);
+            
+       
+    
+    
+    
     }
 
 }

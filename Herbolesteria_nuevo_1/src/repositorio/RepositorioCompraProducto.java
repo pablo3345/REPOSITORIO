@@ -113,6 +113,36 @@ public class RepositorioCompraProducto {
       }
         
         return arrayADevolver;
+    }//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+               public ArrayList<CompraProducto> obtenerTodosPorCompra(int idCompra)
+     //ArrayList<Empleado> = significa que el arrayList es solo de empleado
+    {
+        ArrayList<CompraProducto> arrayADevolverr = null;
+        
+       // return this.listaEmpleados.toArray(arrayADevolver);
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        
+        try {
+         tx = session.beginTransaction();
+         //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+         //from Foto es el tipo de consulta HQL  para obtener una lista de todos las fotos
+         //LA consulta debo concatenar el texto + la variable, en este caso el idAlbum porque cambia el contenido segun
+         //lo que seleccionemos 
+         arrayADevolverr = (ArrayList<CompraProducto>) session.createQuery("FROM CompraProducto WHERE compra = "+idCompra).list(); 
+         
+         
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+        
+        return arrayADevolverr;
     }
 
 }

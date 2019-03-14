@@ -8,7 +8,6 @@ package servicio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import jdk.management.resource.internal.TotalResourceContext;
 import modelo.Compra;
 import modelo.CompraProducto;
 import modelo.Producto;
@@ -76,48 +75,58 @@ public class ServicioCompraProducto {
 
     }
 
-    public void actualizarStock(int  ID_producto, Producto producto) {
-           String mensaje = "";
+    public void actualizarStock(int ID_producto, Producto producto) {
+        String mensaje = "";
 
         ArrayList<CompraProducto> compraProductos = this.repositorioCompraProducto.obtenerTodosPorProducto(ID_producto);
-        int total =0;
+        int total = 0;
         total = producto.getStockActual();
-        double precioActual = 0;
-        
-      
-       
-        
+        // double precioActual = 0;
 
         for (CompraProducto compraProducto : compraProductos) {
-            
-            
-            
-            total += compraProducto.getCantidad();
-            precioActual = compraProducto.getPrecioUnitario();
-            
-            if(total>=50){
-            JOptionPane.showMessageDialog(null, "STOCK COMPLETO");
-            
-            
-            
-            }
-           
-            
-               
 
-                 
-                 
+            total += compraProducto.getCantidad();
+            // precioActual = compraProducto.getPrecioUnitario();
+
+        }
+        if (total >= 50) {
+            JOptionPane.showMessageDialog(null, "STOCK COMPLETO");
 
         }
 
-        JOptionPane.showMessageDialog(null, "El stock actual es de: "+total+ " y el precio por unidad es de: " + precioActual);
-         
-     
-    
-       
-        
-     
-       
+        JOptionPane.showMessageDialog(null, "El stock actual es de: " + total);
+
+    }
+
+    public ArrayList<CompraProducto> obtenerParaLaTabla() {
+
+        ArrayList<CompraProducto> obtenerTabla = this.repositorioCompraProducto.obtenerTodosCompraProductos();
+
+        return obtenerTabla;
+
+    }
+
+    public void obtenerCompraProductoPorCompra(int idCompra, Compra compra) {
+
+        String mensaje = "";
+        ArrayList<CompraProducto> obtenerCompraProductoPorCompra = this.repositorioCompraProducto.obtenerTodosPorCompra(idCompra);
+
+        double a = 0;
+        double b = 0;
+        int c = 0;
+
+        a = compra.getMontoTotal();
+
+        obtenerCompraProductoPorCompra.get(obtenerCompraProductoPorCompra.size() - 1);
+
+        for (CompraProducto comPro : obtenerCompraProductoPorCompra) {
+
+            b = comPro.getPrecioUnitario();
+            c = (int) (a / b);
+
+        }
+
+        JOptionPane.showMessageDialog(null, "ultimo precio unitario de los detalles compra " + b + "y la cantidad de productos es de : " + c);
 
     }
 
