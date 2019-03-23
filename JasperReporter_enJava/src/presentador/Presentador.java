@@ -82,10 +82,15 @@ public class Presentador {
 
         Conexion con = new Conexion();
         Connection conexion = con.getConexion();
+       
 
         try {
-            String rutaReporte = System.getProperty("user.dir") + "/src/reporter/reportVendedor.jasper";
-            JasperReport jasperRport = (JasperReport) JRLoader.loadObjectFromFile(rutaReporte);
+            //asi se hace para que funcione sin hacer el archivo ejecutable
+//            String rutaReporte = System.getProperty("user.dir") + "/src/reporter/reportVendedor.jasper";
+//             JasperReport jasperRport = (JasperReport) JRLoader.loadObjectFromFile(rutaReporte);
+            
+           
+            JasperReport jasperRport = (JasperReport) JRLoader.loadObject(getClass().getResource("/reporter/reportVendedor.jasper"));//asi se hace para que funcione el reporte en el ejecutable
             JasperPrint print = JasperFillManager.fillReport(jasperRport, null, conexion);
             //ahora creamos el jasper view que nos permite ver nuestro reporte
             JasperViewer view = new JasperViewer(print, false);
