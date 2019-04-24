@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/04/2019 15:52:33 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Jugador" table="jugador" catalog="jugadores" optimistic-lock="version">
+        <id name="idjugador" type="java.lang.Integer">
+            <column name="idjugador" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="diaNacimiento" type="int">
+            <column name="diaNacimiento" not-null="true" />
+        </property>
+        <property name="mesNacimiento" type="string">
+            <column name="mesNacimiento" length="45" not-null="true" />
+        </property>
+        <property name="añoNacimiento" type="int">
+            <column name="añoNacimiento" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

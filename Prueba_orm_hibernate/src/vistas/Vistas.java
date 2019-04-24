@@ -193,7 +193,7 @@ public class Vistas extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/guason.jpg"))); // NOI18N
         jLabel8.setAutoscrolls(true);
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(4, 0, 630, 430);
+        jLabel8.setBounds(0, 0, 630, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/04/2019 22:06:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Viajes" table="viajes" catalog="ejemplo_buscador_sakila" optimistic-lock="version">
+        <id name="idviajes" type="java.lang.Integer">
+            <column name="idviajes" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="persona" class="modelo.Persona" fetch="select">
+            <column name="persona_idpersona" not-null="true" />
+        </many-to-one>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="45" not-null="true" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="45" not-null="true" />
+        </property>
+        <property name="fechaDelViaje" type="string">
+            <column name="fechaDelViaje" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

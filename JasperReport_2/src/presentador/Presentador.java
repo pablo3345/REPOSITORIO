@@ -102,9 +102,9 @@ public class Presentador {
         Connection conection2 = conexion2.getConexion();
 
         try {
-            JasperReport jasperRport = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/empleado.jasper"));
+            JasperReport jasperRport = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/empleado.jasper"));//aca agregamos todas las librerias
             JasperPrint print = JasperFillManager.fillReport(jasperRport, null, conection2);
-            JasperViewer view = new JasperViewer(print, false);
+            JasperViewer view = new JasperViewer(print, false); //el jasper view nos va a permitir ver nuestro reporte
             view.setVisible(true);
 
         } catch (Exception e) {
