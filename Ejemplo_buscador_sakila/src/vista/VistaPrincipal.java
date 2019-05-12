@@ -37,19 +37,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     
     // 1 definis la consulta pero no esta completa
-private static String QUERY_BASED_ON_NOMBRE="from Persona a where a.nombre like '";
-private static String QUERY_BASED_ON_APELLIDO="from Persona a where a.apellido like '";
+private static String CONSULTA_BASADA_EN_NOMBRE="from Persona a where a.nombre like '";
+private static String CONSULTA_BASADA_EN_APELLIDO="from Persona a where a.apellido like '";
 
 
 private void runQueryBasedOnFirstName() {
     // 3 Esta funcion toma lo que definiste en el paso 1, y la completa, en este caso toma el NOMBRE y le agrega el simbolo % (es para que funcionae el like)
     // Por ejemplo, ingreso fede, me va a buscar todos los nombres que empiecen con fede por ejemplo: federico, federica. 
     // La consulta completa quedaria "from Actor a where a.firstName like 'fede%'"
-    executeHQLQuery(QUERY_BASED_ON_NOMBRE + getjTextFieldNombre_buscar().getText() + "%'");
+    executeHQLQuery(CONSULTA_BASADA_EN_NOMBRE + getjTextFieldNombre_buscar().getText() + "%'");
 }
     
 private void runQueryBasedOnLastName() {
-    executeHQLQuery(QUERY_BASED_ON_APELLIDO + getjTextFieldapellido_buscar().getText() + "%'");
+    executeHQLQuery(CONSULTA_BASADA_EN_APELLIDO + getjTextFieldapellido_buscar().getText() + "%'");
 }
 
 
