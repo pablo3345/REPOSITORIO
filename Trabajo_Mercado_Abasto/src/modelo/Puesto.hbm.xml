@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/05/2019 15:45:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Puesto" table="puesto" catalog="mercado_abasto" optimistic-lock="version">
+        <id name="idpuesto" type="java.lang.Integer">
+            <column name="idpuesto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dimension" class="modelo.Dimension" fetch="select">
+            <column name="dimension_iddimension" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sector" class="modelo.Sector" fetch="select">
+            <column name="sector_idsector" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoDePuesto" class="modelo.TipoDePuesto" fetch="select">
+            <column name="tipo_de_Puesto_idtipo_de_Puesto" not-null="true" />
+        </many-to-one>
+        <set name="contratos" table="contrato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="puesto_idpuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Contrato" />
+        </set>
+        <set name="lecturas" table="lectura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="puesto_idpuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Lectura" />
+        </set>
+    </class>
+</hibernate-mapping>

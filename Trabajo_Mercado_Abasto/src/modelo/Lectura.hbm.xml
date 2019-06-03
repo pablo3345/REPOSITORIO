@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/05/2019 15:45:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Lectura" table="lectura" catalog="mercado_abasto" optimistic-lock="version">
+        <id name="idlectura" type="java.lang.Integer">
+            <column name="idlectura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="puesto" class="modelo.Puesto" fetch="select">
+            <column name="puesto_idpuesto" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="lecturaKw" type="int">
+            <column name="lectura_kw" not-null="true" />
+        </property>
+        <property name="precio" type="double">
+            <column name="precio" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

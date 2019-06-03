@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/05/2019 15:45:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.TipoDePuesto" table="tipo_de_puesto" catalog="mercado_abasto" optimistic-lock="version">
+        <id name="idtipoDePuesto" type="java.lang.Integer">
+            <column name="idtipo_de_Puesto" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="camaraRefrigerante" type="string">
+            <column name="camara_refrigerante" length="45" not-null="true" />
+        </property>
+        <set name="puestos" table="puesto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipo_de_Puesto_idtipo_de_Puesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Puesto" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/05/2019 15:45:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Dimension" table="dimension" catalog="mercado_abasto" optimistic-lock="version">
+        <id name="iddimension" type="java.lang.Integer">
+            <column name="iddimension" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="ancho" type="double">
+            <column name="ancho" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="largo" type="double">
+            <column name="largo" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="puestos" table="puesto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dimension_iddimension" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Puesto" />
+        </set>
+    </class>
+</hibernate-mapping>

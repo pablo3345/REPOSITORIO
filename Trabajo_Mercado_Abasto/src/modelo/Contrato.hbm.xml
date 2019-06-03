@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/05/2019 15:45:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Contrato" table="contrato" catalog="mercado_abasto" optimistic-lock="version">
+        <id name="idcontrato" type="java.lang.Integer">
+            <column name="idcontrato" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="modelo.Cliente" fetch="select">
+            <column name="cliente_idcliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="puesto" class="modelo.Puesto" fetch="select">
+            <column name="puesto_idpuesto" not-null="true" />
+        </many-to-one>
+        <property name="diaInicio" type="int">
+            <column name="diaInicio" not-null="true" />
+        </property>
+        <property name="mesInicio" type="int">
+            <column name="mesInicio" not-null="true" />
+        </property>
+        <property name="añoInicio" type="int">
+            <column name="añoInicio" not-null="true" />
+        </property>
+        <property name="diaFin" type="int">
+            <column name="diaFin" not-null="true" />
+        </property>
+        <property name="mesFin" type="int">
+            <column name="mesFin" not-null="true" />
+        </property>
+        <property name="añoFin" type="int">
+            <column name="añoFin" not-null="true" />
+        </property>
+        <property name="fechaDeCancelacion" type="string">
+            <column name="fechaDeCancelacion" length="45" />
+        </property>
+        <property name="monto" type="double">
+            <column name="monto" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="encargadoDelAlquiler" type="string">
+            <column name="encargadoDelAlquiler" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

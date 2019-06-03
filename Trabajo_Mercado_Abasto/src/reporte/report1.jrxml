@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="19479615-b338-4a76-81cc-0962d776d5f7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     contrato.`idcontrato` AS contrato_idcontrato,
+     contrato.`diaInicio` AS contrato_diaInicio,
+     contrato.`mesInicio` AS contrato_mesInicio,
+     contrato.`añoInicio` AS contrato_añoInicio,
+     contrato.`diaFin` AS contrato_diaFin,
+     contrato.`mesFin` AS contrato_mesFin,
+     contrato.`añoFin` AS contrato_añoFin,
+     contrato.`fechaDeCancelacion` AS contrato_fechaDeCancelacion,
+     contrato.`monto` AS contrato_monto,
+     contrato.`encargadoDelAlquiler` AS contrato_encargadoDelAlquiler,
+     contrato.`cliente_idcliente` AS contrato_cliente_idcliente,
+     contrato.`puesto_idpuesto` AS contrato_puesto_idpuesto
+FROM
+     `contrato` contrato]]>
+	</queryString>
+	<field name="contrato_idcontrato" class="java.lang.Integer"/>
+	<field name="contrato_diaInicio" class="java.lang.Integer"/>
+	<field name="contrato_mesInicio" class="java.lang.Integer"/>
+	<field name="contrato_añoInicio" class="java.lang.Integer"/>
+	<field name="contrato_diaFin" class="java.lang.Integer"/>
+	<field name="contrato_mesFin" class="java.lang.Integer"/>
+	<field name="contrato_añoFin" class="java.lang.Integer"/>
+	<field name="contrato_fechaDeCancelacion" class="java.lang.String"/>
+	<field name="contrato_monto" class="java.lang.Double"/>
+	<field name="contrato_encargadoDelAlquiler" class="java.lang.String"/>
+	<field name="contrato_cliente_idcliente" class="java.lang.Integer"/>
+	<field name="contrato_puesto_idpuesto" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="22" width="193" height="44" uuid="d1c6d2b4-d003-4be2-85f7-0a4e9b65c852"/>
+				<textElement>
+					<font size="26" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="66" width="552" height="1" uuid="20e020fd-0f62-4dea-a175-602a41ac1861"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="15" height="20" uuid="0c026be0-c9e5-4ab6-8a06-8c3b7fff0732"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="0" width="58" height="20" uuid="c36d051a-38d4-4b0a-a268-7799ba523f48"/>
+				<text><![CDATA[DIA INICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="104" y="0" width="63" height="20" uuid="890af56f-1e88-4fdc-a34f-67f1010727ee"/>
+				<text><![CDATA[MES INICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="0" width="64" height="20" uuid="877db5e1-8528-403f-a06b-f720e5e15f5d"/>
+				<text><![CDATA[AÑO INICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="0" width="46" height="20" uuid="d4ab15fe-e716-47e9-8364-68a342bf1af6"/>
+				<text><![CDATA[DIA FIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="0" width="48" height="20" uuid="02691e89-f8bd-457a-97f3-13abe87a1dbc"/>
+				<text><![CDATA[MES FIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="0" width="50" height="20" uuid="51c0832f-7d3d-4bc3-b897-f3c0d44e29bc"/>
+				<text><![CDATA[AÑO FIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="0" width="76" height="20" uuid="bea75b84-476a-4360-ab89-6ec917950694"/>
+				<text><![CDATA[CANCELACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="506" y="0" width="46" height="20" uuid="e2693e59-73bf-4f6e-97d5-bd412995330b"/>
+				<text><![CDATA[MONTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="36" height="20" uuid="a6836229-3055-404f-8cc9-dd29d296e9b0"/>
+				<textFieldExpression><![CDATA[$F{contrato_idcontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="0" width="26" height="20" uuid="8b0daa6a-8dfb-4bbe-9242-58401bb83237"/>
+				<textFieldExpression><![CDATA[$F{contrato_diaInicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="0" width="23" height="20" uuid="04d6b59c-f144-43e1-975b-c2d7ad6bf7d1"/>
+				<textFieldExpression><![CDATA[$F{contrato_mesInicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="0" width="34" height="20" uuid="9ebc7731-48ce-45a6-90db-8ef77bd63754"/>
+				<textFieldExpression><![CDATA[$F{contrato_añoInicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="0" width="26" height="20" uuid="6c6be2a1-fa96-46ce-b48f-ab609cf92022"/>
+				<textFieldExpression><![CDATA[$F{contrato_diaFin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="0" width="24" height="20" uuid="806886a0-1d96-4bf4-bf0d-cbf12ac713db"/>
+				<textFieldExpression><![CDATA[$F{contrato_mesFin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="25" height="20" uuid="eefb6fd5-a942-4e0e-b083-f485d0333253"/>
+				<textFieldExpression><![CDATA[$F{contrato_añoFin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="59" height="20" uuid="a833bb3a-3539-462b-a359-4fb8df037502"/>
+				<textFieldExpression><![CDATA[$F{contrato_fechaDeCancelacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="506" y="0" width="49" height="20" uuid="4433af1a-7886-44a5-9cea-35f67de48783"/>
+				<textFieldExpression><![CDATA[$F{contrato_monto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
