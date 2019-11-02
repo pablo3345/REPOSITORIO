@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/10/2019 15:46:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Repuesto" table="repuesto" catalog="repuestos" optimistic-lock="version">
+        <id name="idrepuesto" type="java.lang.Integer">
+            <column name="idrepuesto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="proveedores" class="modelo.Proveedores" fetch="select">
+            <column name="proveedores_idproveedores" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="codigo" length="45" not-null="true" />
+        </property>
+        <property name="precioSinIva" type="double">
+            <column name="precioSinIva" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="stockActual" type="int">
+            <column name="stockActual" not-null="true" />
+        </property>
+        <property name="stockMinimo" type="int">
+            <column name="stockMinimo" not-null="true" />
+        </property>
+        <set name="fabricases" table="fabricas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="repuesto_idrepuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Fabricas" />
+        </set>
+        <set name="ventases" table="ventas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="repuesto_idrepuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Ventas" />
+        </set>
+        <set name="detalleVentas" table="detalle_venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="repuesto_idrepuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.DetalleVenta" />
+        </set>
+    </class>
+</hibernate-mapping>

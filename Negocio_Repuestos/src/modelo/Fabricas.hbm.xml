@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/10/2019 15:46:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Fabricas" table="fabricas" catalog="repuestos" optimistic-lock="version">
+        <id name="idfabricas" type="java.lang.Integer">
+            <column name="idfabricas" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="repuesto" class="modelo.Repuesto" fetch="select">
+            <column name="repuesto_idrepuesto" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="localidad" type="string">
+            <column name="localidad" length="45" not-null="true" />
+        </property>
+        <property name="costoDelEnvio" type="double">
+            <column name="costoDelEnvio" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="necesitaEnvio" type="string">
+            <column name="necesitaEnvio" length="45" not-null="true" />
+        </property>
+        <property name="efectuoElpago" type="string">
+            <column name="efectuoElpago" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

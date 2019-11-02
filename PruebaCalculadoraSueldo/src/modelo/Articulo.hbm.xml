@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2019 20:45:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Articulo" table="articulo" catalog="pruebacalculadorasueldo" optimistic-lock="version">
+        <id name="idarticulo" type="java.lang.Integer">
+            <column name="idarticulo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empleado" class="modelo.Empleado" fetch="select">
+            <column name="empleado_idempleado" not-null="true" />
+        </many-to-one>
+        <property name="cantidadVendida" type="int">
+            <column name="cantidadVendida" not-null="true" />
+        </property>
+        <property name="precioUnitario" type="double">
+            <column name="precioUnitario" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

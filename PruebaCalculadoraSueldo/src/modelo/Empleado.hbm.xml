@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2019 20:45:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Empleado" table="empleado" catalog="pruebacalculadorasueldo" optimistic-lock="version">
+        <id name="idempleado" type="java.lang.Integer">
+            <column name="idempleado" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" not-null="true" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="45" not-null="true" />
+        </property>
+        <property name="sueldoBase" type="double">
+            <column name="sueldoBase" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="articulos" table="articulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empleado_idempleado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Articulo" />
+        </set>
+    </class>
+</hibernate-mapping>
