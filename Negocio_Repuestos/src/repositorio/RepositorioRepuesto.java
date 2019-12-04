@@ -7,6 +7,7 @@ package repositorio;
 
 import hibernateUtil.HibernateUtil;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Proveedores;
 import modelo.Repuesto;
 import org.hibernate.HibernateException;
@@ -86,7 +87,9 @@ public class RepositorioRepuesto {
                 tx.rollback();
             }
             e.printStackTrace();
-        } finally {
+        }
+       
+        finally {
             session.close();
         }
 

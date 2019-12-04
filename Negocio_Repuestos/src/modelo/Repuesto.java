@@ -122,6 +122,19 @@ public class Repuesto  implements java.io.Serializable {
         return idrepuesto +" "+ nombre +" "+  codigo;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        
+        if (! (o instanceof Repuesto)){
+        return false;
+        }
+        
+        Repuesto repuesto = (Repuesto) o;
+        return (this.codigo.equals(repuesto.getCodigo())); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
    
    
   

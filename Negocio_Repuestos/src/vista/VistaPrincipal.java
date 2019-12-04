@@ -157,6 +157,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
         return jTextField1cargarStockNuevo_repuestos;
     }
 
+    public ButtonGroup getButtonGroup2() {
+        return buttonGroup2;
+    }
+
+    public ButtonGroup getButtonGroup3() {
+        return buttonGroup3;
+    }
+    
+    
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,6 +179,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -210,7 +224,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel25 = new javax.swing.JLabel();
-        jButton1limpirarTabla_ventas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1Ventas_Ventas = new javax.swing.JTable();
         jButton1CargarTabla_ventas = new javax.swing.JButton();
@@ -224,6 +237,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jTextField1respuesto_detalleVenta = new javax.swing.JTextField();
         jTextField2ventas_DetalleVenta = new javax.swing.JTextField();
+        jButton1LimpiarTabla_detalleVenta = new javax.swing.JButton();
+        jButton1MostrarComprobante = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -240,6 +255,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jButton1guardar_Fabrica = new javax.swing.JButton();
         jComboBox1repuesto_fabrica = new javax.swing.JComboBox<>();
+        jButton1LImpiarTablaFabrica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -500,15 +516,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel3.add(jLabel25);
         jLabel25.setBounds(430, 110, 290, 20);
 
-        jButton1limpirarTabla_ventas.setText("Limpiar Tabla");
-        jButton1limpirarTabla_ventas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1limpirarTabla_ventasActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton1limpirarTabla_ventas);
-        jButton1limpirarTabla_ventas.setBounds(40, 220, 160, 30);
-
         jTable1Ventas_Ventas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -551,6 +558,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jLabel20.setText("VENTAS:");
 
+        jButton1LimpiarTabla_detalleVenta.setText("Limpiar Tabla");
+        jButton1LimpiarTabla_detalleVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1LimpiarTabla_detalleVentaActionPerformed(evt);
+            }
+        });
+
+        jButton1MostrarComprobante.setText("Mostrar Comprobante");
+        jButton1MostrarComprobante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1MostrarComprobanteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -558,26 +579,30 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1precioUnitario_detalleVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                    .addComponent(jTextField2Cantidad_detalleVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                    .addComponent(jTextField1respuesto_detalleVenta)
-                    .addComponent(jTextField2ventas_DetalleVenta))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1precioUnitario_detalleVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(jTextField2Cantidad_detalleVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(jTextField1respuesto_detalleVenta)
+                            .addComponent(jTextField2ventas_DetalleVenta)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(285, 285, 285)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1LimpiarTabla_detalleVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(jButton1guardar_detalleVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1MostrarComprobante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(353, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(313, 313, 313)
-                .addComponent(jButton1guardar_detalleVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 382, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -598,9 +623,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jTextField2ventas_DetalleVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addComponent(jButton1guardar_detalleVenta)
-                .addGap(130, 130, 130))
+                .addGap(37, 37, 37)
+                .addComponent(jButton1MostrarComprobante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jButton1LimpiarTabla_detalleVenta)
+                .addGap(46, 46, 46))
         );
 
         jTabbedPane1.addTab("DETALLE VENTA", jPanel4);
@@ -613,14 +642,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jLabel15.setText("COSTO DE ENVIO:");
 
+        buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("SI");
 
+        buttonGroup2.add(jRadioButton4);
         jRadioButton4.setText("NO");
 
         jLabel16.setText("EFECTUO EL PAGO:");
 
+        buttonGroup3.add(jRadioButton5);
         jRadioButton5.setText("SI");
 
+        buttonGroup3.add(jRadioButton6);
         jRadioButton6.setText("NO");
 
         jLabel21.setText("RESPUESTO:");
@@ -632,13 +665,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1LImpiarTablaFabrica.setText("Limpiar tabla");
+        jButton1LImpiarTablaFabrica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1LImpiarTablaFabricaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1guardar_Fabrica, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
@@ -673,7 +712,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jRadioButton5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jRadioButton6))
-                            .addComponent(jComboBox1repuesto_fabrica, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBox1repuesto_fabrica, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1LImpiarTablaFabrica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1guardar_Fabrica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
                 .addContainerGap(368, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -707,7 +749,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(jRadioButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jButton1guardar_Fabrica)
-                .addGap(112, 112, 112))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1LImpiarTablaFabrica)
+                .addGap(71, 71, 71))
         );
 
         jTabbedPane1.addTab("FABRICA", jPanel5);
@@ -743,8 +787,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jButton1guardar_detalleVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1guardar_detalleVentaActionPerformed
 
-//       
-        this.presentador.guardarDetalleVentaApretado();
+     
+             this.presentador.guardarDetalleVentaApretado();
+            
+       
+      
     }//GEN-LAST:event_jButton1guardar_detalleVentaActionPerformed
 
     private void jButton1guardar_FabricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1guardar_FabricaActionPerformed
@@ -755,19 +802,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         this.presentador.controlarStockApretado();
     }//GEN-LAST:event_jButton1controlarStockRepuestoActionPerformed
-
-    private void jButton1limpirarTabla_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1limpirarTabla_ventasActionPerformed
-        Conexion conexion = new Conexion();
-        Connection con = conexion.getConexion();
-        String sql = "delete from ventas";
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.execute();
-            JOptionPane.showMessageDialog(null, "la lista se limpio correctamente");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_jButton1limpirarTabla_ventasActionPerformed
 
     private void jButton1CargarTabla_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1CargarTabla_ventasActionPerformed
         this.presentador.cargarTablaVentas();
@@ -801,22 +835,60 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1cargarStock_repuestosActionPerformed
 
+    private void jButton1LimpiarTabla_detalleVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1LimpiarTabla_detalleVentaActionPerformed
+         Conexion conexion = new Conexion();
+        Connection con = conexion.getConexion();
+        String sql = "delete from detalle_venta";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.execute();
+            JOptionPane.showMessageDialog(null, "la lista se limpio correctamente");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1LimpiarTabla_detalleVentaActionPerformed
+
+    private void jButton1MostrarComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1MostrarComprobanteActionPerformed
+       this.presentador.mostrarComprobanteApretado();
+    }//GEN-LAST:event_jButton1MostrarComprobanteActionPerformed
+
+    private void jButton1LImpiarTablaFabricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1LImpiarTablaFabricaActionPerformed
+        Conexion conexion = new Conexion();
+        Connection con = conexion.getConexion();
+        
+        String sql = "delete from fabricas";
+        
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.execute();
+            JOptionPane.showMessageDialog(null, "la lista se limpio correctamente");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+    
+    }//GEN-LAST:event_jButton1LImpiarTablaFabricaActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JTextField direccion_proveedor;
     private javax.swing.JButton jButton1CargarTabla_ventas;
     private javax.swing.JButton jButton1GUARDAR_VENTAS;
+    private javax.swing.JButton jButton1LImpiarTablaFabrica;
+    private javax.swing.JButton jButton1LimpiarTabla_detalleVenta;
+    private javax.swing.JButton jButton1MostrarComprobante;
     private javax.swing.JButton jButton1cargarStock_repuestos;
     private javax.swing.JButton jButton1controlarStockRepuesto;
     private javax.swing.JButton jButton1guardarProveedor;
     private javax.swing.JButton jButton1guardar_Fabrica;
     private javax.swing.JButton jButton1guardar_detalleVenta;
     private javax.swing.JButton jButton1guardar_respuesto;
-    private javax.swing.JButton jButton1limpirarTabla_ventas;
     private javax.swing.JComboBox<Object> jComboBox1Proveedores_respuesto;
     private javax.swing.JComboBox<Object> jComboBox1repuesto_fabrica;
     private javax.swing.JComboBox<Object> jComboBox1repuesto_ventas;

@@ -9,8 +9,10 @@ import conexion.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import javassist.compiler.TokenId;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -20,7 +22,13 @@ import modelo.DetalleVenta;
 import modelo.Proveedores;
 import modelo.Repuesto;
 import modelo.Ventas;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import servicio.ServiciosDetalle_Ventas;
+import servicio.ServiciosFabrica;
 import servicio.ServiciosProveedores;
 import servicio.ServiciosRespuesto;
 import servicio.ServiciosVentas;
@@ -37,6 +45,7 @@ public class Presentador {
     private ServiciosRespuesto serviciosRespuesto;
     private ServiciosVentas serviciosVentas;
     private ServiciosDetalle_Ventas serviciosDetalle_Ventas;
+    private ServiciosFabrica serviciosFabrica;
 
     public Presentador(VistaPrincipal vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -44,9 +53,11 @@ public class Presentador {
         this.serviciosRespuesto = new ServiciosRespuesto();
         this.serviciosVentas = new ServiciosVentas();
         this.serviciosDetalle_Ventas = new ServiciosDetalle_Ventas();
+        this.serviciosFabrica = new ServiciosFabrica();
         this.llenarComboProveedores();
         this.comboBoxRepuestos();
         this.llenarComboRepuestoVentas();
+        llenarComboRepuesto_fabrica();
 
     }
 
@@ -125,18 +136,26 @@ public class Presentador {
     }
 
     public void guardarDetalleVentaApretado() {
+      
+
+        try {
         String precioUnitarioConIva = this.vistaPrincipal.getjTextField1precioUnitario_detalleVenta().getText();
         String cantidad = this.vistaPrincipal.getjTextField2Cantidad_detalleVenta().getText();
-
+        
+          
+       
         int id_repuesto = Integer.parseInt(this.vistaPrincipal.getjTextField1respuesto_detalleVenta().getText());
+            
+            
+       
+       
+        
 
         this.serviciosRespuesto.getRepuesto(id_repuesto);
         Repuesto repuesto = this.serviciosRespuesto.getRepuesto(id_repuesto);
 
         int id_ventas = Integer.valueOf(this.vistaPrincipal.getjTextField2ventas_DetalleVenta().getText());
         Ventas ventas = this.serviciosVentas.getVentas(id_ventas);
-
-        try {
             this.serviciosDetalle_Ventas.guardarDetalle_Venta(repuesto, ventas, precioUnitarioConIva, cantidad);
 
             int ultimoo = 0;
@@ -145,12 +164,55 @@ public class Presentador {
             this.vistaPrincipal.getjTextField2Cantidad_detalleVenta().setText("");
 
             JOptionPane.showMessageDialog(null, "el detalle venta se guardo correctamente");
-        } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        } 
+        
+        
+        catch(NumberFormatException s){
+        JOptionPane.showMessageDialog(null, "ingrese un valor numerico");
+        
         }
+        
+        catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+           
+            
+        }
+       
+     
+        
+        
+    
+       
     }
 
     public void guardarFabricaApretado() {
+        
+        Repuesto repuesto = (Repuesto) this.vistaPrincipal. getjComboBox1repuesto_fabrica().getSelectedItem();
+        String nombre = this.vistaPrincipal.getjTextField3nombre_fabrica().getText();
+        String localidad = this.vistaPrincipal.getjTextField2localidad_fabrica().getText();
+        String costoDeEnvio = this.vistaPrincipal.getjTextField1costoDeEnvio_fabrica().getText();
+        this.vistaPrincipal.getjRadioButton3().setActionCommand("si");
+        this.vistaPrincipal.getjRadioButton4().setActionCommand("no");
+        String necesitaEnvio = this.vistaPrincipal.getButtonGroup2().getSelection().getActionCommand();
+        this.vistaPrincipal.getjRadioButton5().setActionCommand("si");
+        this.vistaPrincipal.getjRadioButton6().setActionCommand("no");
+        String efectuoElPago = this.vistaPrincipal.getButtonGroup3().getSelection().getActionCommand();
+        
+        try {
+            this.serviciosFabrica.guardarFabrica(repuesto, nombre, localidad, costoDeEnvio, necesitaEnvio, efectuoElPago);
+            
+            this.vistaPrincipal.getjTextField3nombre_fabrica().setText("");
+            this.vistaPrincipal.getjTextField2localidad_fabrica().setText("");
+            this.vistaPrincipal.getjTextField1costoDeEnvio_fabrica().setText("");
+            
+            JOptionPane.showMessageDialog(null, "la fabrica se guardo correctamente");
+
+          
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+     
+        
 
     }
 
@@ -240,6 +302,47 @@ public class Presentador {
           
         
         }
+        
+        public void llenarComboRepuesto_fabrica(){
+        
+        ArrayList<Repuesto> arrayRepuesto = this.serviciosRespuesto.obtenerRepuestos();
+        
+        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel(arrayRepuesto.toArray());
+        
+        
+        this.vistaPrincipal. getjComboBox1repuesto_fabrica().setModel(modeloCombo);
+        
+        }
+
+    public void mostrarComprobanteApretado() {
+       Conexion conexion = new Conexion();
+       Connection con = conexion.getConexion();
+       
+       
+        try {
+            JasperReport jasperReport = (JasperReport)JRLoader.loadObject(getClass().getResource("/reportes/report1.jasper"));
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, null, con);
+            JasperViewer jasperViewer = new JasperViewer(print, false);
+            jasperViewer.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error al generar el reporte" + e.getMessage());
+        }
+       
+       
+    }
+    
+    
+   
+ 
+    
+   
+    
+ 
+    
+    
+            
+    
+  
     
 
 }

@@ -43,6 +43,8 @@ public class ServiciosRespuesto {
         
 
         Repuesto repuesto = new Repuesto(proveedores, nombre, codigo, precioConvertido, stockActualConvertido, stockMinimoConvertido);
+        
+        codigoRepetido(repuesto);
       
         
         this.repositorioRepuesto.guardarRespuesto(repuesto);
@@ -95,14 +97,45 @@ public class ServiciosRespuesto {
     
     
        public Repuesto getRepuesto(int id_Repuesto){
+         
+               Repuesto repuesto = this.repositorioRepuesto.obtenerRepuestoGuardado(id_Repuesto);
         
-        Repuesto repuesto = this.repositorioRepuesto.obtenerRepuestoGuardado(id_Repuesto);
-        
-        return repuesto;
+               return repuesto;
+               
+           
+         
+               
+               
+           
+          
+            
+             
+           
+       
     
     
     
-    }
+       }
+       
+       
+       public void codigoRepetido(Repuesto repuesto){
+           
+           ArrayList<Repuesto> arrayRepues = this.repositorioRepuesto.obtenerTodosRepuestos();
+           
+           for(Repuesto del : arrayRepues){
+           if(del.getCodigo().equals(repuesto.getCodigo()))
+               throw new IllegalArgumentException("codigo repetido");
+           
+           
+           }
+           
+           
+           
+           
+       
+       
+       
+       }
 
     
     

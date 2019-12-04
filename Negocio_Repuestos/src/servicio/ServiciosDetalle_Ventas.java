@@ -41,7 +41,8 @@ public class ServiciosDetalle_Ventas {
     public void guardarDetalle_Venta(Repuesto repuesto, Ventas ventas, String precioUnitarioConIva, String cantidad) {
         double precioUnitarioConvertido = validarPrecioUnitarioConIva(precioUnitarioConIva);
         int cantidadConvertida = validarCantidad(cantidad);
-        
+      
+       
        
         
        
@@ -49,8 +50,11 @@ public class ServiciosDetalle_Ventas {
         precioUnitarioConvertido = repuesto.getPrecioSinIva() + repuesto.getPrecioSinIva() * 22 / 100;
 
         DetalleVenta detalleVenta = new DetalleVenta(repuesto, ventas, precioUnitarioConvertido, cantidadConvertida);
-
-        this.repositorioDetalle_Ventas.guardar(detalleVenta);
+       
+             this.repositorioDetalle_Ventas.guardar(detalleVenta);
+            
+        
+       
 
         actualizarRepuestosStock(detalleVenta, cantidadConvertida);
 
@@ -133,8 +137,23 @@ public class ServiciosDetalle_Ventas {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        
+        
+        
+        
+        
+     
 
     }
+    
+    
+    
+    
+    
+    }
+    
+ 
+      
     
     
  
@@ -151,4 +170,4 @@ public class ServiciosDetalle_Ventas {
     
     
 
-}
+
