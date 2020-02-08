@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/01/2020 17:38:00 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Repuesto" table="repuesto" catalog="fabrica_tres" optimistic-lock="version">
+        <id name="idrepuesto" type="java.lang.Integer">
+            <column name="idrepuesto" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="codigo" length="45" not-null="true" />
+        </property>
+        <property name="precioDeLista" type="double">
+            <column name="precioDeLista" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="stockActual" type="int">
+            <column name="stockActual" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" not-null="true" />
+        </property>
+        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="repuesto_idrepuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Venta" />
+        </set>
+        <set name="comprobantes" table="comprobante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="repuesto_idrepuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Comprobante" />
+        </set>
+    </class>
+</hibernate-mapping>

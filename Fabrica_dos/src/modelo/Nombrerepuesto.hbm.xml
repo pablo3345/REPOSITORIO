@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/12/2019 14:57:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Nombrerepuesto" table="nombrerepuesto" catalog="fabrica_dos" optimistic-lock="version">
+        <id name="idnombreRepuesto" type="java.lang.Integer">
+            <column name="idnombreRepuesto" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <set name="repuestos" table="repuesto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="nombreRepuesto_idnombreRepuesto" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Repuesto" />
+        </set>
+    </class>
+</hibernate-mapping>

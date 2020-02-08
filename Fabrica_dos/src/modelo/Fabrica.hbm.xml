@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/12/2019 14:57:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Fabrica" table="fabrica" catalog="fabrica_dos" optimistic-lock="version">
+        <id name="idfabrica" type="java.lang.Integer">
+            <column name="idfabrica" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="repuesto" class="modelo.Repuesto" fetch="select">
+            <column name="repuesto_idrepuesto" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="45" not-null="true" />
+        </property>
+        <property name="costoDeEnvio" type="double">
+            <column name="costoDeEnvio" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="precioConIva" type="double">
+            <column name="precioConIva" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="cantidadRepuestos" type="int">
+            <column name="cantidadRepuestos" not-null="true" />
+        </property>
+        <property name="total" type="double">
+            <column name="total" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="detalleVentas" table="detalle_venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fabrica_idfabrica" not-null="true" />
+            </key>
+            <one-to-many class="modelo.DetalleVenta" />
+        </set>
+    </class>
+</hibernate-mapping>

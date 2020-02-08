@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4995c53-9798-4ea2-9c69-45e11ee7b417">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     detalle_venta.`iddetalle_venta` AS detalle_venta_iddetalle_venta,
+     detalle_venta.`repuestoCantidad` AS detalle_venta_repuestoCantidad,
+     detalle_venta.`precioConiva` AS detalle_venta_precioConiva,
+     detalle_venta.`total` AS detalle_venta_total,
+     detalle_venta.`totalaPagar` AS detalle_venta_totalaPagar,
+     detalle_venta.`repuesto_idrepuesto` AS detalle_venta_repuesto_idrepuesto,
+     detalle_venta.`fabrica_idfabrica` AS detalle_venta_fabrica_idfabrica
+FROM
+     `detalle_venta` detalle_venta]]>
+	</queryString>
+	<field name="detalle_venta_iddetalle_venta" class="java.lang.Integer"/>
+	<field name="detalle_venta_repuestoCantidad" class="java.lang.Integer"/>
+	<field name="detalle_venta_precioConiva" class="java.lang.Double"/>
+	<field name="detalle_venta_total" class="java.lang.Double"/>
+	<field name="detalle_venta_totalaPagar" class="java.lang.Double"/>
+	<field name="detalle_venta_repuesto_idrepuesto" class="java.lang.Integer"/>
+	<field name="detalle_venta_fabrica_idfabrica" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="130" splitType="Stretch">
+			<image>
+				<reportElement x="23" y="0" width="158" height="106" uuid="aad61af5-acb0-46e3-8bf1-2ffc9e79fefb"/>
+				<imageExpression><![CDATA["C:\\Users\\pablo\\Desktop\\logo para jaspereport.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="326" y="52" width="229" height="23" uuid="96690d6e-1dcd-4818-be58-33d85991b3cb"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saenz Peña 3625 San Francisco Cba.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="75" width="149" height="31" uuid="bf632d15-5929-485c-843c-1068527be7de"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel: 03564 - 4586921]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="0" width="170" height="41" forecolor="#0000FF" uuid="824fdfe6-daed-493e-b3bf-e070fe42ef04"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="119" width="555" height="1" uuid="c973b63b-57cd-4041-a290-94ae225b40c0"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="58" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="81" height="20" uuid="847fa296-3826-421f-b161-8f42a334c904"/>
+				<text><![CDATA[id Comprobante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="41" width="54" height="20" uuid="4006ff90-f648-4b9b-a2f5-c0dfedc0e25a"/>
+				<text><![CDATA[id Fabrica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="41" width="59" height="20" uuid="cbe4df6d-f305-4c2f-8712-cca0b01a4b08"/>
+				<text><![CDATA[id Repuesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="41" width="94" height="20" uuid="0e30f4dd-0b31-49e7-a735-0613c9acde9b"/>
+				<text><![CDATA[Cantidad Repuestos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="41" width="87" height="20" uuid="3a228266-dfd6-4038-93a0-cb11ec8324e5"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="41" width="100" height="20" uuid="5b44348d-ec8b-4c8e-a8e9-45cb5f069386"/>
+				<text><![CDATA[Total A Pagar]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="68" height="20" uuid="2e1eccbe-99d5-4f85-9618-506eb2a614ce"/>
+				<textFieldExpression><![CDATA[$F{detalle_venta_iddetalle_venta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="54" height="20" uuid="fa12be4d-0adf-49f1-95e2-f1fa3f17eb59"/>
+				<textFieldExpression><![CDATA[$F{detalle_venta_fabrica_idfabrica}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="0" width="59" height="20" uuid="08648916-8228-471c-83e5-d353210822b1"/>
+				<textFieldExpression><![CDATA[$F{detalle_venta_repuesto_idrepuesto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="94" height="20" uuid="5682d834-1922-40a6-b90e-dba8b43e9137"/>
+				<textFieldExpression><![CDATA[$F{detalle_venta_repuestoCantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="359" y="0" width="87" height="20" uuid="7e021afe-35f3-466e-bb01-522b8c275f87"/>
+				<textFieldExpression><![CDATA[$F{detalle_venta_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="a8f5b49f-1f76-4f10-832a-c28981eee6c9"/>
+				<textFieldExpression><![CDATA[$F{detalle_venta_totalaPagar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

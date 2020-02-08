@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/01/2020 17:38:00 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Comprobante" table="comprobante" catalog="fabrica_tres" optimistic-lock="version">
+        <id name="idComprobante" type="java.lang.Integer">
+            <column name="idComprobante" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="fabrica" class="modelo.Fabrica" fetch="select">
+            <column name="fabrica_idfabrica" not-null="true" />
+        </many-to-one>
+        <many-to-one name="repuesto" class="modelo.Repuesto" fetch="select">
+            <column name="repuesto_idrepuesto" not-null="true" />
+        </many-to-one>
+        <property name="precioDelRepuesto" type="double">
+            <column name="precioDelRepuesto" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="cantidadDeRepuestos" type="int">
+            <column name="cantidadDeRepuestos" not-null="true" />
+        </property>
+        <property name="total" type="double">
+            <column name="total" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalApagar" type="double">
+            <column name="totalAPagar" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

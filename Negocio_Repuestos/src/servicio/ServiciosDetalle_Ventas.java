@@ -23,7 +23,7 @@ import repositorio.RepositorioVentas;
  *
  * @author pablo
  */
-public class ServiciosDetalle_Ventas {
+public class  ServiciosDetalle_Ventas {
 
     private RepositorioRepuesto repositorioRepuesto;
     private RepositorioVentas repositorioVentas;
