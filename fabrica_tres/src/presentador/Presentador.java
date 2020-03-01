@@ -256,8 +256,8 @@ public class Presentador {
     }
 
     public void guardarComprobanteApretado() {
-
-        int idFabrica = Integer.valueOf(this.vistaPrincipal.getjTextField1Fabrica_comprobante().getText());
+        try {
+             int idFabrica = Integer.valueOf(this.vistaPrincipal.getjTextField1Fabrica_comprobante().getText());
         Fabrica fabrica = this.servicioFabrica.obtenerFabrica(idFabrica);
 
         int idRepuesto = Integer.valueOf(this.vistaPrincipal.getjTextField2repuesto_comprobante().getText());
@@ -281,6 +281,11 @@ public class Presentador {
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "falta llenar campos");
+        }
+       
 
     }
 

@@ -27,10 +27,6 @@ FROM
 	</background>
 	<title>
 		<band height="130" splitType="Stretch">
-			<image>
-				<reportElement x="23" y="0" width="158" height="106" uuid="aad61af5-acb0-46e3-8bf1-2ffc9e79fefb"/>
-				<imageExpression><![CDATA["C:\\Users\\pablo\\Desktop\\logo para jaspereport.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="326" y="52" width="229" height="23" uuid="96690d6e-1dcd-4818-be58-33d85991b3cb"/>
 				<textElement>
@@ -55,6 +51,10 @@ FROM
 			<line>
 				<reportElement x="0" y="119" width="555" height="1" uuid="c973b63b-57cd-4041-a290-94ae225b40c0"/>
 			</line>
+			<image>
+				<reportElement x="20" y="-10" width="136" height="130" uuid="f2941d47-8243-497c-bfe9-86f90ea701c4"/>
+				<imageExpression><![CDATA["C:\\Repositorio\\REPOSITORIO\\Fabrica_dos\\src\\imagenes\\logo para jaspereport.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

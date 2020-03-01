@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/02/2020 19:04:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Transferencia" table="transferencia" catalog="practico_transferenciabancaria" optimistic-lock="version">
+        <id name="idtransferencia" type="java.lang.Integer">
+            <column name="idtransferencia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cuentabancariaByCuentaDestino" class="modelo.Cuentabancaria" fetch="select">
+            <column name="cuentaDestino" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cuentabancariaByCuentaOrigen" class="modelo.Cuentabancaria" fetch="select">
+            <column name="cuentaOrigen" not-null="true" />
+        </many-to-one>
+        <property name="monto" type="double">
+            <column name="monto" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
