@@ -136,16 +136,21 @@ public class Presentador {
     }
 
     public void guardarComprobanteApretado() {
+        
+        
 
         int idFabrica = Integer.valueOf(this.vistaprincipal.getjTextField1Fabrica_comprobante().getText());
+       
 
         Fabrica fabrica = this.servicioDetalle_venta.obtenerFabrica(idFabrica);
+        
+        
         Repuesto repuesto = (Repuesto) this.vistaprincipal.getjComboBox1Repuesto_comprobante().getSelectedItem();
         String cantidad = this.vistaprincipal.getjTextField1Cantidad_comprobante().getText();
         String precioConIva = this.vistaprincipal.getjTextField2precioUnitarioConIva_comprobante().getText();
         String total = this.vistaprincipal.getjTextField3total_comprobante().getText();
         String totalAPagar = this.vistaprincipal.getjTextField4TotalApagar_comprobante().getText();
-
+        
         try {
             this.servicioDetalle_venta.guardarComprobante(fabrica, repuesto, cantidad, precioConIva, total, totalAPagar);
             {
@@ -181,6 +186,8 @@ public class Presentador {
 
     public void llenarComboboxNombreRepuesto() {
         ArrayList<Nombrerepuesto> arrayNombrerepuestos = this.servicioNombreRepuesto.obtenerTodos();
+        
+
 
         DefaultComboBoxModel<Object> modelo = new DefaultComboBoxModel<>(arrayNombrerepuestos.toArray());
         this.vistaprincipal.getjComboBox1nombre_Repuesto().setModel(modelo);
@@ -190,6 +197,8 @@ public class Presentador {
     public void llenarComboRepuestoFabrica() {
 
         ArrayList<Repuesto> arrayRepuesto = this.servicioRepuesto.obtenerTodos();
+        
+        
 
         DefaultComboBoxModel modelo2 = new DefaultComboBoxModel<>(arrayRepuesto.toArray());
 

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/04/2020 21:15:54 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Pedido" table="pedido" catalog="restaurant" optimistic-lock="version">
+        <id name="idpedido" type="java.lang.Integer">
+            <column name="idpedido" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="modelo.Cliente" fetch="select">
+            <column name="cliente_idcliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mesa" class="modelo.Mesa" fetch="select">
+            <column name="mesa_idmesa" not-null="true" />
+        </many-to-one>
+        <many-to-one name="plato" class="modelo.Plato" fetch="select">
+            <column name="plato_idplato" not-null="true" />
+        </many-to-one>
+        <property name="horaDelPedido" type="timestamp">
+            <column name="horaDelPedido" length="19" not-null="true" />
+        </property>
+        <property name="cantidad" type="double">
+            <column name="cantidad" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="demora" type="double">
+            <column name="demora" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="propietarios" table="propietario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pedido_idpedido" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Propietario" />
+        </set>
+    </class>
+</hibernate-mapping>

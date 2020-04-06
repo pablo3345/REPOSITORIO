@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/04/2020 21:15:54 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Cliente" table="cliente" catalog="restaurant" optimistic-lock="version">
+        <id name="idcliente" type="java.lang.Integer">
+            <column name="idcliente" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="45" not-null="true" />
+        </property>
+        <set name="pedidos" table="pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cliente_idcliente" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Pedido" />
+        </set>
+    </class>
+</hibernate-mapping>

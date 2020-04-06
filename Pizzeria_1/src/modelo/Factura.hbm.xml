@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/03/2020 20:45:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Factura" table="factura" catalog="pizzeria_2" optimistic-lock="version">
+        <id name="idFactura" type="java.lang.Integer">
+            <column name="idFactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pedido" class="modelo.Pedido" fetch="select">
+            <column name="Pedido_idPedido" not-null="true" />
+        </many-to-one>
+        <property name="subTotal" type="double">
+            <column name="subTotal" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="total" type="double">
+            <column name="total" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="propietarios" table="propietario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Factura_idFactura" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Propietario" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -28,6 +28,7 @@ public class ServicioPuesto {
     
 
     public void guardarPuesto(Dimension dimension, TipoDePuesto tipoDePuesto, Sector sector) {
+       
         
         Puesto puesto = new Puesto(dimension, sector, tipoDePuesto);
         this.repositorioPuesto.guardarCliente(puesto);

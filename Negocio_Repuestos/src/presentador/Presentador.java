@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -108,8 +110,11 @@ public class Presentador {
     }
 
     public void guardarVentasApretado() {
+        
+                 
         Calendar calendar = Calendar.getInstance();
         java.sql.Timestamp fecha = new java.sql.Timestamp(calendar.getTimeInMillis());
+       
         String montoTotalConIva = this.vistaPrincipal.getjTextField1MONTO_TOTAL_IVA_VENTAS().getText();
         this.vistaPrincipal.getjRadioButton1().setActionCommand("si");
         this.vistaPrincipal.getjRadioButton2().setActionCommand("no");
