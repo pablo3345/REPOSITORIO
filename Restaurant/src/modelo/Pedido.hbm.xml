@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03/04/2020 21:15:54 by Hibernate Tools 4.3.1 -->
+<!-- Generated 10/04/2020 15:44:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Pedido" table="pedido" catalog="restaurant" optimistic-lock="version">
         <id name="idpedido" type="java.lang.Integer">
@@ -14,8 +14,8 @@
         <many-to-one name="mesa" class="modelo.Mesa" fetch="select">
             <column name="mesa_idmesa" not-null="true" />
         </many-to-one>
-        <many-to-one name="plato" class="modelo.Plato" fetch="select">
-            <column name="plato_idplato" not-null="true" />
+        <many-to-one name="platosybebidas" class="modelo.Platosybebidas" fetch="select">
+            <column name="platosYbebidas_idplato" not-null="true" />
         </many-to-one>
         <property name="horaDelPedido" type="timestamp">
             <column name="horaDelPedido" length="19" not-null="true" />

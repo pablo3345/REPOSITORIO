@@ -1,5 +1,5 @@
 package modelo;
-// Generated 03/04/2020 21:15:53 by Hibernate Tools 4.3.1
+// Generated 10/04/2020 15:44:52 by Hibernate Tools 4.3.1
 
 
 
@@ -11,19 +11,21 @@ public class Factura  implements java.io.Serializable {
 
      private Integer idfactura;
      private String cliente;
-     private String plato;
-     private String mesa;
+     private String platoybebidas;
      private double cantidad;
-     private double total;
+     private double precio;
+     private String mesa;
+     private String total;
 
     public Factura() {
     }
 
-    public Factura(String cliente, String plato, String mesa, double cantidad, double total) {
+    public Factura(String cliente, String platoybebidas, double cantidad, double precio, String mesa, String total) {
        this.cliente = cliente;
-       this.plato = plato;
-       this.mesa = mesa;
+       this.platoybebidas = platoybebidas;
        this.cantidad = cantidad;
+       this.precio = precio;
+       this.mesa = mesa;
        this.total = total;
     }
    
@@ -41,19 +43,12 @@ public class Factura  implements java.io.Serializable {
     public void setCliente(String cliente) {
         this.cliente = cliente;
     }
-    public String getPlato() {
-        return this.plato;
+    public String getPlatoybebidas() {
+        return this.platoybebidas;
     }
     
-    public void setPlato(String plato) {
-        this.plato = plato;
-    }
-    public String getMesa() {
-        return this.mesa;
-    }
-    
-    public void setMesa(String mesa) {
-        this.mesa = mesa;
+    public void setPlatoybebidas(String platoybebidas) {
+        this.platoybebidas = platoybebidas;
     }
     public double getCantidad() {
         return this.cantidad;
@@ -62,11 +57,25 @@ public class Factura  implements java.io.Serializable {
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
-    public double getTotal() {
+    public double getPrecio() {
+        return this.precio;
+    }
+    
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    public String getMesa() {
+        return this.mesa;
+    }
+    
+    public void setMesa(String mesa) {
+        this.mesa = mesa;
+    }
+    public String getTotal() {
         return this.total;
     }
     
-    public void setTotal(double total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 

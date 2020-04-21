@@ -1,5 +1,5 @@
 package modelo;
-// Generated 03/04/2020 21:15:53 by Hibernate Tools 4.3.1
+// Generated 10/04/2020 15:44:52 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -58,6 +58,14 @@ public class Mesa  implements java.io.Serializable {
     public void setPedidos(Set pedidos) {
         this.pedidos = pedidos;
     }
+
+    @Override
+    public String toString() {
+        return  idmesa + " Numero: " + numero + " " + estado;
+    }
+    
+    
+    
 
 
 

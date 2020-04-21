@@ -46,11 +46,11 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaurant?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">1234</property>
+    <mapping resource="modelo/Platosybebidas.hbm.xml"/>
     <mapping resource="modelo/Pedido.hbm.xml"/>
     <mapping resource="modelo/Propietario.hbm.xml"/>
     <mapping resource="modelo/Mesa.hbm.xml"/>
     <mapping resource="modelo/Cliente.hbm.xml"/>
     <mapping resource="modelo/Factura.hbm.xml"/>
-    <mapping resource="modelo/Plato.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

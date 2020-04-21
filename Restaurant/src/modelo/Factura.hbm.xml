@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03/04/2020 21:15:54 by Hibernate Tools 4.3.1 -->
+<!-- Generated 10/04/2020 15:44:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Factura" table="factura" catalog="restaurant" optimistic-lock="version">
         <id name="idfactura" type="java.lang.Integer">
@@ -11,17 +11,20 @@
         <property name="cliente" type="string">
             <column name="cliente" length="45" not-null="true" />
         </property>
-        <property name="plato" type="string">
-            <column name="plato" length="45" not-null="true" />
-        </property>
-        <property name="mesa" type="string">
-            <column name="mesa" length="45" not-null="true" />
+        <property name="platoybebidas" type="string">
+            <column name="platoybebidas" length="45" not-null="true" />
         </property>
         <property name="cantidad" type="double">
             <column name="cantidad" precision="22" scale="0" not-null="true" />
         </property>
-        <property name="total" type="double">
-            <column name="total" precision="22" scale="0" not-null="true" />
+        <property name="precio" type="double">
+            <column name="precio" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="mesa" type="string">
+            <column name="mesa" length="45" not-null="true" />
+        </property>
+        <property name="total" type="string">
+            <column name="total" length="45" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

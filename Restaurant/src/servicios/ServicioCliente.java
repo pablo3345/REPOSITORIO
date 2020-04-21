@@ -5,30 +5,43 @@
  */
 package servicios;
 
+import java.util.ArrayList;
 import modelo.Cliente;
 import repositorio.RepositorioCliente;
+
+
 
 /**
  *
  * @author pablo
  */
 public class ServicioCliente {
-    RepositorioCliente repositorioCliente;
+    
+    private RepositorioCliente repositorioCliente;
 
     public ServicioCliente() {
-        this.repositorioCliente = new RepositorioCliente();
+        this.repositorioCliente =new  RepositorioCliente();
     }
     
     
+ 
+
+  
+    
+    
+    
     
 
-    public void guardarCliente(String nombre, String apellido, String direccion) {
+    public void guardarCliente(String nombre, String apellido, String direccion, String localidad) {
         this.validarNombre(nombre);
         this.validarApellido(apellido);
         this.validarDireccion(direccion);
+        this.validarLocalidad(localidad);
         
-        Cliente cliente = new Cliente(nombre, apellido, direccion);
+        Cliente cliente = new Cliente(nombre, apellido, direccion, localidad);
+        
         this.repositorioCliente.guardarCliente(cliente);
+       
         
     }
     
@@ -68,6 +81,24 @@ public class ServicioCliente {
     
     
     
+    }
+    
+    private void validarLocalidad(String localidad){
+        
+        if(localidad.length()==0){
+        throw new IllegalArgumentException("debe completar la localidad");
+        
+        }
+    
+    
+    
+    
+    }
+
+    public ArrayList obtenerTodosCliente() {
+      ArrayList dela = this.repositorioCliente.obtenerTodosCliente();
+      
+      return dela;
     }
     
 }

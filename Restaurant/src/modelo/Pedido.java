@@ -1,5 +1,5 @@
 package modelo;
-// Generated 03/04/2020 21:15:53 by Hibernate Tools 4.3.1
+// Generated 10/04/2020 15:44:52 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -15,7 +15,7 @@ public class Pedido  implements java.io.Serializable {
      private Integer idpedido;
      private Cliente cliente;
      private Mesa mesa;
-     private Plato plato;
+     private Platosybebidas platosybebidas;
      private Date horaDelPedido;
      private double cantidad;
      private double demora;
@@ -25,18 +25,18 @@ public class Pedido  implements java.io.Serializable {
     }
 
 	
-    public Pedido(Cliente cliente, Mesa mesa, Plato plato, Date horaDelPedido, double cantidad, double demora) {
+    public Pedido(Cliente cliente, Mesa mesa, Platosybebidas platosybebidas, Date horaDelPedido, double cantidad, double demora) {
         this.cliente = cliente;
         this.mesa = mesa;
-        this.plato = plato;
+        this.platosybebidas = platosybebidas;
         this.horaDelPedido = horaDelPedido;
         this.cantidad = cantidad;
         this.demora = demora;
     }
-    public Pedido(Cliente cliente, Mesa mesa, Plato plato, Date horaDelPedido, double cantidad, double demora, Set propietarios) {
+    public Pedido(Cliente cliente, Mesa mesa, Platosybebidas platosybebidas, Date horaDelPedido, double cantidad, double demora, Set propietarios) {
        this.cliente = cliente;
        this.mesa = mesa;
-       this.plato = plato;
+       this.platosybebidas = platosybebidas;
        this.horaDelPedido = horaDelPedido;
        this.cantidad = cantidad;
        this.demora = demora;
@@ -64,12 +64,12 @@ public class Pedido  implements java.io.Serializable {
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
     }
-    public Plato getPlato() {
-        return this.plato;
+    public Platosybebidas getPlatosybebidas() {
+        return this.platosybebidas;
     }
     
-    public void setPlato(Plato plato) {
-        this.plato = plato;
+    public void setPlatosybebidas(Platosybebidas platosybebidas) {
+        this.platosybebidas = platosybebidas;
     }
     public Date getHoraDelPedido() {
         return this.horaDelPedido;
@@ -99,6 +99,30 @@ public class Pedido  implements java.io.Serializable {
     public void setPropietarios(Set propietarios) {
         this.propietarios = propietarios;
     }
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "idpedido=" + idpedido + ", cliente=" + cliente.getIdcliente() + ", mesa=" + mesa.getIdmesa() + ", platosybebidas=" + platosybebidas.getIdplato() + ", horaDelPedido=" + horaDelPedido + ", cantidad=" + cantidad + '}';
+    }
+    
+    
+   
+
+    
+
+    
+
+  
+   
+
+   
+    
+    
+    
+
+    
+    
+    
 
 
 

@@ -5,7 +5,8 @@
  */
 package servicios;
 
-import modelo.Plato;
+import java.util.ArrayList;
+import modelo.Platosybebidas;
 import repositorio.RepositorioPlato;
 
 /**
@@ -24,14 +25,19 @@ public class ServicioPlato {
     
     
 
-    public void guardarComidasYbebidas(String nombre, String costoDelPlato, String precioAlPublico, String ingredientes) {
+    public void guardarComidasYbebidas(String nombre, String costoDelPlato, String precioAlPublico, String tipo, String ingredientes) {
         double costoDelPlatoConvertido = this.validarCostoDelPlato(costoDelPlato);
         double precioAlPublicoConvertido = this.validarPrecioAlPublico(precioAlPublico);
-        this.validarIngredientes( ingredientes);
+        this.validarIngredientes(ingredientes);
+        this.validarNombre(nombre);
         
-        Plato plato = new Plato(nombre, costoDelPlatoConvertido, precioAlPublicoConvertido, ingredientes);
+        Platosybebidas platosybebidas = new Platosybebidas(nombre, costoDelPlatoConvertido, precioAlPublicoConvertido, tipo, ingredientes);
         
-        this.repositorioPlato.guardarPlato(plato);
+        this.repositorioPlato.guardarPlato(platosybebidas);
+       
+        
+       
+      
       
     }
     
@@ -61,19 +67,27 @@ public class ServicioPlato {
     
     }
     
-    private void validarIngredientes(String ingredientes){{
-    
-    if(ingredientes.length()==0){
-    throw new IllegalArgumentException("ingredientes vacio");
-    
-    
+
+
+    private void validarNombre(String nombre) {
+       if(nombre.length()==0){
+       throw new IllegalArgumentException("debe completar el nombre");
+       }
+    }
+
+    private void validarIngredientes(String ingredientes) {
+       if(ingredientes.length()==0){
+       throw new IllegalArgumentException("debe completar los ingredientes");
+       
+       }
+    }
+
+    public ArrayList<Platosybebidas> obtenerSegunTipo(String tipo) {
+        ArrayList<Platosybebidas> array = this.repositorioPlato.obtenerTodos(tipo);
+        
+        return array;
     }
     
-    
-    }
-    
-    
-    
-    }
+
     
 }

@@ -5,6 +5,10 @@
  */
 package vistas;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import presentador.Presentador;
@@ -41,6 +45,44 @@ public class PlatoVistas extends javax.swing.JFrame {
     public JTextArea getjTextArea1ingredientes_plato() {
         return jTextArea1ingredientes_plato;
     }
+
+    public JRadioButton getjRadioButton1calientes_plato() {
+        return jRadioButton1calientes_plato;
+    }
+
+    public JRadioButton getjRadioButton2fria_plato() {
+        return jRadioButton2fria_plato;
+    }
+
+    public JRadioButton getjRadioButton3ensaladas_plato() {
+        return jRadioButton3ensaladas_plato;
+    }
+
+    public JRadioButton getjRadioButton4postres_plato() {
+        return jRadioButton4postres_plato;
+    }
+
+    public JRadioButton getjRadioButton5bebidas_plato() {
+        return jRadioButton5bebidas_plato;
+    }
+
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    public JTable getjTable1comidasYbebidas_plato() {
+        return jTable1comidasYbebidas_plato;
+    }
+
+    public JComboBox<Object> getjComboBox1tipo_plato() {
+        return jComboBox1tipo_plato;
+    }
+
+   
+    
+    
+    
+    
     
     
     
@@ -60,8 +102,8 @@ public class PlatoVistas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jTextField1precioAlPublico_plato = new javax.swing.JTextField();
         jTextField2nombre_plato = new javax.swing.JTextField();
         jTextField3costoDelPlato_plato = new javax.swing.JTextField();
@@ -72,52 +114,59 @@ public class PlatoVistas extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1salirPlato = new javax.swing.JButton();
         jButton1guardarPlato1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jRadioButton1calientes_plato = new javax.swing.JRadioButton();
+        jRadioButton2fria_plato = new javax.swing.JRadioButton();
+        jRadioButton3ensaladas_plato = new javax.swing.JRadioButton();
+        jRadioButton4postres_plato = new javax.swing.JRadioButton();
+        jRadioButton5bebidas_plato = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1comidasYbebidas_plato = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jButton1buscarPorTipo_plato = new javax.swing.JButton();
+        jComboBox1tipo_plato = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(768, 515));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setMinimumSize(new java.awt.Dimension(768, 578));
         getContentPane().setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Precio al Publico:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(210, 120, 120, 30);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Ingredientes:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(230, 210, 100, 20);
+        jLabel4.setBounds(40, 100, 120, 30);
         getContentPane().add(jTextField1precioAlPublico_plato);
-        jTextField1precioAlPublico_plato.setBounds(340, 120, 190, 30);
+        jTextField1precioAlPublico_plato.setBounds(190, 100, 190, 30);
         getContentPane().add(jTextField2nombre_plato);
-        jTextField2nombre_plato.setBounds(340, 40, 190, 30);
+        jTextField2nombre_plato.setBounds(190, 20, 190, 30);
         getContentPane().add(jTextField3costoDelPlato_plato);
-        jTextField3costoDelPlato_plato.setBounds(340, 80, 190, 30);
+        jTextField3costoDelPlato_plato.setBounds(190, 60, 190, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Costo del Plato:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(210, 90, 120, 20);
+        jLabel3.setBounds(50, 60, 120, 20);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(250, 50, 70, 20);
+        jLabel2.setBounds(90, 20, 70, 20);
 
         jTextArea1ingredientes_plato.setColumns(20);
         jTextArea1ingredientes_plato.setRows(5);
         jScrollPane1.setViewportView(jTextArea1ingredientes_plato);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(340, 170, 190, 96);
+        jScrollPane1.setBounds(190, 140, 190, 60);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/PLATO.2.png"))); // NOI18N
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 40, 150, 140);
+        jLabel6.setBounds(600, 10, 150, 140);
 
         jButton1salirPlato.setBackground(new java.awt.Color(0, 0, 0));
         jButton1salirPlato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -129,7 +178,7 @@ public class PlatoVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1salirPlato);
-        jButton1salirPlato.setBounds(600, 140, 80, 40);
+        jButton1salirPlato.setBounds(440, 90, 80, 40);
 
         jButton1guardarPlato1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1guardarPlato1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -141,11 +190,100 @@ public class PlatoVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1guardarPlato1);
-        jButton1guardarPlato1.setBounds(580, 70, 120, 40);
+        jButton1guardarPlato1.setBounds(420, 20, 120, 40);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Ingredientes:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(60, 160, 100, 20);
+
+        jRadioButton1calientes_plato.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(jRadioButton1calientes_plato);
+        jRadioButton1calientes_plato.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jRadioButton1calientes_plato.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1calientes_plato.setText("caliente");
+        getContentPane().add(jRadioButton1calientes_plato);
+        jRadioButton1calientes_plato.setBounds(150, 220, 80, 25);
+
+        jRadioButton2fria_plato.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(jRadioButton2fria_plato);
+        jRadioButton2fria_plato.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jRadioButton2fria_plato.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2fria_plato.setText("fria");
+        getContentPane().add(jRadioButton2fria_plato);
+        jRadioButton2fria_plato.setBounds(240, 220, 60, 25);
+
+        jRadioButton3ensaladas_plato.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(jRadioButton3ensaladas_plato);
+        jRadioButton3ensaladas_plato.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jRadioButton3ensaladas_plato.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton3ensaladas_plato.setText("ensaladas");
+        getContentPane().add(jRadioButton3ensaladas_plato);
+        jRadioButton3ensaladas_plato.setBounds(310, 220, 100, 25);
+
+        jRadioButton4postres_plato.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(jRadioButton4postres_plato);
+        jRadioButton4postres_plato.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jRadioButton4postres_plato.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton4postres_plato.setText("postres");
+        getContentPane().add(jRadioButton4postres_plato);
+        jRadioButton4postres_plato.setBounds(410, 220, 80, 25);
+
+        jRadioButton5bebidas_plato.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(jRadioButton5bebidas_plato);
+        jRadioButton5bebidas_plato.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jRadioButton5bebidas_plato.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton5bebidas_plato.setText("bebidas");
+        getContentPane().add(jRadioButton5bebidas_plato);
+        jRadioButton5bebidas_plato.setBounds(500, 220, 80, 23);
+
+        jTable1comidasYbebidas_plato.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "id ", "nombre", "costo", "precio al publico", "tipo", "ingredientes"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1comidasYbebidas_plato);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(20, 350, 720, 170);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Tipo:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(80, 220, 50, 20);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Tipo:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(80, 310, 50, 20);
+
+        jButton1buscarPorTipo_plato.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1buscarPorTipo_plato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1buscarPorTipo_plato.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1buscarPorTipo_plato.setText("Buscar por tipo");
+        jButton1buscarPorTipo_plato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1buscarPorTipo_platoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1buscarPorTipo_plato);
+        jButton1buscarPorTipo_plato.setBounds(300, 300, 150, 40);
+
+        getContentPane().add(jComboBox1tipo_plato);
+        jComboBox1tipo_plato.setBounds(130, 310, 160, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 760, 510);
+        jLabel1.setBounds(0, 0, 760, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,6 +295,10 @@ public class PlatoVistas extends javax.swing.JFrame {
     private void jButton1salirPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1salirPlatoActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1salirPlatoActionPerformed
+
+    private void jButton1buscarPorTipo_platoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1buscarPorTipo_platoActionPerformed
+       this.presentador.buscarPorTipoApretado();
+    }//GEN-LAST:event_jButton1buscarPorTipo_platoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,15 +336,27 @@ public class PlatoVistas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1buscarPorTipo_plato;
     private javax.swing.JButton jButton1guardarPlato1;
     private javax.swing.JButton jButton1salirPlato;
+    private javax.swing.JComboBox<Object> jComboBox1tipo_plato;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1calientes_plato;
+    private javax.swing.JRadioButton jRadioButton2fria_plato;
+    private javax.swing.JRadioButton jRadioButton3ensaladas_plato;
+    private javax.swing.JRadioButton jRadioButton4postres_plato;
+    private javax.swing.JRadioButton jRadioButton5bebidas_plato;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1comidasYbebidas_plato;
     private javax.swing.JTextArea jTextArea1ingredientes_plato;
     private javax.swing.JTextField jTextField1precioAlPublico_plato;
     private javax.swing.JTextField jTextField2nombre_plato;

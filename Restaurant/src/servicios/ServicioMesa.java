@@ -5,8 +5,10 @@
  */
 package servicios;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Mesa;
+
 import repositorio.RepositorioMesa;
 
 /**
@@ -26,9 +28,14 @@ public class ServicioMesa {
     public void guardarMesa(String numero, String estado) {
         this.validarNumero(numero);
         this.validarNumero2(numero);
-       Mesa mesa = new Mesa(numero, estado);
-       
-       this.repositorioMesa.guardarMesa(mesa);
+        
+        
+        
+        Mesa mesa = new Mesa(numero, estado);
+        
+        this.repositorioMesa.guardarMesa(mesa);
+     
+     
        
        
     }
@@ -58,6 +65,12 @@ public class ServicioMesa {
         }
     
     
+    }
+
+    public ArrayList obtenerTodosMesa() {
+       ArrayList delas2 = this.repositorioMesa.obtenerTodosMesa();
+       
+       return delas2;
     }
 
    

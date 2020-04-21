@@ -5,8 +5,15 @@
  */
 package vistas;
 
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import org.hibernate.engine.spi.ExecuteUpdateResultCheckStyle;
 import presentador.Presentador;
 
 /**
@@ -37,6 +44,27 @@ public class ClientesVistas extends javax.swing.JFrame {
     public JTextField getjTextField3direccionCliente() {
         return jTextField3direccionCliente;
     }
+
+    public JTextField getjTextField1localidad_cliente() {
+        return jTextField1localidad_cliente;
+    }
+
+    public JTable getjTable1Clientes_modificar() {
+        return jTable1Clientes_modificar;
+    }
+
+    public JTextField getjTextField1id_cliente_paraActualizar() {
+        return jTextField1id_cliente_paraActualizar;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -71,40 +99,50 @@ public class ClientesVistas extends javax.swing.JFrame {
         jTextField3direccionCliente = new javax.swing.JTextField();
         jButton1guardarCliente = new javax.swing.JButton();
         jButton1salirCliente = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField1localidad_cliente = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1Clientes_modificar = new javax.swing.JTable();
+        jButton1modificarCliente = new javax.swing.JButton();
+        jButton1actualizarCliente = new javax.swing.JButton();
+        jTextField1id_cliente_paraActualizar = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1cargarTablaCliente = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setMinimumSize(new java.awt.Dimension(776, 532));
+        setMinimumSize(new java.awt.Dimension(776, 560));
+        setPreferredSize(new java.awt.Dimension(776, 580));
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nombre:");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("El Id no se completa");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 50, 61, 17);
+        jLabel2.setBounds(40, 190, 140, 20);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 90, 61, 17);
+        jLabel3.setBounds(270, 90, 61, 17);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Direccion:");
+        jLabel4.setText("Localidad:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(100, 130, 73, 20);
+        jLabel4.setBounds(260, 170, 80, 20);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CLIENTES.1, mas chico.png"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(410, 30, 130, 120);
+        jLabel5.setBounds(40, 20, 130, 120);
         getContentPane().add(jTextField1apellidoCliente);
-        jTextField1apellidoCliente.setBounds(190, 80, 180, 30);
+        jTextField1apellidoCliente.setBounds(350, 80, 180, 30);
         getContentPane().add(jTextField2nombreCliente);
-        jTextField2nombreCliente.setBounds(190, 40, 180, 30);
+        jTextField2nombreCliente.setBounds(350, 40, 180, 30);
         getContentPane().add(jTextField3direccionCliente);
-        jTextField3direccionCliente.setBounds(190, 120, 180, 30);
+        jTextField3direccionCliente.setBounds(350, 120, 180, 30);
 
         jButton1guardarCliente.setBackground(new java.awt.Color(0, 0, 0));
         jButton1guardarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -116,7 +154,7 @@ public class ClientesVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1guardarCliente);
-        jButton1guardarCliente.setBounds(240, 183, 140, 40);
+        jButton1guardarCliente.setBounds(600, 40, 140, 40);
 
         jButton1salirCliente.setBackground(new java.awt.Color(0, 0, 0));
         jButton1salirCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -128,11 +166,80 @@ public class ClientesVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1salirCliente);
-        jButton1salirCliente.setBounds(450, 183, 61, 40);
+        jButton1salirCliente.setBounds(630, 100, 80, 40);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Direccion:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(260, 130, 73, 20);
+        getContentPane().add(jTextField1localidad_cliente);
+        jTextField1localidad_cliente.setBounds(350, 160, 180, 30);
+
+        jTable1Clientes_modificar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "id", "Nombre", "Apellido", "Direccion", "Localidad"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1Clientes_modificar);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 240, 720, 240);
+
+        jButton1modificarCliente.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1modificarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1modificarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1modificarCliente.setText("Modificar");
+        jButton1modificarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1modificarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1modificarCliente);
+        jButton1modificarCliente.setBounds(330, 490, 130, 40);
+
+        jButton1actualizarCliente.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1actualizarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1actualizarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1actualizarCliente.setText("Actualizar");
+        jButton1actualizarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1actualizarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1actualizarCliente);
+        jButton1actualizarCliente.setBounds(520, 490, 160, 40);
+        getContentPane().add(jTextField1id_cliente_paraActualizar);
+        jTextField1id_cliente_paraActualizar.setBounds(60, 150, 90, 30);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Nombre:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(270, 50, 61, 17);
+
+        jButton1cargarTablaCliente.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1cargarTablaCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1cargarTablaCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1cargarTablaCliente.setText("Cargar Tabla");
+        jButton1cargarTablaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1cargarTablaClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1cargarTablaCliente);
+        jButton1cargarTablaCliente.setBounds(93, 490, 160, 40);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(776, 550));
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, -10, 780, 530);
+        jLabel6.setBounds(0, -10, 760, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,6 +251,30 @@ public class ClientesVistas extends javax.swing.JFrame {
     private void jButton1salirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1salirClienteActionPerformed
        dispose();
     }//GEN-LAST:event_jButton1salirClienteActionPerformed
+
+    private void jButton1modificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1modificarClienteActionPerformed
+       this.presentador.modificarClienteApretado();
+    }//GEN-LAST:event_jButton1modificarClienteActionPerformed
+
+    private void jButton1actualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1actualizarClienteActionPerformed
+        Conexion conexion = new Conexion();
+        Connection con = conexion.getConection();
+        String sql ="UPDATE cliente SET nombre='" +this.jTextField2nombreCliente.getText()+ "'," + "apellido='"+ this.jTextField1apellidoCliente.getText() +  "'," + "direccion='"
+                + this.jTextField3direccionCliente.getText()+"'," +   "localidad='"+ this.jTextField1localidad_cliente.getText() +  "'WHERE idcliente='" +
+                this.jTextField1id_cliente_paraActualizar.getText()+ "'";
+        
+        try {
+           PreparedStatement preparedStatement = (PreparedStatement) con.prepareStatement(sql);
+           preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "el cliente se actualizo correctamente");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1actualizarClienteActionPerformed
+
+    private void jButton1cargarTablaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1cargarTablaClienteActionPerformed
+      this.presentador.cargarTablaClienteApretado();
+    }//GEN-LAST:event_jButton1cargarTablaClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,14 +316,23 @@ public class ClientesVistas extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1actualizarCliente;
+    private javax.swing.JButton jButton1cargarTablaCliente;
     private javax.swing.JButton jButton1guardarCliente;
+    private javax.swing.JButton jButton1modificarCliente;
     private javax.swing.JButton jButton1salirCliente;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1Clientes_modificar;
     private javax.swing.JTextField jTextField1apellidoCliente;
+    private javax.swing.JTextField jTextField1id_cliente_paraActualizar;
+    private javax.swing.JTextField jTextField1localidad_cliente;
     private javax.swing.JTextField jTextField2nombreCliente;
     private javax.swing.JTextField jTextField3direccionCliente;
     // End of variables declaration//GEN-END:variables

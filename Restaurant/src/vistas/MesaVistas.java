@@ -7,6 +7,7 @@ package vistas;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import presentador.Presentador;
 
@@ -25,7 +26,7 @@ public class MesaVistas extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
-        this.jRadioButton1disponible.setSelected(true);
+       // this.jRadioButton1disponible.setSelected(true);
                 
     }
 
@@ -44,6 +45,13 @@ public class MesaVistas extends javax.swing.JFrame {
     public JRadioButton getjRadioButton2ocupado() {
         return jRadioButton2ocupado;
     }
+
+    public JTable getjTable1tablaMesa_mesa() {
+        return jTable1tablaMesa_mesa;
+    }
+    
+    
+    
     
     
     
@@ -72,11 +80,14 @@ public class MesaVistas extends javax.swing.JFrame {
         jButton1guardarMesa = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton1salirMesa = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1tablaMesa_mesa = new javax.swing.JTable();
+        jButton1mostrarMesas_mesas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(780, 516));
-        setPreferredSize(new java.awt.Dimension(780, 516));
+        setMinimumSize(new java.awt.Dimension(780, 550));
+        setPreferredSize(new java.awt.Dimension(780, 530));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
@@ -137,9 +148,37 @@ public class MesaVistas extends javax.swing.JFrame {
         getContentPane().add(jButton1salirMesa);
         jButton1salirMesa.setBounds(650, 100, 70, 40);
 
+        jTable1tablaMesa_mesa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "id", "numero", "estado"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1tablaMesa_mesa);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 252, 700, 240);
+
+        jButton1mostrarMesas_mesas.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1mostrarMesas_mesas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1mostrarMesas_mesas.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1mostrarMesas_mesas.setText("Mostrar mesas");
+        jButton1mostrarMesas_mesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1mostrarMesas_mesasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1mostrarMesas_mesas);
+        jButton1mostrarMesas_mesas.setBounds(310, 200, 150, 40);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 780, 520);
+        jLabel1.setBounds(0, 0, 780, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,6 +190,10 @@ public class MesaVistas extends javax.swing.JFrame {
     private void jButton1guardarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1guardarMesaActionPerformed
       this.presentador.guardarMesaApretado();
     }//GEN-LAST:event_jButton1guardarMesaActionPerformed
+
+    private void jButton1mostrarMesas_mesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1mostrarMesas_mesasActionPerformed
+       this.presentador.mostrarTablaMesas();
+    }//GEN-LAST:event_jButton1mostrarMesas_mesasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +233,7 @@ public class MesaVistas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1guardarMesa;
+    private javax.swing.JButton jButton1mostrarMesas_mesas;
     private javax.swing.JButton jButton1salirMesa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -197,6 +241,8 @@ public class MesaVistas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRadioButton1disponible;
     private javax.swing.JRadioButton jRadioButton2ocupado;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1tablaMesa_mesa;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
