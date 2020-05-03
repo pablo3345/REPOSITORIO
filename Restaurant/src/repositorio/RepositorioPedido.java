@@ -8,6 +8,7 @@ package repositorio;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Cliente;
+import modelo.Mesa;
 import modelo.Pedido;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -41,14 +42,14 @@ public class RepositorioPedido {
     }
 
     public Pedido obtenerPedidoGuardado(int idPedido) {
-        Pedido repuesto = null;
+        Pedido pedido = null;
 
         Session session = HibernateUtil.getSessionFactory().openSession();//getSessionFactory() inicia la sesion
         Transaction tx = null;//la transaccion cuando inicia es null
         //aprender a leer esto
         try {
             tx = session.beginTransaction();
-            repuesto = (Pedido) session.get(Pedido.class, idPedido); //Obtiene el empleado a traves del id. Equivale a un select con HQL.
+            pedido = (Pedido) session.get(Pedido.class, idPedido); //Obtiene el empleado a traves del id. Equivale a un select con HQL.
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -59,7 +60,7 @@ public class RepositorioPedido {
             session.close();
         }
 
-        return repuesto;
+        return pedido;
     }
 
     public ArrayList<Pedido> obtenerTodosPedidos() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
@@ -90,7 +91,7 @@ public class RepositorioPedido {
     }
 
     public List<Double> obtenerConsultaTotalPrecioAlPublico() {
-    List<Double> pedidoInnerJoin = null;//cuando inicia es null
+        List<Double> pedidoInnerJoin = null;//cuando inicia es null
 
         Session session = HibernateUtil.getSessionFactory().openSession();//getSessionFactory() inicia la sesion
         Transaction tx = null;//la transaccion cuando inicia es null
@@ -98,7 +99,7 @@ public class RepositorioPedido {
         try {
             tx = session.beginTransaction();
             // fabrica = (List<Fabrica>) session.createCriteria(Fabrica.class).list();
-           
+
             pedidoInnerJoin = session.createQuery("select sum(s.precioAlPublico * d.cantidad) from Platosybebidas s, Pedido d where  s.idplato = d.platosybebidas").list();
             //  pedidoInnerJoin = session.createQuery("select s.idpedido, r.nombre, d.nombre, d.costo, s.cantidad from Pedido s, Platosybebidas d, Cliente r where s.platosybebidas = d.idplato and s.cliente=  r.idcliente").list();
             tx.commit();
@@ -113,9 +114,9 @@ public class RepositorioPedido {
 
         return pedidoInnerJoin;
     }
-    
-        public List<Double> obtenerConsultaTotalCostoDelPlato() {
-    List<Double> pedidoInnerJoin = null;//cuando inicia es null
+
+    public List<Double> obtenerConsultaTotalCostoDelPlato() {
+        List<Double> pedidoInnerJoin = null;//cuando inicia es null
 
         Session session = HibernateUtil.getSessionFactory().openSession();//getSessionFactory() inicia la sesion
         Transaction tx = null;//la transaccion cuando inicia es null
@@ -123,7 +124,7 @@ public class RepositorioPedido {
         try {
             tx = session.beginTransaction();
             // fabrica = (List<Fabrica>) session.createCriteria(Fabrica.class).list();
-           
+
             pedidoInnerJoin = session.createQuery("select sum(s.costo * d.cantidad) from Platosybebidas s, Pedido d where  s.idplato = d.platosybebidas").list();
             //  pedidoInnerJoin = session.createQuery("select s.idpedido, r.nombre, d.nombre, d.costo, s.cantidad from Pedido s, Platosybebidas d, Cliente r where s.platosybebidas = d.idplato and s.cliente=  r.idcliente").list();
             tx.commit();
@@ -138,48 +139,92 @@ public class RepositorioPedido {
 
         return pedidoInnerJoin;
     }
-        
-      public ArrayList<Object> obtenerArrayObjectConsultaHQL()
-     //ArrayList<Empleado> = significa que el arrayList es solo de empleado
+
+    public ArrayList<Object> obtenerArrayObjectConsultaHQL() //ArrayList<Empleado> = significa que el arrayList es solo de empleado
     {
         ArrayList<Object> arrayADevolver = null;
-       // ArrayList<Pedido> mesasOcupadas = new ArrayList<>();
-        
-       // return this.listaEmpleados.toArray(arrayADevolver);
-        
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        
+
         try {
-         tx = session.beginTransaction();
-         //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
-         //from Foto es el tipo de consulta HQL  para obtener una lista de todos las fotos
-         //LA consulta debo concatenar el texto + la variable, en este caso el idAlbum porque cambia el contenido segun
-         //lo que seleccionemos 
-         arrayADevolver = (ArrayList<Object>) session.createQuery("select p.idpedido, c.nombre, m.numero from Cliente c, Pedido p, Mesa m  where p.cliente = c.idcliente and p.mesa = m.idmesa").list(); 
-         // arrayADevolver = (ArrayList<Pedido>) session.createQuery("FROM Pedido").list(); 
-//         for(Pedido ped : arrayADevolver){
-//         
-//         if(ped.getMesa().getEstado().equals("ocupada")){
-//         mesasOcupadas.add(ped);
-//         }
-         
-         
-         
-         
-         
-         tx.commit();
-      } catch (HibernateException e) {
-         if (tx!=null) tx.rollback();
-         e.printStackTrace(); 
-      } finally {
-         session.close(); 
-      }
-        
+            tx = session.beginTransaction();
+            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+            //from Foto es el tipo de consulta HQL  para obtener una lista de todos las fotos
+            //LA consulta debo concatenar el texto + la variable, en este caso el idAlbum porque cambia el contenido segun
+            //lo que seleccionemos 
+            arrayADevolver = (ArrayList<Object>) session.createQuery("select p.idpedido, c.nombre, m.numero, x.nombre, p.horaDelPedido, p.cantidad, x.precioAlPublico from Cliente c, Pedido p,"
+                    + " Mesa m, Platosybebidas x  where p.cliente = c.idcliente and p.mesa = m.idmesa and p.platosybebidas = x.idplato").list();
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
         return arrayADevolver;
     }
-        
-        
-        
+
+    public ArrayList<Object> obtenerMesasQueNoEstanEnNingunPedido() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
+    {
+        ArrayList<Object> arrayADevolver = null;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+            //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
+            arrayADevolver = (ArrayList<Object>) session.createQuery("select  m.idmesa, m.numero, m.estado from Pedido as p right join p.mesa as m where p.idpedido is null").list();
+            
+            tx.commit();
+            
+           
+
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return arrayADevolver;
+    }
+    
+       public ArrayList<Object> obtenerIdDeMesasDesocupadas() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
+    {
+        ArrayList<Object> arrayADevolver = null;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+            //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
+            arrayADevolver = (ArrayList<Object>) session.createQuery("select m.idmesa from Pedido as p right join p.mesa as m where p.idpedido is null").list();
+            
+            tx.commit();
+            
+           
+
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return arrayADevolver;
+    }
 
 }

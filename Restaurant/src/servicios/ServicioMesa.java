@@ -8,8 +8,10 @@ package servicios;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Mesa;
+import modelo.Pedido;
 
 import repositorio.RepositorioMesa;
+import repositorio.RepositorioPedido;
 
 /**
  *
@@ -18,9 +20,12 @@ import repositorio.RepositorioMesa;
 public class ServicioMesa {
     
     private RepositorioMesa repositorioMesa;
+    private RepositorioPedido repositorioPedido;
 
     public ServicioMesa() {
         this.repositorioMesa = new RepositorioMesa();
+        this.repositorioPedido = new RepositorioPedido();
+        
     }
 
  
@@ -67,11 +72,91 @@ public class ServicioMesa {
     
     }
 
-    public ArrayList obtenerTodosMesa() {
-       ArrayList delas2 = this.repositorioMesa.obtenerTodosMesa();
+    public ArrayList<Mesa> obtenerTodosMesa() {
+        
+        
+        
+       ArrayList<Mesa> delas2 = this.repositorioMesa.obtenerTodosMesa();
+       
+       
+       
+       
        
        return delas2;
     }
+    
+    
+    
+ 
+    
+    
+    public ArrayList<Pedido> obtenerMesasEstado(){
+    
+    ArrayList<Pedido> mesasTotales = this.repositorioPedido.obtenerTodosPedidos();
+    
+    return mesasTotales;
+    
+    
+    
+    }
+    public ArrayList<Mesa> obtenerMesasDisponibles(){
+     ArrayList<Mesa> mesasDisponibles = new ArrayList<>();
+    
+    ArrayList<Mesa> mesasdisponibles = this.repositorioMesa.obtenerTodosMesa();
+    
+    for(Mesa mes : mesasdisponibles){
+    
+    if(mes.getEstado().equals("disponible")){
+        
+        mesasDisponibles.add(mes);
+    
+    
+    
+    
+    }
+    
+    }
+    
+    return mesasDisponibles;
+    
+    
+    
+    }
+
+    public ArrayList<Mesa> obtenerMesasOcupadas() {
+         ArrayList<Mesa> mesasOcupadas = new ArrayList<>();
+    
+    ArrayList<Mesa> mesasOcupadass = this.repositorioMesa.obtenerTodosMesa();
+    
+    for(Mesa mes : mesasOcupadass){
+    
+    if(mes.getEstado().equals("ocupada")){
+        
+        mesasOcupadas.add(mes);
+    
+    
+    
+    
+    }
+    
+    }
+    
+    return mesasOcupadas;
+    }
+    
+    
+    public  ArrayList<Mesa> obtenerTodoMesas(){
+    
+//    ArrayList<Object> array = this.repositorioMesa.obtenerTodosMesaSegunPedido();
+//    
+//    return array;
+
+     ArrayList<Mesa> mesas = this.repositorioMesa.obtenerTodosMesa();
+     
+     return mesas;
+    }
+    
+    
 
    
     

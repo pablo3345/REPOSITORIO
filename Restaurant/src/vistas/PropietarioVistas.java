@@ -80,13 +80,13 @@ public class PropietarioVistas extends javax.swing.JFrame {
 
         jTable1pedido_propietario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "cliente", "mesa", "comestible", "fecha del pedido", "cantidad"
+                "id", "cliente", "mesa", "comestible", "fecha del pedido", "cantidad", "precio de costo", "precio final"
             }
         ));
         jScrollPane1.setViewportView(jTable1pedido_propietario);

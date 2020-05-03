@@ -31,6 +31,7 @@ public class ClientesVistas extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
+       
     }
 
     public JTextField getjTextField1apellidoCliente() {

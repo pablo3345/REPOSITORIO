@@ -5,10 +5,28 @@
  */
 package servicios;
 
+import java.util.ArrayList;
+import repositorio.RepositorioPropietario;
+
 /**
  *
  * @author pablo
  */
 public class ServicioPropietario {
-    
+
+    private RepositorioPropietario repositorioPropietario;
+
+    public ServicioPropietario() {
+        this.repositorioPropietario = new RepositorioPropietario();
+
+    }
+
+    public ArrayList<Object> obtenerConsultaHQL() {
+
+        ArrayList<Object> array = this.repositorioPropietario.obtenerConsultaHQL();
+
+        return array;
+
+    }
+
 }

@@ -27,6 +27,7 @@ public class MesaVistas extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
        // this.jRadioButton1disponible.setSelected(true);
+      
                 
     }
 
@@ -83,10 +84,11 @@ public class MesaVistas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1tablaMesa_mesa = new javax.swing.JTable();
         jButton1mostrarMesas_mesas = new javax.swing.JButton();
+        jButton1mesasDisponibles = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(780, 550));
+        setMinimumSize(new java.awt.Dimension(780, 570));
         setPreferredSize(new java.awt.Dimension(780, 530));
         getContentPane().setLayout(null);
 
@@ -156,25 +158,37 @@ public class MesaVistas extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "id", "numero", "estado"
+                "id", "Numero", "Estado"
             }
         ));
         jScrollPane1.setViewportView(jTable1tablaMesa_mesa);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 252, 700, 240);
+        jScrollPane1.setBounds(180, 200, 440, 240);
 
         jButton1mostrarMesas_mesas.setBackground(new java.awt.Color(0, 0, 0));
         jButton1mostrarMesas_mesas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1mostrarMesas_mesas.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1mostrarMesas_mesas.setText("Mostrar mesas");
+        jButton1mostrarMesas_mesas.setText("Mesas Disponibles");
         jButton1mostrarMesas_mesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1mostrarMesas_mesasActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1mostrarMesas_mesas);
-        jButton1mostrarMesas_mesas.setBounds(310, 200, 150, 40);
+        jButton1mostrarMesas_mesas.setBounds(180, 470, 170, 40);
+
+        jButton1mesasDisponibles.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1mesasDisponibles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1mesasDisponibles.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1mesasDisponibles.setText("Mesas Ocupadas");
+        jButton1mesasDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1mesasDisponiblesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1mesasDisponibles);
+        jButton1mesasDisponibles.setBounds(470, 470, 150, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -192,8 +206,12 @@ public class MesaVistas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1guardarMesaActionPerformed
 
     private void jButton1mostrarMesas_mesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1mostrarMesas_mesasActionPerformed
-       this.presentador.mostrarTablaMesas();
+       this.presentador.mesasDisponiblesApretado();
     }//GEN-LAST:event_jButton1mostrarMesas_mesasActionPerformed
+
+    private void jButton1mesasDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1mesasDisponiblesActionPerformed
+        this.presentador.mesasOcupadaspretado();
+    }//GEN-LAST:event_jButton1mesasDisponiblesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +251,7 @@ public class MesaVistas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1guardarMesa;
+    private javax.swing.JButton jButton1mesasDisponibles;
     private javax.swing.JButton jButton1mostrarMesas_mesas;
     private javax.swing.JButton jButton1salirMesa;
     private javax.swing.JLabel jLabel1;

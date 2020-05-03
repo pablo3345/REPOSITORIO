@@ -6,12 +6,16 @@
 package vistas;
 
 import javax.swing.JButton;
+import presentador.Presentador;
 
 /**
  *
  * @author pablo
  */
 public class vistaPrincipal extends javax.swing.JFrame {
+    
+    private Presentador presentador;
+   
     
    private ClientesVistas clientesVistas;
    private PlatoVistas platoVistas;
@@ -32,7 +36,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
         this.pedidoVistas = new PedidoVistas();
         this.facturaVistas = new FacturaVistas();
         this.propietarioVistas = new PropietarioVistas();
-        
+        this.presentador = new Presentador(this);
+      
     }
 
     public JButton getjButton1propietarioPrincipal() {
@@ -232,6 +237,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
     private void jButton6facturaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6facturaPrincipalActionPerformed
        this.facturaVistas.setVisible(true);
+      
+       
+       
     }//GEN-LAST:event_jButton6facturaPrincipalActionPerformed
 
     private void jButton1propietarioPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1propietarioPrincipalActionPerformed

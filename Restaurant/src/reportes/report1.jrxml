@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f8f7b02-0ec8-4a2b-98b4-9101d9e30ac2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     factura.`idfactura` AS factura_idfactura,
+     factura.`cliente` AS factura_cliente,
+     factura.`platoybebidas` AS factura_platoybebidas,
+     factura.`cantidad` AS factura_cantidad,
+     factura.`precio` AS factura_precio,
+     factura.`mesa` AS factura_mesa,
+     factura.`total` AS factura_total
+FROM
+     `factura` factura]]>
+	</queryString>
+	<field name="factura_idfactura" class="java.lang.Integer"/>
+	<field name="factura_cliente" class="java.lang.String"/>
+	<field name="factura_platoybebidas" class="java.lang.String"/>
+	<field name="factura_cantidad" class="java.lang.Double"/>
+	<field name="factura_precio" class="java.lang.Double"/>
+	<field name="factura_mesa" class="java.lang.String"/>
+	<field name="factura_total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="78" width="555" height="1" uuid="82337664-4111-4f6b-9b36-65027cfe911c"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="22" width="237" height="57" uuid="a99a0775-cf98-408e-bc1c-1e4bb3248b49"/>
+				<textElement>
+					<font fontName="Times New Roman" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comprobante]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yy">
+				<reportElement x="411" y="15" width="72" height="20" uuid="58e94bc5-1c9a-4f12-86bb-efa87cea83b1"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="486" y="15" width="64" height="20" uuid="53611a88-b270-4eb6-b781-b1f88e25b61b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="338" y="12" width="68" height="20" uuid="034a0577-f394-4303-811a-c09bc15912aa"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="27" height="20" uuid="4b25125f-6b39-495a-824a-205614a1c361"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="41" width="48" height="20" uuid="68a37d7a-08b1-42e6-bb7b-07eaeac96501"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="41" width="65" height="20" uuid="07311893-44ce-4648-96b2-d39d1d743224"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comestible]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="41" width="56" height="20" uuid="c7abd21e-e95f-4792-afce-25e9ba7f1a81"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="41" width="47" height="20" uuid="012201c4-c893-446e-ad86-0cbb58100ce1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="41" width="53" height="20" uuid="c0ff8bbc-8589-4032-8e93-d35b298cb9a0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mesa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="39" width="69" height="22" uuid="1e250df5-565b-48ea-952c-07b5872963dc"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="13" width="555" height="2" uuid="a1a14fad-8398-4fe6-9b03-182110e74abb"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="27" height="20" uuid="535b10f7-ec63-4e83-961b-0a628f1afe43"/>
+				<textFieldExpression><![CDATA[$F{factura_idfactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="0" width="62" height="20" uuid="50b34046-4b48-4cbd-821c-bd7e35f1a7bb"/>
+				<textFieldExpression><![CDATA[$F{factura_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="0" width="142" height="20" uuid="4d13246d-b434-452a-acae-385f9174761d"/>
+				<textFieldExpression><![CDATA[$F{factura_platoybebidas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="0" width="56" height="20" uuid="b981252d-5a84-4e58-aeb7-f18344f7bd7b"/>
+				<textFieldExpression><![CDATA[$F{factura_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="364" y="0" width="47" height="20" uuid="c722ee72-e601-407e-b098-f20fc0850b88"/>
+				<textFieldExpression><![CDATA[$F{factura_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="0" width="53" height="20" uuid="b2526536-77fe-42c8-b680-0c1eb317669e"/>
+				<textFieldExpression><![CDATA[$F{factura_mesa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="486" y="0" width="69" height="20" uuid="5507a983-e926-4215-8ba7-d1f696f31e43"/>
+				<textFieldExpression><![CDATA[$F{factura_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -25,6 +25,10 @@ public class PedidoVistas extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
+       
+        
+      
+       
       
 
         
@@ -37,6 +41,19 @@ public class PedidoVistas extends javax.swing.JFrame {
     public JComboBox<Object> getjComboBox1comidasTbebidas_pedido() {
         return jComboBox1comidasTbebidas_pedido;
     }
+
+    public JTable getjTable1Pedido_pedido() {
+        return jTable1Pedido_pedido;
+    }
+
+   
+
+    
+    
+    
+    
+    
+    
 
    
     
@@ -111,6 +128,12 @@ public class PedidoVistas extends javax.swing.JFrame {
         jTextField1cantidad_pedido = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jTextField1demora_pedido = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1Pedido_pedido = new javax.swing.JTable();
+        jButton1CargarTablaPedido = new javax.swing.JButton();
+        jButton1modificarPedido = new javax.swing.JButton();
+        jButton1actualizarPedido = new javax.swing.JButton();
+        jButton1cargarMesasPedido = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton4.setText("jButton1");
@@ -126,7 +149,7 @@ public class PedidoVistas extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mesa:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(490, 20, 50, 30);
+        jLabel3.setBounds(410, 20, 50, 30);
 
         jButton1guardar_pedido.setBackground(new java.awt.Color(0, 0, 0));
         jButton1guardar_pedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -138,7 +161,7 @@ public class PedidoVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1guardar_pedido);
-        jButton1guardar_pedido.setBounds(270, 450, 120, 40);
+        jButton1guardar_pedido.setBounds(30, 480, 120, 40);
 
         jButton1salir_pedido.setBackground(new java.awt.Color(0, 0, 0));
         jButton1salir_pedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -150,32 +173,32 @@ public class PedidoVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1salir_pedido);
-        jButton1salir_pedido.setBounds(510, 450, 80, 40);
+        jButton1salir_pedido.setBounds(670, 480, 80, 40);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Demora:");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(360, 120, 80, 30);
+        jLabel15.setBounds(300, 120, 80, 30);
 
         getContentPane().add(jComboBox1mesa_pedido);
-        jComboBox1mesa_pedido.setBounds(550, 20, 180, 30);
+        jComboBox1mesa_pedido.setBounds(470, 20, 180, 30);
 
         getContentPane().add(jComboBox1cliente_pedido);
-        jComboBox1cliente_pedido.setBounds(230, 20, 250, 30);
+        jComboBox1cliente_pedido.setBounds(180, 20, 220, 30);
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Cliente:");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(160, 20, 60, 30);
+        jLabel16.setBounds(120, 20, 60, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/PEDIDO.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 10, 110, 140);
+        jLabel2.setBounds(0, 10, 110, 140);
 
         getContentPane().add(jComboBox1tipo_pedido);
-        jComboBox1tipo_pedido.setBounds(500, 70, 140, 30);
+        jComboBox1tipo_pedido.setBounds(490, 70, 140, 30);
 
         jButton1buscarTipo_pedido.setBackground(new java.awt.Color(0, 0, 0));
         jButton1buscarTipo_pedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -187,26 +210,90 @@ public class PedidoVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1buscarTipo_pedido);
-        jButton1buscarTipo_pedido.setBounds(660, 70, 80, 40);
+        jButton1buscarTipo_pedido.setBounds(650, 70, 80, 30);
 
         getContentPane().add(jComboBox1comidasTbebidas_pedido);
-        jComboBox1comidasTbebidas_pedido.setBounds(240, 70, 240, 30);
+        jComboBox1comidasTbebidas_pedido.setBounds(220, 70, 240, 30);
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Comestibles:");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(140, 70, 100, 30);
+        jLabel17.setBounds(120, 70, 100, 30);
         getContentPane().add(jTextField1cantidad_pedido);
-        jTextField1cantidad_pedido.setBounds(240, 120, 70, 30);
+        jTextField1cantidad_pedido.setBounds(210, 120, 70, 30);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Cantidad:");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(140, 120, 80, 30);
+        jLabel18.setBounds(120, 120, 80, 30);
         getContentPane().add(jTextField1demora_pedido);
-        jTextField1demora_pedido.setBounds(450, 120, 130, 30);
+        jTextField1demora_pedido.setBounds(370, 120, 130, 30);
+
+        jTable1Pedido_pedido.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "id", "Cliente", "Mesa", "Comestible", "Cantidad", "Demora", "Fecha"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1Pedido_pedido);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(30, 180, 720, 290);
+
+        jButton1CargarTablaPedido.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1CargarTablaPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1CargarTablaPedido.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1CargarTablaPedido.setText("Cargar Tabla");
+        jButton1CargarTablaPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1CargarTablaPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1CargarTablaPedido);
+        jButton1CargarTablaPedido.setBounds(180, 480, 150, 40);
+
+        jButton1modificarPedido.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1modificarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1modificarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1modificarPedido.setText("Modificar");
+        jButton1modificarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1modificarPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1modificarPedido);
+        jButton1modificarPedido.setBounds(370, 480, 110, 40);
+
+        jButton1actualizarPedido.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1actualizarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1actualizarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1actualizarPedido.setText("Actualizar");
+        jButton1actualizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1actualizarPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1actualizarPedido);
+        jButton1actualizarPedido.setBounds(503, 480, 140, 40);
+
+        jButton1cargarMesasPedido.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1cargarMesasPedido.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jButton1cargarMesasPedido.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1cargarMesasPedido.setText("actualizar");
+        jButton1cargarMesasPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1cargarMesasPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1cargarMesasPedido);
+        jButton1cargarMesasPedido.setBounds(660, 20, 81, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -226,6 +313,22 @@ public class PedidoVistas extends javax.swing.JFrame {
     private void jButton1buscarTipo_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1buscarTipo_pedidoActionPerformed
       this.presentador.buscarPorTipoPedidoApretado();
     }//GEN-LAST:event_jButton1buscarTipo_pedidoActionPerformed
+
+    private void jButton1CargarTablaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1CargarTablaPedidoActionPerformed
+      this.presentador.cargarTablaPedido_Pedido();
+    }//GEN-LAST:event_jButton1CargarTablaPedidoActionPerformed
+
+    private void jButton1modificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1modificarPedidoActionPerformed
+       this.presentador.modificarPedido_pedido();
+    }//GEN-LAST:event_jButton1modificarPedidoActionPerformed
+
+    private void jButton1actualizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1actualizarPedidoActionPerformed
+       this.presentador.actualizarPedido_Pedido();
+    }//GEN-LAST:event_jButton1actualizarPedidoActionPerformed
+
+    private void jButton1cargarMesasPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1cargarMesasPedidoActionPerformed
+       this.presentador.cargarMesasPedidoApretado();
+    }//GEN-LAST:event_jButton1cargarMesasPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,8 +366,12 @@ public class PedidoVistas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1CargarTablaPedido;
+    private javax.swing.JButton jButton1actualizarPedido;
     private javax.swing.JButton jButton1buscarTipo_pedido;
+    private javax.swing.JButton jButton1cargarMesasPedido;
     private javax.swing.JButton jButton1guardar_pedido;
+    private javax.swing.JButton jButton1modificarPedido;
     private javax.swing.JButton jButton1salir_pedido;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
@@ -279,6 +386,8 @@ public class PedidoVistas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1Pedido_pedido;
     private javax.swing.JTextField jTextField1cantidad_pedido;
     private javax.swing.JTextField jTextField1demora_pedido;
     // End of variables declaration//GEN-END:variables

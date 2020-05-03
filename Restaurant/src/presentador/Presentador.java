@@ -5,15 +5,20 @@
  */
 package presentador;
 
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.Action;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
+import modelo.Factura;
 import modelo.Mesa;
 import modelo.Pedido;
 import modelo.Platosybebidas;
@@ -73,17 +78,21 @@ public class Presentador {
     public Presentador(MesaVistas mesaVistas) {
         this.mesaVistas = mesaVistas;
         this.servicioMesa = new ServicioMesa();
+        this.servicioFactura = new ServicioFactura();
+
     }
 
-    public Presentador(PedidoVistas pedidoVistas) {
+    public Presentador(PedidoVistas pedidoVistas ) {
         this.pedidoVistas = pedidoVistas;
+        
         this.servicioPedido = new ServicioPedido();
         this.servicioPlato = new ServicioPlato();//lo agregue recien
         this.servicioCliente = new ServicioCliente();
         this.servicioMesa = new ServicioMesa();
+        this.servicioFactura = new ServicioFactura();
         this.llenarComboTipoPedido();
         this.llenarComboClientePedido();
-        this.llenarComboMesaPedido();
+     
 
     }
 
@@ -91,14 +100,21 @@ public class Presentador {
         this.facturaVistas = facturaVistas;
         this.servicioFactura = new ServicioFactura();
         this.servicioPedido = new ServicioPedido();
+        this.servicioMesa = new ServicioMesa();
+       
+
     }
 
     public Presentador(PropietarioVistas propietarioVistas) {
         this.propietarioVistas = propietarioVistas;
         this.servicioPropietario = new ServicioPropietario();
         this.servicioPedido = new ServicioPedido();
-       
+
     }
+
+  
+
+   
 
     public void guardarClienteApretado() {
         String nombre = this.clientesVistas.getjTextField2nombreCliente().getText();
@@ -168,6 +184,7 @@ public class Presentador {
 
             try {
                 this.servicioMesa.guardarMesa(numero, estado);
+                //this.llenarComboMesasOcupadas_Factura();
 
                 this.mesaVistas.getjTextField1numeroMesa().setText("");
                 JOptionPane.showMessageDialog(null, "La mesa se guardo correctamente");
@@ -183,34 +200,30 @@ public class Presentador {
     }
 
     public void guardarPedidoApretado() {
+       
+        Cliente cliente = (Cliente) this.pedidoVistas.getjComboBox1cliente_pedido().getSelectedItem();
+        Mesa mesa = (Mesa) this.pedidoVistas.getjComboBox1mesa_pedido().getSelectedItem();
+        Platosybebidas platosybebidas = (Platosybebidas) this.pedidoVistas.getjComboBox1comidasTbebidas_pedido().getSelectedItem();
+
+        Calendar calendar = Calendar.getInstance();
+        java.sql.Timestamp horaDelPedido = new java.sql.Timestamp(calendar.getTimeInMillis());
+
+        String cantidad = this.pedidoVistas.getjTextField1cantidad_pedido().getText();
+        String demora = this.pedidoVistas.getjTextField1demora_pedido().getText();
 
         try {
+            this.servicioPedido.guardarPedido(cliente, mesa, platosybebidas, horaDelPedido, cantidad, demora);
+          
 
-            Cliente cliente = (Cliente) this.pedidoVistas.getjComboBox1cliente_pedido().getSelectedItem();
-            Mesa mesa = (Mesa) this.pedidoVistas.getjComboBox1mesa_pedido().getSelectedItem();
-            Platosybebidas platosybebidas = (Platosybebidas) this.pedidoVistas.getjComboBox1comidasTbebidas_pedido().getSelectedItem();
+            this.pedidoVistas.getjTextField1cantidad_pedido().setText("");
+            this.pedidoVistas.getjTextField1demora_pedido().setText("");
 
-            Calendar calendar = Calendar.getInstance();
-            java.sql.Timestamp horaDelPedido = new java.sql.Timestamp(calendar.getTimeInMillis());
+            JOptionPane.showMessageDialog(null, "el pedido se guardo correctamente");
+           // this.llenarComboMesaPedido();
+            //llenarComboMesasOcupadas_Factura();
 
-            String cantidad = this.pedidoVistas.getjTextField1cantidad_pedido().getText();
-            String demora = this.pedidoVistas.getjTextField1demora_pedido().getText();
-
-            try {
-                this.servicioPedido.guardarPedido(cliente, mesa, platosybebidas, horaDelPedido, cantidad, demora);
-
-                this.pedidoVistas.getjTextField1cantidad_pedido().setText("");
-                this.pedidoVistas.getjTextField1demora_pedido().setText("");
-
-                JOptionPane.showMessageDialog(null, "el pedido se guardo correctamente");
-
-                // this.llenarComboMesaPedido();
-            } catch (IllegalArgumentException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "debe completar las comidas, bebidas y postres");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
     }
@@ -286,43 +299,226 @@ public class Presentador {
 
     }
 
-    private void llenarComboMesaPedido() {
 
-        ArrayList mesas = this.servicioMesa.obtenerTodosMesa();
 
-        DefaultComboBoxModel modeloMesa = new DefaultComboBoxModel(mesas.toArray());
+    public void mostrarTablaPropietario_apretado() {
+        ArrayList<Object> arrayPedidos = this.servicioPropietario.obtenerConsultaHQL();
 
-        this.pedidoVistas.getjComboBox1mesa_pedido().setModel(modeloMesa);
+        DefaultTableModel modeloTabla2 = (DefaultTableModel) this.propietarioVistas.getjTable1pedido_propietario().getModel();
+        modeloTabla2.setRowCount(0);
+
+        for (Object object : arrayPedidos) {
+            modeloTabla2.addRow((Object[]) object);
+
+        }
 
     }
 
-    public void mostrarTablaMesas() {
+    public void cargarTablaConsultaHQLPedido() {
+        ArrayList<Double> listPedido = this.servicioPedido.calcularTotalPrecioAlPublico();
+        ArrayList total = new ArrayList();
+        for (Double del : listPedido) {
 
-        ArrayList<Mesa> mesa = this.servicioMesa.obtenerTodosMesa();
+        }
 
-        DefaultTableModel modeloTabla = (DefaultTableModel) this.mesaVistas.getjTable1tablaMesa_mesa().getModel();
+        JOptionPane.showMessageDialog(null, total);
+
+    }
+
+    public void calcularCostoApretadoPropietario() {
+        ArrayList<Double> del = this.servicioPedido.calcularTotalPrecioAlPublico();
+
+        double total = del.get(del.size() - 1);
+
+        JOptionPane.showMessageDialog(null, total + " pesos ");
+    }
+
+    public void totalPrecioDeCostoApretado() {
+        ArrayList<Double> precioAlCosto = this.servicioPedido.calcularTotalPrecioDeCosto();
+
+        double total2 = precioAlCosto.get(precioAlCosto.size() - 1);
+
+        JOptionPane.showMessageDialog(null, total2 + " pesos");
+    }
+
+    public void gananciaTotalApretado() {
+
+        ArrayList<Double> del = this.servicioPedido.calcularTotalPrecioAlPublico();
+
+        double totalAlPublico = del.get(del.size() - 1);
+
+        /////////////////////////////////////////////////
+        ArrayList<Double> precioAlCosto = this.servicioPedido.calcularTotalPrecioDeCosto();
+
+        double precioDeCosto = precioAlCosto.get(precioAlCosto.size() - 1);
+
+        double totalGanancias = totalAlPublico - precioDeCosto;
+
+        JOptionPane.showMessageDialog(null, totalGanancias + " es la ganancias en limpio hasta el dia de la fecha");
+
+    }
+
+    public void modificarClienteApretado() {
+
+        int fila = this.clientesVistas.getjTable1Clientes_modificar().getSelectedRow();
+
+        if (fila != -1) {
+
+            this.clientesVistas.getjTextField1id_cliente_paraActualizar().setText(this.clientesVistas.getjTable1Clientes_modificar().getValueAt(fila, 0).toString());
+            this.clientesVistas.getjTextField2nombreCliente().setText(this.clientesVistas.getjTable1Clientes_modificar().getValueAt(fila, 1).toString());
+            this.clientesVistas.getjTextField1apellidoCliente().setText(this.clientesVistas.getjTable1Clientes_modificar().getValueAt(fila, 2).toString());
+            this.clientesVistas.getjTextField3direccionCliente().setText(this.clientesVistas.getjTable1Clientes_modificar().getValueAt(fila, 3).toString());
+            this.clientesVistas.getjTextField1localidad_cliente().setText(this.clientesVistas.getjTable1Clientes_modificar().getValueAt(fila, 4).toString());
+            ////////////////////////////////////////////////////////////////////////////////////
+            this.clientesVistas.getjTextField1id_cliente_paraActualizar().setEditable(false);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "ocurrio un error");
+
+        }
+    }
+
+    public void cargarTablaClienteApretado() {
+
+        ArrayList<Cliente> cliente = this.servicioCliente.obtenerTodosCliente();
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.clientesVistas.getjTable1Clientes_modificar().getModel();
 
         modeloTabla.setRowCount(0);
-        for (Mesa mesitas : mesa) {
 
-            Object[] agregarMesas = {mesitas.getIdmesa(), mesitas.getNumero(), mesitas.getEstado()};
+        for (Cliente clien : cliente) {
 
-            modeloTabla.addRow(agregarMesas);
+            Object[] agregarALaTabla = {clien.getIdcliente(), clien.getNombre(), clien.getApellido(), clien.getDireccion(), clien.getLocalidad()};
+            modeloTabla.addRow(agregarALaTabla);
 
         }
     }
 
   
 
-    public void mostrarTablaPropietario_apretado() {
+    public void agregarPedidosDeMesaOcupadas() {
+        
+        
+        
+        
+      
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        Mesa mesa = (Mesa) this.facturaVistas.getjComboBox1mesasOcupadasFactura().getSelectedItem();
+
+        int idMesa = mesa.getIdmesa();
+        
+         // ArrayList<Object> arrays = this.servicioFactura.mandarMesaOcupadaAfactura(idMesa);
+
+        ArrayList<Object> arrays = this.servicioFactura.mandarMesaOcupadaAfactura(idMesa);
+
+        DefaultTableModel modeloTabla3 = (DefaultTableModel) this.facturaVistas.getjTable1pedido_factura().getModel();
+        modeloTabla3.setRowCount(0);
+
+        for (Object array : arrays) {
+
+            modeloTabla3.addRow((Object[]) array);
+
+        }
+    }
+
+    public void guardarFacturaApretado() {
+
+        try {
+            int fila = this.facturaVistas.getjTable1pedido_factura().getSelectedRow();
+
+            String cliente = (String) this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 1).toString();
+            String platosyBebidas = (String) this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 3).toString();
+            String cantidad = (String) this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 5).toString();
+            String precio = (String) this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 6).toString();
+            String mesa = (String) this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 2).toString();
+            //String total =  (String) this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 6);
+            String total = this.facturaVistas.getjTextField2total_factura().getText();
+
+            try {
+                this.servicioFactura.guardarFacturaDedeLaTabla(cliente, platosyBebidas, cantidad, precio, mesa, total);
+                JOptionPane.showMessageDialog(null, "el pedido se guardo correctamente en la factura");
+
+                //////////////////////////////////////////////////////////////////////////
+                this.facturaVistas.getjTextField1costoAgregado().setText(precio);
+                /////////////////////////////////////////////////////////////////////////////
+             
+              
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "debe seleccionar un pedido");
+        }
+  
+        // this.llenarComboMesaPedido();
+    }
+
+    public void verFacturaApretado() {
+        //poner las mesas disponibles cuando ejecuto la factura
+
+        try {
+            ArrayList<Double> botonTotal = this.servicioFactura.obtenerTotalFactura();
+
+            // ArrayList<Double> menor = new ArrayList<>();
+            String ultimoParaGuardae = "";
+            double min = 1000000000;
+
+            for (int i = 0; i < botonTotal.size(); i++) {
+                if (botonTotal.get(i) < min) {
+                    min = botonTotal.get(i);
+
+                    ultimoParaGuardae = String.valueOf(min);
+
+                }
+
+            }
+            try {
+                this.servicioFactura.verComprobanteReporter(ultimoParaGuardae);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+            this.facturaVistas.getjTextField2total_factura().setEditable(false);
+
+            ///////////////////////////////////////////////////////////////////////////
+            int idMesa = 0;
+
+
+            int fila = this.facturaVistas.getjTable1pedido_factura().getSelectedRow();
+            String idMesaa = (String) this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 2);
+
+            idMesa = Integer.valueOf(idMesaa);
+            this.servicioFactura.actualizarMesasDespuesDeLaFactura(idMesa);
+            
+            
+           
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "debe guardar algun pedido");
+        }
+
+    }
+
+    public void limpiarFacturaApretado() {
+        this.servicioFactura.limpiarFactura();
+    }
+
+    public void cargarTablaPedido_Pedido() {
+
         ArrayList<Pedido> arrayPedidos = this.servicioPedido.obtenerTodosPedidos();
 
-        DefaultTableModel modeloTabla2 = (DefaultTableModel) this.propietarioVistas.getjTable1pedido_propietario().getModel();
+        DefaultTableModel modeloTabla2 = (DefaultTableModel) this.pedidoVistas.getjTable1Pedido_pedido().getModel();
+        
+     
+                
+
         modeloTabla2.setRowCount(0);
         for (Pedido pedido : arrayPedidos) {
 
             Object[] agregarPedido = {pedido.getIdpedido(), pedido.getCliente().getIdcliente(), pedido.getMesa().getIdmesa(), pedido.getPlatosybebidas().getIdplato(),
-                pedido.getHoraDelPedido(), pedido.getCantidad()};
+                pedido.getCantidad(), pedido.getDemora(), pedido.getHoraDelPedido()};
 
             modeloTabla2.addRow(agregarPedido);
 
@@ -330,149 +526,136 @@ public class Presentador {
 
     }
 
+    public void modificarPedido_pedido() {
 
-    public void cargarTablaConsultaHQLPedido() {
-        ArrayList<Double> listPedido = this.servicioPedido.calcularTotalPrecioAlPublico();
-        ArrayList total = new ArrayList();
-        for(Double del : listPedido){
-            
-           
-          
-        
-        
-        
+        try {
+            int fila = this.pedidoVistas.getjTable1Pedido_pedido().getSelectedRow();
+
+            int index1 = (int) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 1);
+            int index2 = (int) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 2);
+            // int index3 = (int) this.pedidoVistas. getjTable1Pedido_pedido().getValueAt(fila, 3);
+
+            if (fila != -1) {
+                this.pedidoVistas.getjComboBox1mesa_pedido().setSelectedIndex(index2 - 1);
+                this.pedidoVistas.getjComboBox1cliente_pedido().setSelectedIndex(index1 - 1);
+                this.pedidoVistas.getjTextField1cantidad_pedido().setText((String) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 4).toString());
+                //this.pedidoVistas.getjComboBox1comidasTbebidas_pedido().addItem(index3);
+                this.pedidoVistas.getjTextField1demora_pedido().setText(this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 5).toString());
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "debe elegir un pedido");
         }
-        
-         JOptionPane.showMessageDialog(null, total);
-        
-       
-        
-        
-
 
     }
 
-    public void calcularCostoApretadoPropietario() {
-       ArrayList<Double> del = this.servicioPedido.calcularTotalPrecioAlPublico();
-       
-       double total= del.get(del.size()-1);
-       
-       
-       JOptionPane.showMessageDialog(null, total + " pesos " );
-    }
+    public void actualizarPedido_Pedido() {
+        try {
+            Cliente cliente = (Cliente) this.pedidoVistas.getjComboBox1cliente_pedido().getSelectedItem();
+            Mesa mesa = (Mesa) this.pedidoVistas.getjComboBox1mesa_pedido().getSelectedItem();
+            Platosybebidas platosybebidas = (Platosybebidas) this.pedidoVistas.getjComboBox1comidasTbebidas_pedido().getSelectedItem();
 
-    public void totalPrecioDeCostoApretado() {
-        ArrayList<Double> precioAlCosto = this.servicioPedido.calcularTotalPrecioDeCosto();
-        
-         double total2= precioAlCosto.get(precioAlCosto.size()-1);
-        
-        
-        JOptionPane.showMessageDialog(null, total2 + " pesos");
-    }
+            Double cantidad = Double.valueOf(this.pedidoVistas.getjTextField1cantidad_pedido().getText());
+            // String cantidad = this.pedidoVistas.getjTextField1cantidad_pedido().getText();
 
-    public void gananciaTotalApretado() {
-        
-         ArrayList<Double> del = this.servicioPedido.calcularTotalPrecioAlPublico();
-       
-       double totalAlPublico= del.get(del.size()-1);
-       
-       /////////////////////////////////////////////////
-       
-          ArrayList<Double> precioAlCosto = this.servicioPedido.calcularTotalPrecioDeCosto();
-        
-         double precioDeCosto= precioAlCosto.get(precioAlCosto.size()-1);
-         
-         double totalGanancias = totalAlPublico-precioDeCosto;
-         
-         JOptionPane.showMessageDialog(null, totalGanancias + " es la ganancias en limpio hasta el dia de la fecha");
-       
-    }
+            Double demora = Double.valueOf(this.pedidoVistas.getjTextField1demora_pedido().getText());
+            // String demora = this.pedidoVistas.getjTextField1demora_pedido().getText();
 
-    public void modificarClienteApretado() {
+            ///////////////////////////////////////////////////////////////////////////////////////////
+            int fila = this.pedidoVistas.getjTable1Pedido_pedido().getSelectedRow();
+
+            int idPedido = (int) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 0);
+
+            this.servicioPedido.actulizarPedido(idPedido, cliente, mesa, platosybebidas, cantidad, demora);
+
+            // this.llenarComboMesasOcupadas_Factura();
+           // this.llenarComboMesaPedido();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "debe seleccionar los comestibles y los demas campos");
+
+        }
+
       
-        
-        int fila =  this.clientesVistas. getjTable1Clientes_modificar().getSelectedRow();
-        
-        
-        if(fila != -1){
-            
-            this.clientesVistas.getjTextField1id_cliente_paraActualizar().setText(this.clientesVistas. getjTable1Clientes_modificar().getValueAt(fila, 0).toString());
-            this.clientesVistas.getjTextField2nombreCliente().setText(this.clientesVistas.getjTable1Clientes_modificar().getValueAt(fila, 1).toString());
-            this.clientesVistas.getjTextField1apellidoCliente().setText(this.clientesVistas. getjTable1Clientes_modificar().getValueAt(fila, 2).toString());
-            this.clientesVistas. getjTextField3direccionCliente().setText(this.clientesVistas. getjTable1Clientes_modificar().getValueAt(fila, 3).toString());
-            this.clientesVistas.getjTextField1localidad_cliente().setText(this.clientesVistas.getjTable1Clientes_modificar().getValueAt(fila, 4).toString());
-             ////////////////////////////////////////////////////////////////////////////////////
-            this.clientesVistas.getjTextField1id_cliente_paraActualizar().setEditable(false);
-        }
-        else{
-        
-        JOptionPane.showMessageDialog(null, "ocurrio un error");
-        
-        }
     }
 
-   
 
-    public void cargarTablaClienteApretado() {
-        
-        
-        ArrayList<Cliente> cliente = this.servicioCliente.obtenerTodosCliente();
-        DefaultTableModel modeloTabla = (DefaultTableModel) this.clientesVistas.getjTable1Clientes_modificar().getModel();
-        
+    public void mesasDisponiblesApretado() {
+        ArrayList<Mesa> mesasDisponibles = this.servicioMesa.obtenerMesasDisponibles();
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.mesaVistas.getjTable1tablaMesa_mesa().getModel();
         modeloTabla.setRowCount(0);
-        
-        for(Cliente clien : cliente){
-        
-        Object[] agregarALaTabla = {clien.getIdcliente(), clien.getNombre(), clien.getApellido(), clien.getDireccion(), clien.getLocalidad()};
-        modeloTabla.addRow(agregarALaTabla);
-        
-        
-        
+        for (Mesa mesas : mesasDisponibles) {
+            Object[] agregaObjects = {mesas.getIdmesa(), mesas.getNumero(), mesas.getEstado()};
+
+            modeloTabla.addRow(agregaObjects);
+
+        }
+
+    }
+
+    public void mesasOcupadaspretado() {
+        ArrayList<Mesa> mesasOcupadas = this.servicioMesa.obtenerMesasOcupadas();
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.mesaVistas.getjTable1tablaMesa_mesa().getModel();
+        modeloTabla.setRowCount(0);
+        for (Mesa mesas : mesasOcupadas) {
+            Object[] agregaObjects = {mesas.getIdmesa(), mesas.getNumero(), mesas.getEstado()};
+
+            modeloTabla.addRow(agregaObjects);
+
         }
     }
+    
 
-    public void cargarTablaFacturaApretado() {
-        
-        
-        ArrayList<Object> arrayPedidoss = this.servicioPedido.arrayConsultaHQL();
-           
-        DefaultTableModel modeloTabla2 = (DefaultTableModel) this.facturaVistas.getjTable1pedido_factura().getModel();
-        modeloTabla2.setRowCount(0);
-     
-        
-        
-         
-         for(Object array : arrayPedidoss ){
-             
-             modeloTabla2.addRow((Object[]) array);
-         
-       
-         
-         
-         
-         }
-         
-         
-         
-         
+
+    public void cargarMesasPedidoApretado() {
+          ArrayList<Mesa> mesas = this.servicioMesa.obtenerTodosMesa();
+
+        DefaultComboBoxModel modeloMesa = new DefaultComboBoxModel(mesas.toArray());
+
+        this.pedidoVistas.getjComboBox1mesa_pedido().setModel(modeloMesa);
     }
-         
-      
-        
 
-    public void cargarFacturaApretado() {
-       int fila = this.facturaVistas.getjTable1pedido_factura().getSelectedRow();
-       
-       
-       if(fila != -1){
-       
-       this.facturaVistas. getjTextField3cliente_factura().setText(this.facturaVistas.getjTable1pedido_factura().getValueAt(fila, 1).toString());
+    public void ComboMesasOcupadas_Factura() {
+            ArrayList<Mesa> agragarAcombosMesas = this.servicioPedido.mesasOcupadas_Factura();
 
-       
-       
-       }
+        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel(agragarAcombosMesas.toArray());
 
-
+        this.facturaVistas.getjComboBox1mesasOcupadasFactura().setModel(modeloCombo);
+       
     }
+    
+//    public void obtenerUltimoIdPedidoMesasOcupadas(){
+//        Mesa mesa = (Mesa) this.facturaVistas.getjComboBox1mesasOcupadasFactura().getSelectedItem();
+//        int idmesa = mesa.getIdmesa();
+//        
+//       ArrayList<Integer> idSegunMesas = this.servicioFactura.obtetenerPedidoSegunMesa(idmesa);
+//       
+//     
+//       
+//        final int ULTIMO_ID = idSegunMesas.get(idSegunMesas.size()-1);
+//       
+//      ArrayList<Object> ultimoArrayPedidoIdMayor = this.servicioFactura.arrayTodosSegunIdMayorAlUltimo(ULTIMO_ID);
+//     
+//       
+//       JOptionPane.showMessageDialog(null, ULTIMO_ID);
+//       
+//           DefaultTableModel modeloTabla3 = (DefaultTableModel) this.facturaVistas.getjTable1pedido_factura().getModel();
+//        modeloTabla3.setRowCount(0);
+//
+//        for (Object array : ultimoArrayPedidoIdMayor) {
+//
+//            modeloTabla3.addRow((Object[]) array);
+//
+//        }
+        
+        
+    
+    
+    
+    
+    
+    
+    
 
 }

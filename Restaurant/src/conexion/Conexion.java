@@ -26,7 +26,7 @@ public class Conexion {
 
             Class.forName(sDriver).newInstance();
             con = DriverManager.getConnection(sURL, "root", "1234");
-            JOptionPane.showMessageDialog(null, "conexion exitosa");
+           // JOptionPane.showMessageDialog(null, "conexion exitosa");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error al conectar con la base de datos");
         }
