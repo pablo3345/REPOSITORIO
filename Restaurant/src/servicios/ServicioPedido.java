@@ -22,6 +22,7 @@ import repositorio.RepositorioMesa;
 import repositorio.RepositorioPedido;
 
 import repositorio.RepositorioPlato;
+import vistas.FacturaVistas;
 
 /**
  *
@@ -98,6 +99,8 @@ public class ServicioPedido {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "la mesa se actualizo correctamente");
+            
+           // con.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -151,6 +154,14 @@ public class ServicioPedido {
 
             this.ponerMesasOcupadasPedido(mesa);
             this.ponerMesaDisponiblePedido(mesa);
+         
+            
+           // con.close();
+          
+           
+            
+           
+          
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -175,10 +186,21 @@ public class ServicioPedido {
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.executeUpdate();
+            
+            
             JOptionPane.showMessageDialog(null, "la mesa se actualizo correctamente");
+           // this.mesasOcupadas_Factura();
+           // this.obtenerMesasOcupadas();
+           // this.mesasOcupadas_Factura();
+          
+           // con.close();
+           
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        
+         
 
     }
 
@@ -202,7 +224,7 @@ public class ServicioPedido {
             try {
                 PreparedStatement preparedStatement = con.prepareStatement(sql);
                 preparedStatement.executeUpdate();
-            
+                 //con.close();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
@@ -221,23 +243,23 @@ public class ServicioPedido {
     public ArrayList<Mesa> mesasOcupadas_Factura() {
        
     
-    ArrayList<Mesa> mesasOcu = this.repositorioMesa.obtenerTodosMesa();
-    ArrayList<Mesa> mesasOcupadass = new ArrayList<>();
+    ArrayList<Mesa> mesasOcu = this.repositorioMesa.obtenerMesasOcupadas();
+    //ArrayList<Mesa> mesasOcupadass = new ArrayList<>();
      
-    for(Mesa mesa : mesasOcu){
+//    for(Mesa mesa : mesasOcu){
+//    
+//    if(mesa.getEstado().equals("ocupada")){
+//    mesasOcupadass.add(mesa);
+//    
+//    
+//    }
     
-    if(mesa.getEstado().equals("ocupada")){
-    mesasOcupadass.add(mesa);
-    
-    
+     return mesasOcu;
     }
+   
     
     
-    }
-    return mesasOcupadass;
     
-    
-    }
 
     private void validarMesas(Mesa mesa) {
        if(mesa == null){
@@ -247,6 +269,27 @@ public class ServicioPedido {
        
        
        }
+    }
+    
+      public ArrayList<Mesa> obtenerMesasOcupadas() {
+         ArrayList<Mesa> mesasOcupadas = new ArrayList<>();
+    
+    ArrayList<Mesa> mesasOcupadass = this.repositorioMesa.obtenerTodosMesa();
+    
+    for(Mesa mes : mesasOcupadass){
+    
+    if(mes.getEstado().equals("ocupada")){
+        
+        mesasOcupadas.add(mes);
+    
+    
+    
+    
+    }
+    
+    }
+    
+    return mesasOcupadas;
     }
     
 

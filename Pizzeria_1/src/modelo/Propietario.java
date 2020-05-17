@@ -1,5 +1,5 @@
 package modelo;
-// Generated 28/03/2020 20:45:43 by Hibernate Tools 4.3.1
+// Generated 10/05/2020 19:03:06 by Hibernate Tools 4.3.1
 
 
 
@@ -10,13 +10,13 @@ public class Propietario  implements java.io.Serializable {
 
 
      private Integer idPropietario;
-     private Factura factura;
+     private Pedido pedido;
 
     public Propietario() {
     }
 
-    public Propietario(Factura factura) {
-       this.factura = factura;
+    public Propietario(Pedido pedido) {
+       this.pedido = pedido;
     }
    
     public Integer getIdPropietario() {
@@ -26,12 +26,12 @@ public class Propietario  implements java.io.Serializable {
     public void setIdPropietario(Integer idPropietario) {
         this.idPropietario = idPropietario;
     }
-    public Factura getFactura() {
-        return this.factura;
+    public Pedido getPedido() {
+        return this.pedido;
     }
     
-    public void setFactura(Factura factura) {
-        this.factura = factura;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
 

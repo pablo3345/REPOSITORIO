@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/03/2020 20:45:45 by Hibernate Tools 4.3.1 -->
+<!-- Generated 10/05/2020 19:03:07 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Pedido" table="pedido" catalog="pizzeria_2" optimistic-lock="version">
         <id name="idPedido" type="java.lang.Integer">
@@ -17,20 +17,20 @@
         <many-to-one name="plato" class="modelo.Plato" fetch="select">
             <column name="Plato_idPlato" not-null="true" />
         </many-to-one>
-        <property name="horaDelPedido" type="timestamp">
-            <column name="horaDelPedido" length="19" not-null="true" />
-        </property>
         <property name="demora" type="double">
             <column name="demora" precision="22" scale="0" not-null="true" />
         </property>
         <property name="cantidad" type="double">
             <column name="cantidad" precision="22" scale="0" not-null="true" />
         </property>
-        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+        <property name="estado" type="string">
+            <column name="estado" length="45" not-null="true" />
+        </property>
+        <set name="propietarios" table="propietario" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="Pedido_idPedido" not-null="true" />
             </key>
-            <one-to-many class="modelo.Factura" />
+            <one-to-many class="modelo.Propietario" />
         </set>
     </class>
 </hibernate-mapping>

@@ -129,7 +129,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton3mesaPrincipal.setBounds(620, 80, 140, 140);
 
         jButton4platoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/PLATO.2.png"))); // NOI18N
-        jButton4platoPrincipal.setText("PLATO");
+        jButton4platoPrincipal.setText("PLATO Y BEBIDAS");
         jButton4platoPrincipal.setBorder(null);
         jButton4platoPrincipal.setBorderPainted(false);
         jButton4platoPrincipal.setContentAreaFilled(false);

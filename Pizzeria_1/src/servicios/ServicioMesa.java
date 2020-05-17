@@ -5,10 +5,36 @@
  */
 package servicios;
 
+import java.util.ArrayList;
+import modelo.Mesa;
+import repositorio.RepositorioMesa;
+
 /**
  *
  * @author pablo
  */
 public class ServicioMesa {
+    private RepositorioMesa  repositorioMesa;
+
+    public ServicioMesa() {
+        this.repositorioMesa =new RepositorioMesa();
+    }
+    
+    
+    
+
+    public void guardarMesa(String numero, String estado) {
+        Mesa mesa = new Mesa(numero, estado);
+        
+        this.repositorioMesa.guardarMesa(mesa);
+        
+        
+    }
+
+    public ArrayList<Mesa> obtenerMesas() {
+       ArrayList<Mesa> mesaArray = this.repositorioMesa.obtenerTodosMesas();
+       
+       return mesaArray;
+    }
     
 }

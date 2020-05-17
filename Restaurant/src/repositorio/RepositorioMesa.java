@@ -43,7 +43,8 @@ public class RepositorioMesa {
     public ArrayList<Mesa> obtenerTodosMesa() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
     {
         ArrayList<Mesa> arrayADevolver = null;
-
+       
+        
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
@@ -54,6 +55,10 @@ public class RepositorioMesa {
             arrayADevolver = (ArrayList<Mesa>) session.createQuery("FROM Mesa").list();
 
             tx.commit();
+            
+          
+            
+         
 
         } catch (HibernateException e) {
             if (tx != null) {
@@ -64,7 +69,7 @@ public class RepositorioMesa {
             session.close();
         }
 
-        return arrayADevolver;
+        return arrayADevolver;    
     }
 
     public ArrayList<Object> obtenerTodosMesaSegunPedido() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
@@ -98,6 +103,52 @@ public class RepositorioMesa {
         }
 
         return arrayADevolver;
+    }
+    
+      public ArrayList<Mesa> obtenerMesasOcupadas() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
+    {
+        ArrayList<Mesa> arrayADevolver = null;
+        ArrayList<Mesa>  agregarMesasOcupadas = new ArrayList<>();
+       
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
+            //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
+            arrayADevolver = (ArrayList<Mesa>) session.createQuery("FROM Mesa").list();
+
+            tx.commit();
+            
+            for(Mesa mes : arrayADevolver){
+                if(mes.getEstado().equals("ocupada")){
+                
+                agregarMesasOcupadas.add(mes);
+                
+                }
+            
+        
+        
+        
+        
+        }
+            
+          
+            
+         
+
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return agregarMesasOcupadas;    
     }
 
 }

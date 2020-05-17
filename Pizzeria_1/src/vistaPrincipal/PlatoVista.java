@@ -5,6 +5,8 @@
  */
 package vistaPrincipal;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import presentador.Presentador;
 
@@ -39,6 +41,45 @@ public class PlatoVista extends javax.swing.JFrame {
        
     }
 
+    public JTextField getjTextField1costoDelPlato() {
+        return jTextField1costoDelPlato;
+    }
+
+    public JTextField getjTextField2nombrePlato() {
+        return jTextField2nombrePlato;
+    }
+
+    public JTextField getjTextField3precioAlPublicoPlato() {
+        return jTextField3precioAlPublicoPlato;
+    }
+
+    public JRadioButton getjRadioButton1caliente() {
+        return jRadioButton1caliente;
+    }
+
+    public JRadioButton getjRadioButton2fria() {
+        return jRadioButton2fria;
+    }
+
+    public JRadioButton getjRadioButton3bebidas() {
+        return jRadioButton3bebidas;
+    }
+
+    public JRadioButton getjRadioButton4ensaladas() {
+        return jRadioButton4ensaladas;
+    }
+
+    public JRadioButton getjRadioButton5postres() {
+        return jRadioButton5postres;
+    }
+
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+    
+    
+    
+
 
   
     
@@ -55,21 +96,135 @@ public class PlatoVista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1costoDelPlato = new javax.swing.JTextField();
+        jTextField2nombrePlato = new javax.swing.JTextField();
+        jTextField3precioAlPublicoPlato = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jRadioButton1caliente = new javax.swing.JRadioButton();
+        jRadioButton2fria = new javax.swing.JRadioButton();
+        jRadioButton3bebidas = new javax.swing.JRadioButton();
+        jRadioButton4ensaladas = new javax.swing.JRadioButton();
+        jRadioButton5postres = new javax.swing.JRadioButton();
+        jButton1salirPlato = new javax.swing.JButton();
+        jButton1guardarPlato = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 514, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1025, 610));
+        getContentPane().setLayout(null);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/PLATO.2.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 30, 140, 150);
+        getContentPane().add(jTextField1costoDelPlato);
+        jTextField1costoDelPlato.setBounds(370, 110, 190, 30);
+        getContentPane().add(jTextField2nombrePlato);
+        jTextField2nombrePlato.setBounds(370, 70, 190, 30);
+        getContentPane().add(jTextField3precioAlPublicoPlato);
+        jTextField3precioAlPublicoPlato.setBounds(370, 150, 190, 30);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Nombre:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(290, 70, 70, 30);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Tipo:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(310, 220, 50, 30);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Precio al Publico:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(230, 150, 130, 30);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Costo del Plato:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(240, 110, 120, 30);
+
+        buttonGroup1.add(jRadioButton1caliente);
+        jRadioButton1caliente.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jRadioButton1caliente.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1caliente.setText("Caliente");
+        getContentPane().add(jRadioButton1caliente);
+        jRadioButton1caliente.setBounds(370, 220, 81, 25);
+
+        buttonGroup1.add(jRadioButton2fria);
+        jRadioButton2fria.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jRadioButton2fria.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2fria.setText("Fria");
+        getContentPane().add(jRadioButton2fria);
+        jRadioButton2fria.setBounds(490, 220, 51, 25);
+
+        buttonGroup1.add(jRadioButton3bebidas);
+        jRadioButton3bebidas.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jRadioButton3bebidas.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton3bebidas.setText("Bebidas");
+        getContentPane().add(jRadioButton3bebidas);
+        jRadioButton3bebidas.setBounds(580, 220, 93, 23);
+
+        buttonGroup1.add(jRadioButton4ensaladas);
+        jRadioButton4ensaladas.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jRadioButton4ensaladas.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton4ensaladas.setText("Ensaladas");
+        getContentPane().add(jRadioButton4ensaladas);
+        jRadioButton4ensaladas.setBounds(710, 220, 93, 25);
+
+        buttonGroup1.add(jRadioButton5postres);
+        jRadioButton5postres.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jRadioButton5postres.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton5postres.setText("Postres");
+        getContentPane().add(jRadioButton5postres);
+        jRadioButton5postres.setBounds(840, 220, 77, 25);
+
+        jButton1salirPlato.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1salirPlato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1salirPlato.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1salirPlato.setText("Salir");
+        jButton1salirPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1salirPlatoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1salirPlato);
+        jButton1salirPlato.setBounds(880, 480, 90, 40);
+
+        jButton1guardarPlato.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1guardarPlato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1guardarPlato.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1guardarPlato.setText("Guardar");
+        jButton1guardarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1guardarPlatoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1guardarPlato);
+        jButton1guardarPlato.setBounds(590, 483, 130, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo rojo pizzeria2.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -10, 1008, 590);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1salirPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1salirPlatoActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1salirPlatoActionPerformed
+
+    private void jButton1guardarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1guardarPlatoActionPerformed
+       this.presentador.guardarPlatoApretado();
+    }//GEN-LAST:event_jButton1guardarPlatoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,5 +264,22 @@ public class PlatoVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1guardarPlato;
+    private javax.swing.JButton jButton1salirPlato;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton jRadioButton1caliente;
+    private javax.swing.JRadioButton jRadioButton2fria;
+    private javax.swing.JRadioButton jRadioButton3bebidas;
+    private javax.swing.JRadioButton jRadioButton4ensaladas;
+    private javax.swing.JRadioButton jRadioButton5postres;
+    private javax.swing.JTextField jTextField1costoDelPlato;
+    private javax.swing.JTextField jTextField2nombrePlato;
+    private javax.swing.JTextField jTextField3precioAlPublicoPlato;
     // End of variables declaration//GEN-END:variables
 }

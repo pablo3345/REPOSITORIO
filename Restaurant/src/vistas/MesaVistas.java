@@ -27,6 +27,7 @@ public class MesaVistas extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
        // this.jRadioButton1disponible.setSelected(true);
+        
       
                 
     }

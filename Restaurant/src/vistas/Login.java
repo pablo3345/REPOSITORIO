@@ -124,12 +124,14 @@ public class Login extends javax.swing.JFrame {
       if (getjTextField1usuarioLogin().getText().equals(usuario) && getjPasswordField1contraseñaLogin().getText().equals(contraseña)){
       this.visPrincipal.setVisible(true);
       this.visPrincipal. getjButton1propietarioPrincipal().setEnabled(false);
+      dispose();
       
       
       }
       
       else if(getjTextField1usuarioLogin().getText().equals(propietario) && getjPasswordField1contraseñaLogin().getText().equals(contraseñaPropietario)){
       this.visPrincipal.setVisible(true);
+      dispose();
       
       }
       else

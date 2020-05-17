@@ -5,8 +5,12 @@
  */
 package servicios;
 
+import java.util.ArrayList;
 import modelo.Cliente;
 import repositorio.RepositorioCliente;
+
+
+
 
 /**
  *
@@ -22,17 +26,30 @@ public class ServicioCliente {
     
     
 
-    public void guardarCliente( String nombre, String apellido, String direccion) {
+    public void guardarCliente(String nombre, String apellido, String direccion, String localidad) {
+        Cliente cliente = new Cliente(nombre, apellido, direccion, localidad);
         
-        Cliente cliente = new Cliente(nombre, apellido, direccion);
+        this.repositorioCliente.guardarCliente(cliente);
         
-        this.repositorioCliente.guardar(cliente);
-        
-        
-      
-      
         
     }
+
+    public ArrayList<Cliente> obtenerTodosClientes() {
+       ArrayList<Cliente> obtenerClientes = this.repositorioCliente.obtenerTodosCliente();
+       
+       return obtenerClientes;
+    }
+
+    public void actualizarCliente(int idClienteConvertido, String nombre, String apellido, String direccion, String localidad) {
+        this.repositorioCliente.actualizarCliente( idClienteConvertido, nombre, apellido, direccion, localidad);
+    }
+
+    
+   
+    
+    
+
+   
 
    
 }

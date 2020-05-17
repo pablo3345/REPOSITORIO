@@ -5,18 +5,25 @@
  */
 package vistas;
 
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import modelo.Mesa;
 import presentador.Presentador;
+import servicios.ServicioPedido;
+import static vistas.FacturaVistas.jComboBox1comboMesasOcupadas;
 
 /**
  *
  * @author pablo
  */
 public class PedidoVistas extends javax.swing.JFrame {
-    
+
     private Presentador presentador;
+    private ServicioPedido servicioPedido;
+   
 
     /**
      * Creates new form PedidoVistas
@@ -25,13 +32,11 @@ public class PedidoVistas extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
-       
-        
+        this.servicioPedido = new ServicioPedido();
+      
       
        
-      
 
-        
     }
 
     public JComboBox<Object> getjComboBox1cliente_pedido() {
@@ -45,22 +50,6 @@ public class PedidoVistas extends javax.swing.JFrame {
     public JTable getjTable1Pedido_pedido() {
         return jTable1Pedido_pedido;
     }
-
-   
-
-    
-    
-    
-    
-    
-    
-
-   
-    
-    
-    
-
-    
 
     public JComboBox<Object> getjComboBox1mesa_pedido() {
         return jComboBox1mesa_pedido;
@@ -77,30 +66,6 @@ public class PedidoVistas extends javax.swing.JFrame {
     public JTextField getjTextField1demora_pedido() {
         return jTextField1demora_pedido;
     }
-    
-    
-    
-    
-    
-
-    
-    
-    
-
- 
-    
-    
-    
-    
-
-   
-
-   
-    
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -303,31 +268,36 @@ public class PedidoVistas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1guardar_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1guardar_pedidoActionPerformed
-       this.presentador.guardarPedidoApretado();
+        this.presentador.guardarPedidoApretado();
     }//GEN-LAST:event_jButton1guardar_pedidoActionPerformed
 
     private void jButton1salir_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1salir_pedidoActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_jButton1salir_pedidoActionPerformed
 
     private void jButton1buscarTipo_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1buscarTipo_pedidoActionPerformed
-      this.presentador.buscarPorTipoPedidoApretado();
+        this.presentador.buscarPorTipoPedidoApretado();
     }//GEN-LAST:event_jButton1buscarTipo_pedidoActionPerformed
 
     private void jButton1CargarTablaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1CargarTablaPedidoActionPerformed
-      this.presentador.cargarTablaPedido_Pedido();
+        this.presentador.cargarTablaPedido_Pedido();
     }//GEN-LAST:event_jButton1CargarTablaPedidoActionPerformed
 
     private void jButton1modificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1modificarPedidoActionPerformed
-       this.presentador.modificarPedido_pedido();
+        this.presentador.modificarPedido_pedido();
     }//GEN-LAST:event_jButton1modificarPedidoActionPerformed
 
     private void jButton1actualizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1actualizarPedidoActionPerformed
-       this.presentador.actualizarPedido_Pedido();
+       
+        this.presentador.actualizarPedido_Pedido();
+
     }//GEN-LAST:event_jButton1actualizarPedidoActionPerformed
 
     private void jButton1cargarMesasPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1cargarMesasPedidoActionPerformed
-       this.presentador.cargarMesasPedidoApretado();
+        this.presentador.cargarMesasPedidoApretado();
+        
+        // FacturaVistas.jTextField1costoAgregado.setText("PABLO");
+      
     }//GEN-LAST:event_jButton1cargarMesasPedidoActionPerformed
 
     /**
@@ -367,9 +337,9 @@ public class PedidoVistas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1CargarTablaPedido;
-    private javax.swing.JButton jButton1actualizarPedido;
-    private javax.swing.JButton jButton1buscarTipo_pedido;
-    private javax.swing.JButton jButton1cargarMesasPedido;
+    public static javax.swing.JButton jButton1actualizarPedido;
+    public static javax.swing.JButton jButton1buscarTipo_pedido;
+    public static javax.swing.JButton jButton1cargarMesasPedido;
     private javax.swing.JButton jButton1guardar_pedido;
     private javax.swing.JButton jButton1modificarPedido;
     private javax.swing.JButton jButton1salir_pedido;
@@ -377,7 +347,7 @@ public class PedidoVistas extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<Object> jComboBox1cliente_pedido;
     private javax.swing.JComboBox<Object> jComboBox1comidasTbebidas_pedido;
-    private javax.swing.JComboBox<Object> jComboBox1mesa_pedido;
+    public static javax.swing.JComboBox<Object> jComboBox1mesa_pedido;
     private javax.swing.JComboBox<Object> jComboBox1tipo_pedido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -391,4 +361,7 @@ public class PedidoVistas extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1cantidad_pedido;
     private javax.swing.JTextField jTextField1demora_pedido;
     // End of variables declaration//GEN-END:variables
+
+  
+
 }

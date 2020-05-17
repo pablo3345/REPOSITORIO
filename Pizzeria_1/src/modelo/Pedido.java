@@ -1,8 +1,7 @@
 package modelo;
-// Generated 28/03/2020 20:45:43 by Hibernate Tools 4.3.1
+// Generated 10/05/2020 19:03:06 by Hibernate Tools 4.3.1
 
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,31 +15,31 @@ public class Pedido  implements java.io.Serializable {
      private Cliente cliente;
      private Mesa mesa;
      private Plato plato;
-     private Date horaDelPedido;
      private double demora;
      private double cantidad;
-     private Set facturas = new HashSet(0);
+     private String estado;
+     private Set propietarios = new HashSet(0);
 
     public Pedido() {
     }
 
 	
-    public Pedido(Cliente cliente, Mesa mesa, Plato plato, Date horaDelPedido, double demora, double cantidad) {
+    public Pedido(Cliente cliente, Mesa mesa, Plato plato, double demora, double cantidad, String estado) {
         this.cliente = cliente;
         this.mesa = mesa;
         this.plato = plato;
-        this.horaDelPedido = horaDelPedido;
         this.demora = demora;
         this.cantidad = cantidad;
+        this.estado = estado;
     }
-    public Pedido(Cliente cliente, Mesa mesa, Plato plato, Date horaDelPedido, double demora, double cantidad, Set facturas) {
+    public Pedido(Cliente cliente, Mesa mesa, Plato plato, double demora, double cantidad, String estado, Set propietarios) {
        this.cliente = cliente;
        this.mesa = mesa;
        this.plato = plato;
-       this.horaDelPedido = horaDelPedido;
        this.demora = demora;
        this.cantidad = cantidad;
-       this.facturas = facturas;
+       this.estado = estado;
+       this.propietarios = propietarios;
     }
    
     public Integer getIdPedido() {
@@ -71,13 +70,6 @@ public class Pedido  implements java.io.Serializable {
     public void setPlato(Plato plato) {
         this.plato = plato;
     }
-    public Date getHoraDelPedido() {
-        return this.horaDelPedido;
-    }
-    
-    public void setHoraDelPedido(Date horaDelPedido) {
-        this.horaDelPedido = horaDelPedido;
-    }
     public double getDemora() {
         return this.demora;
     }
@@ -92,12 +84,19 @@ public class Pedido  implements java.io.Serializable {
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
-    public Set getFacturas() {
-        return this.facturas;
+    public String getEstado() {
+        return this.estado;
     }
     
-    public void setFacturas(Set facturas) {
-        this.facturas = facturas;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    public Set getPropietarios() {
+        return this.propietarios;
+    }
+    
+    public void setPropietarios(Set propietarios) {
+        this.propietarios = propietarios;
     }
 
 

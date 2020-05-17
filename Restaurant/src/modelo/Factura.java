@@ -1,6 +1,9 @@
 package modelo;
 // Generated 10/04/2020 15:44:52 by Hibernate Tools 4.3.1
 
+import javafx.scene.control.ComboBox;
+
+
 
 
 /**
@@ -16,9 +19,16 @@ public class Factura  implements java.io.Serializable {
      private double precio;
      private String mesa;
      private String total;
+   
 
     public Factura() {
     }
+
+   
+
+   
+    
+    
 
     public Factura(String cliente, String platoybebidas, double cantidad, double precio, String mesa, String total) {
        this.cliente = cliente;
@@ -27,6 +37,7 @@ public class Factura  implements java.io.Serializable {
        this.precio = precio;
        this.mesa = mesa;
        this.total = total;
+    
     }
    
     public Integer getIdfactura() {
@@ -78,6 +89,13 @@ public class Factura  implements java.io.Serializable {
     public void setTotal(String total) {
         this.total = total;
     }
+
+    @Override
+    public String toString() {
+        return "Factura{" + "idfactura=" + idfactura + ", cliente=" + cliente + ", platoybebidas=" + platoybebidas + ", cantidad=" + cantidad + ", precio=" + precio + ", mesa=" + mesa + ", total=" + total + '}';
+    }
+    
+    
 
 
 

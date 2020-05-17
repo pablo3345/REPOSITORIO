@@ -5,10 +5,14 @@
  */
 package vistas;
 
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import modelo.Mesa;
 import presentador.Presentador;
+import servicios.ServicioPedido;
 
 /**
  *
@@ -17,6 +21,8 @@ import presentador.Presentador;
 public class FacturaVistas extends javax.swing.JFrame {
     
     private Presentador presentador;
+    private ServicioPedido servicioPedido;
+   
 
     /**
      * Creates new form FacturaVistas
@@ -25,8 +31,14 @@ public class FacturaVistas extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
+      
+        this.servicioPedido = new ServicioPedido();
         
-       // this.presentador.llenarComboMesasOcupadas_Factura();
+        
+      
+       
+        
+       
         
        
     }
@@ -36,6 +48,8 @@ public class FacturaVistas extends javax.swing.JFrame {
     public JTextField getjTextField2total_factura() {
         return jTextField2total_factura;
     }
+    
+    
     
     
 
@@ -51,13 +65,17 @@ public class FacturaVistas extends javax.swing.JFrame {
         return jTable1pedido_factura;
     }
 
-    public JComboBox<Object> getjComboBox1mesasOcupadasFactura() {
-        return jComboBox1mesasOcupadasFactura;
+    public JComboBox<Object> getjComboBox1comboMesasOcupadas() {
+        return jComboBox1comboMesasOcupadas;
     }
+
+    
 
     public JTextField getjTextField1costoAgregado() {
         return jTextField1costoAgregado;
     }
+    
+ 
     
     
     
@@ -89,12 +107,13 @@ public class FacturaVistas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jLabel3 = new javax.swing.JLabel();
         jButton1salir = new javax.swing.JButton();
         jTextField2total_factura = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1pedido_factura = new javax.swing.JTable();
-        jComboBox1mesasOcupadasFactura = new javax.swing.JComboBox<>();
         jButton1botonAgregarPedidosFactura = new javax.swing.JButton();
         jButton1guardarFactura = new javax.swing.JButton();
         jButton1VerFactura = new javax.swing.JButton();
@@ -103,7 +122,16 @@ public class FacturaVistas extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextField1costoAgregado = new javax.swing.JTextField();
         jButton1LLenarComboMesasOcupadas_factura = new javax.swing.JButton();
+        jComboBox1comboMesasOcupadas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+
+        jMenuItem1.setText("FacturaVistas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 550));
@@ -144,9 +172,6 @@ public class FacturaVistas extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 150, 730, 240);
-
-        getContentPane().add(jComboBox1mesasOcupadasFactura);
-        jComboBox1mesasOcupadasFactura.setBounds(330, 20, 160, 30);
 
         jButton1botonAgregarPedidosFactura.setBackground(new java.awt.Color(0, 0, 0));
         jButton1botonAgregarPedidosFactura.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -208,7 +233,7 @@ public class FacturaVistas extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(170, 20, 140, 30);
         getContentPane().add(jTextField1costoAgregado);
-        jTextField1costoAgregado.setBounds(330, 70, 160, 30);
+        jTextField1costoAgregado.setBounds(330, 70, 170, 30);
 
         jButton1LLenarComboMesasOcupadas_factura.setBackground(new java.awt.Color(0, 0, 0));
         jButton1LLenarComboMesasOcupadas_factura.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -221,6 +246,10 @@ public class FacturaVistas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1LLenarComboMesasOcupadas_factura);
         jButton1LLenarComboMesasOcupadas_factura.setBounds(530, 20, 110, 30);
+
+        jComboBox1comboMesasOcupadas.setComponentPopupMenu(jPopupMenu1);
+        getContentPane().add(jComboBox1comboMesasOcupadas);
+        jComboBox1comboMesasOcupadas.setBounds(330, 20, 170, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -250,8 +279,12 @@ public class FacturaVistas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1LimpiarFacturaApretadoActionPerformed
 
     private void jButton1LLenarComboMesasOcupadas_facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1LLenarComboMesasOcupadas_facturaActionPerformed
-        this.presentador.ComboMesasOcupadas_Factura();
+        //this.presentador.ComboMesasOcupadas_Factura();
     }//GEN-LAST:event_jButton1LLenarComboMesasOcupadas_facturaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       this.presentador.ComboMesasOcupadas_Factura();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,14 +328,18 @@ public class FacturaVistas extends javax.swing.JFrame {
     private javax.swing.JButton jButton1botonAgregarPedidosFactura;
     private javax.swing.JButton jButton1guardarFactura;
     private javax.swing.JButton jButton1salir;
-    private javax.swing.JComboBox<Object> jComboBox1mesasOcupadasFactura;
+    public static javax.swing.JComboBox<Object> jComboBox1comboMesasOcupadas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    public static javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1pedido_factura;
-    private javax.swing.JTextField jTextField1costoAgregado;
+    public static javax.swing.JTextField jTextField1costoAgregado;
     private javax.swing.JTextField jTextField2total_factura;
     // End of variables declaration//GEN-END:variables
+
+  
 }

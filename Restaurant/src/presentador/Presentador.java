@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
+import javafx.scene.control.ComboBox;
 import javax.swing.Action;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
@@ -57,6 +59,7 @@ public class Presentador {
     private ServicioMesa servicioMesa;
     private ServicioFactura servicioFactura;
     private ServicioPropietario servicioPropietario;
+   // private  JComboBox jComboBox1mesasOcupadasFactura;
 
     public Presentador(vistaPrincipal vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -69,6 +72,7 @@ public class Presentador {
     }
 
     public Presentador(PlatoVistas platoVistas) {
+        
         this.platoVistas = platoVistas;
         this.servicioPlato = new ServicioPlato();
         llenarComboTipo();
@@ -79,19 +83,27 @@ public class Presentador {
         this.mesaVistas = mesaVistas;
         this.servicioMesa = new ServicioMesa();
         this.servicioFactura = new ServicioFactura();
+        
+        
+       
+       
+                
 
     }
 
-    public Presentador(PedidoVistas pedidoVistas ) {
+    public Presentador(PedidoVistas pedidoVistas) {
+      
         this.pedidoVistas = pedidoVistas;
-        
+      
         this.servicioPedido = new ServicioPedido();
+        
         this.servicioPlato = new ServicioPlato();//lo agregue recien
         this.servicioCliente = new ServicioCliente();
         this.servicioMesa = new ServicioMesa();
         this.servicioFactura = new ServicioFactura();
         this.llenarComboTipoPedido();
         this.llenarComboClientePedido();
+       
      
 
     }
@@ -101,6 +113,10 @@ public class Presentador {
         this.servicioFactura = new ServicioFactura();
         this.servicioPedido = new ServicioPedido();
         this.servicioMesa = new ServicioMesa();
+        this.ComboMesasOcupadas_Factura();
+       
+       
+       
        
 
     }
@@ -130,6 +146,7 @@ public class Presentador {
             this.clientesVistas.getjTextField2nombreCliente().setText("");
             this.clientesVistas.getjTextField1apellidoCliente().setText("");
             this.clientesVistas.getjTextField3direccionCliente().setText("");
+            this.clientesVistas.getjTextField1localidad_cliente().setText("");
             this.clientesVistas.getjTextField1localidad_cliente().setText("");
 
         } catch (IllegalArgumentException e) {
@@ -221,6 +238,9 @@ public class Presentador {
             JOptionPane.showMessageDialog(null, "el pedido se guardo correctamente");
            // this.llenarComboMesaPedido();
             //llenarComboMesasOcupadas_Factura();
+//            JComboBox modeloCombo = new JComboBox();
+//            this.ComboMesasOcupadas_Factura();
+              
 
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -392,6 +412,8 @@ public class Presentador {
 
         }
     }
+    
+  
 
   
 
@@ -400,9 +422,9 @@ public class Presentador {
         
         
         
-      
+    
         //////////////////////////////////////////////////////////////////////////////////////////////
-        Mesa mesa = (Mesa) this.facturaVistas.getjComboBox1mesasOcupadasFactura().getSelectedItem();
+        Mesa mesa = (Mesa) this.facturaVistas. getjComboBox1comboMesasOcupadas().getSelectedItem();
 
         int idMesa = mesa.getIdmesa();
         
@@ -440,7 +462,7 @@ public class Presentador {
                 //////////////////////////////////////////////////////////////////////////
                 this.facturaVistas.getjTextField1costoAgregado().setText(precio);
                 /////////////////////////////////////////////////////////////////////////////
-             
+                
               
             } catch (IllegalArgumentException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -493,7 +515,7 @@ public class Presentador {
             this.servicioFactura.actualizarMesasDespuesDeLaFactura(idMesa);
             
             
-           
+            this.ComboMesasOcupadas_Factura();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "debe guardar algun pedido");
@@ -543,9 +565,10 @@ public class Presentador {
                 this.pedidoVistas.getjTextField1demora_pedido().setText(this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 5).toString());
 
             }
+            
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "debe elegir un pedido");
+            JOptionPane.showMessageDialog(null, "debe elegir un pedido y seleccionar todos los campos");
         }
 
     }
@@ -571,11 +594,36 @@ public class Presentador {
 
             // this.llenarComboMesasOcupadas_Factura();
            // this.llenarComboMesaPedido();
+//            JComboBox modeloCombo = new JComboBox();
+             //  this.ComboMesasOcupadas_Factura();
+          
+             
+             FacturaVistas.jMenuItem1.doClick();
+            
+            this.cargarMesasPedidoApretado();
+            
+            
+           
+          
+            
+             
+              
+              
+             
+           
+          
+           
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "debe seleccionar los comestibles y los demas campos");
 
         }
+        
+        
+     
+         
+           
+          
 
       
     }
@@ -595,7 +643,7 @@ public class Presentador {
     }
 
     public void mesasOcupadaspretado() {
-        ArrayList<Mesa> mesasOcupadas = this.servicioMesa.obtenerMesasOcupadas();
+        ArrayList<Mesa> mesasOcupadas = this.servicioPedido.obtenerMesasOcupadas();
         DefaultTableModel modeloTabla = (DefaultTableModel) this.mesaVistas.getjTable1tablaMesa_mesa().getModel();
         modeloTabla.setRowCount(0);
         for (Mesa mesas : mesasOcupadas) {
@@ -617,37 +665,16 @@ public class Presentador {
     }
 
     public void ComboMesasOcupadas_Factura() {
-            ArrayList<Mesa> agragarAcombosMesas = this.servicioPedido.mesasOcupadas_Factura();
+         ArrayList<Mesa> agragarAcombosMesas = this.servicioPedido.mesasOcupadas_Factura();
 
         DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel(agragarAcombosMesas.toArray());
 
-        this.facturaVistas.getjComboBox1mesasOcupadasFactura().setModel(modeloCombo);
-       
+        this.facturaVistas. getjComboBox1comboMesasOcupadas().setModel(modeloCombo);
+        
+      
     }
     
-//    public void obtenerUltimoIdPedidoMesasOcupadas(){
-//        Mesa mesa = (Mesa) this.facturaVistas.getjComboBox1mesasOcupadasFactura().getSelectedItem();
-//        int idmesa = mesa.getIdmesa();
-//        
-//       ArrayList<Integer> idSegunMesas = this.servicioFactura.obtetenerPedidoSegunMesa(idmesa);
-//       
-//     
-//       
-//        final int ULTIMO_ID = idSegunMesas.get(idSegunMesas.size()-1);
-//       
-//      ArrayList<Object> ultimoArrayPedidoIdMayor = this.servicioFactura.arrayTodosSegunIdMayorAlUltimo(ULTIMO_ID);
-//     
-//       
-//       JOptionPane.showMessageDialog(null, ULTIMO_ID);
-//       
-//           DefaultTableModel modeloTabla3 = (DefaultTableModel) this.facturaVistas.getjTable1pedido_factura().getModel();
-//        modeloTabla3.setRowCount(0);
-//
-//        for (Object array : ultimoArrayPedidoIdMayor) {
-//
-//            modeloTabla3.addRow((Object[]) array);
-//
-//        }
+
         
         
     

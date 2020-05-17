@@ -1,5 +1,5 @@
 package modelo;
-// Generated 28/03/2020 20:45:43 by Hibernate Tools 4.3.1
+// Generated 10/05/2020 19:03:06 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,21 +15,24 @@ public class Cliente  implements java.io.Serializable {
      private String nombre;
      private String apellido;
      private String direccion;
+     private String localidad;
      private Set pedidos = new HashSet(0);
 
     public Cliente() {
     }
 
 	
-    public Cliente(String nombre, String apellido, String direccion) {
+    public Cliente(String nombre, String apellido, String direccion, String localidad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
+        this.localidad = localidad;
     }
-    public Cliente(String nombre, String apellido, String direccion, Set pedidos) {
+    public Cliente(String nombre, String apellido, String direccion, String localidad, Set pedidos) {
        this.nombre = nombre;
        this.apellido = apellido;
        this.direccion = direccion;
+       this.localidad = localidad;
        this.pedidos = pedidos;
     }
    
@@ -61,6 +64,13 @@ public class Cliente  implements java.io.Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    public String getLocalidad() {
+        return this.localidad;
+    }
+    
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
     public Set getPedidos() {
         return this.pedidos;
     }
@@ -68,6 +78,13 @@ public class Cliente  implements java.io.Serializable {
     public void setPedidos(Set pedidos) {
         this.pedidos = pedidos;
     }
+
+    @Override
+    public String toString() {
+        return  idCliente +" " + nombre + " " + apellido + " " + direccion;
+    }
+    
+    
 
 
 

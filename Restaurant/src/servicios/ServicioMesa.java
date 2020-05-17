@@ -123,26 +123,26 @@ public class ServicioMesa {
     
     }
 
-    public ArrayList<Mesa> obtenerMesasOcupadas() {
-         ArrayList<Mesa> mesasOcupadas = new ArrayList<>();
-    
-    ArrayList<Mesa> mesasOcupadass = this.repositorioMesa.obtenerTodosMesa();
-    
-    for(Mesa mes : mesasOcupadass){
-    
-    if(mes.getEstado().equals("ocupada")){
-        
-        mesasOcupadas.add(mes);
-    
-    
-    
-    
-    }
-    
-    }
-    
-    return mesasOcupadas;
-    }
+//    public ArrayList<Mesa> obtenerMesasOcupadas() {
+//         ArrayList<Mesa> mesasOcupadas = new ArrayList<>();
+//    
+//    ArrayList<Mesa> mesasOcupadass = this.repositorioMesa.obtenerTodosMesa();
+//    
+//    for(Mesa mes : mesasOcupadass){
+//    
+//    if(mes.getEstado().equals("ocupada")){
+//        
+//        mesasOcupadas.add(mes);
+//    
+//    
+//    
+//    
+//    }
+//    
+//    }
+//    
+//    return mesasOcupadas;
+//    }
     
     
     public  ArrayList<Mesa> obtenerTodoMesas(){

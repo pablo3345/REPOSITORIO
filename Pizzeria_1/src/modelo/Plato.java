@@ -1,5 +1,5 @@
 package modelo;
-// Generated 28/03/2020 20:45:43 by Hibernate Tools 4.3.1
+// Generated 10/05/2020 19:03:06 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,24 +15,24 @@ public class Plato  implements java.io.Serializable {
      private String nombre;
      private double costoDelPlato;
      private double precioAlPublico;
-     private String ingredientes;
+     private String tipo;
      private Set pedidos = new HashSet(0);
 
     public Plato() {
     }
 
 	
-    public Plato(String nombre, double costoDelPlato, double precioAlPublico, String ingredientes) {
+    public Plato(String nombre, double costoDelPlato, double precioAlPublico, String tipo) {
         this.nombre = nombre;
         this.costoDelPlato = costoDelPlato;
         this.precioAlPublico = precioAlPublico;
-        this.ingredientes = ingredientes;
+        this.tipo = tipo;
     }
-    public Plato(String nombre, double costoDelPlato, double precioAlPublico, String ingredientes, Set pedidos) {
+    public Plato(String nombre, double costoDelPlato, double precioAlPublico, String tipo, Set pedidos) {
        this.nombre = nombre;
        this.costoDelPlato = costoDelPlato;
        this.precioAlPublico = precioAlPublico;
-       this.ingredientes = ingredientes;
+       this.tipo = tipo;
        this.pedidos = pedidos;
     }
    
@@ -64,12 +64,12 @@ public class Plato  implements java.io.Serializable {
     public void setPrecioAlPublico(double precioAlPublico) {
         this.precioAlPublico = precioAlPublico;
     }
-    public String getIngredientes() {
-        return this.ingredientes;
+    public String getTipo() {
+        return this.tipo;
     }
     
-    public void setIngredientes(String ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     public Set getPedidos() {
         return this.pedidos;
@@ -78,6 +78,13 @@ public class Plato  implements java.io.Serializable {
     public void setPedidos(Set pedidos) {
         this.pedidos = pedidos;
     }
+
+    @Override
+    public String toString() {
+        return idPlato + " " + nombre;
+    }
+    
+    
 
 
 
