@@ -121,7 +121,6 @@ public class FacturaVistas extends javax.swing.JFrame {
         jButton1LimpiarFacturaApretado = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jTextField1costoAgregado = new javax.swing.JTextField();
-        jButton1LLenarComboMesasOcupadas_factura = new javax.swing.JButton();
         jComboBox1comboMesasOcupadas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
@@ -183,7 +182,7 @@ public class FacturaVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1botonAgregarPedidosFactura);
-        jButton1botonAgregarPedidosFactura.setBounds(530, 60, 140, 40);
+        jButton1botonAgregarPedidosFactura.setBounds(540, 40, 140, 40);
 
         jButton1guardarFactura.setBackground(new java.awt.Color(0, 0, 0));
         jButton1guardarFactura.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -235,18 +234,6 @@ public class FacturaVistas extends javax.swing.JFrame {
         getContentPane().add(jTextField1costoAgregado);
         jTextField1costoAgregado.setBounds(330, 70, 170, 30);
 
-        jButton1LLenarComboMesasOcupadas_factura.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1LLenarComboMesasOcupadas_factura.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jButton1LLenarComboMesasOcupadas_factura.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1LLenarComboMesasOcupadas_factura.setText("actualizar");
-        jButton1LLenarComboMesasOcupadas_factura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1LLenarComboMesasOcupadas_facturaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1LLenarComboMesasOcupadas_factura);
-        jButton1LLenarComboMesasOcupadas_factura.setBounds(530, 20, 110, 30);
-
         jComboBox1comboMesasOcupadas.setComponentPopupMenu(jPopupMenu1);
         getContentPane().add(jComboBox1comboMesasOcupadas);
         jComboBox1comboMesasOcupadas.setBounds(330, 20, 170, 30);
@@ -277,10 +264,6 @@ public class FacturaVistas extends javax.swing.JFrame {
     private void jButton1LimpiarFacturaApretadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1LimpiarFacturaApretadoActionPerformed
       this.presentador.limpiarFacturaApretado();
     }//GEN-LAST:event_jButton1LimpiarFacturaApretadoActionPerformed
-
-    private void jButton1LLenarComboMesasOcupadas_facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1LLenarComboMesasOcupadas_facturaActionPerformed
-        //this.presentador.ComboMesasOcupadas_Factura();
-    }//GEN-LAST:event_jButton1LLenarComboMesasOcupadas_facturaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        this.presentador.ComboMesasOcupadas_Factura();
@@ -322,7 +305,6 @@ public class FacturaVistas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1LLenarComboMesasOcupadas_factura;
     private javax.swing.JButton jButton1LimpiarFacturaApretado;
     private javax.swing.JButton jButton1VerFactura;
     private javax.swing.JButton jButton1botonAgregarPedidosFactura;

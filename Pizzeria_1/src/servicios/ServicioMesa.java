@@ -37,4 +37,14 @@ public class ServicioMesa {
        return mesaArray;
     }
     
+    
+    public ArrayList<Mesa> mesasOcupadas(){
+    
+    ArrayList<Mesa> mesasOcup = this.repositorioMesa.obtenerMesasOcupadas();
+    
+    return mesasOcup;
+    
+    
+    }
+    
 }

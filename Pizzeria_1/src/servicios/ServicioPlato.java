@@ -56,31 +56,16 @@ public class ServicioPlato {
             throw new IllegalArgumentException("precio del Plato incorrecto");
         }
     }
-      public ArrayList<Plato> obtenerTodosPlato() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
-    {
-        ArrayList<Plato> arrayADevolver = null;
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
-            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
-            //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
-            arrayADevolver = (ArrayList<Plato>) session.createQuery("FROM Plato").list();
-
-            tx.commit();
-
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-        return arrayADevolver;
+    
+    public ArrayList<Plato> obtenerComestibleSegunPedido(String tipo){
+    
+    ArrayList<Plato> arrayComestible = this.repositorioPlato.obtenerTodosPlatoSegunTipo(tipo);
+    
+    
+    return arrayComestible;
+    
+    
     }
+    
 
 }

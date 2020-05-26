@@ -247,7 +247,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5PedidoPrincipalActionPerformed
 
     private void jButton6facturaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6facturaPrincipalActionPerformed
-       this.factura.setVisible(true);
+       
+
+        this.factura.setVisible(true);
+      
     }//GEN-LAST:event_jButton6facturaPrincipalActionPerformed
 
     private void jButton2salirPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2salirPrincipalActionPerformed

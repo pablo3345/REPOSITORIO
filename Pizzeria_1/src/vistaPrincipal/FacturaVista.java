@@ -5,11 +5,17 @@
  */
 package vistaPrincipal;
 
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import presentador.Presentador;
+
 /**
  *
  * @author pablo
  */
 public class FacturaVista extends javax.swing.JFrame {
+    private Presentador presentador;
 
     /**
      * Creates new form Factura
@@ -17,7 +23,37 @@ public class FacturaVista extends javax.swing.JFrame {
     public FacturaVista() {
         initComponents();
         setLocationRelativeTo(this);
+        this.presentador = new Presentador(this);
+        this.jTextField1total_factura.setEditable(false);
+        this.jTextField1montoAgregado.setEditable(false);
+       
     }
+
+    public JComboBox<Object> getjComboBox1mesasOcupadas_Factura() {
+        return jComboBox1mesasOcupadas_Factura;
+    }
+
+    public JTable getjTable1pedidosFactura() {
+        return jTable1pedidosFactura;
+    }
+
+    public JTextField getjTextField1total_factura() {
+        return jTextField1total_factura;
+    }
+
+    public JTextField getjTextField1montoAgregado() {
+        return jTextField1montoAgregado;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +64,148 @@ public class FacturaVista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox1mesasOcupadas_Factura = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1pedidosFactura = new javax.swing.JTable();
+        jButton1agregarATablaFactura = new javax.swing.JButton();
+        jButton2salir = new javax.swing.JButton();
+        jButton1guardarFactura = new javax.swing.JButton();
+        jTextField1total_factura = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1montoAgregado = new javax.swing.JTextField();
+        jButton1verFactura = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 836, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
-        );
+        jMenuItem1.setText("FacturaVistas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1020, 600));
+        getContentPane().setLayout(null);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FACTURA.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(30, 20, 110, 110);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 0));
+        jLabel3.setText("Monto agregado a la factura:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(260, 90, 210, 30);
+
+        jComboBox1mesasOcupadas_Factura.setComponentPopupMenu(jPopupMenu1);
+        getContentPane().add(jComboBox1mesasOcupadas_Factura);
+        jComboBox1mesasOcupadas_Factura.setBounds(500, 30, 190, 30);
+
+        jTable1pedidosFactura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "id", "cliente", "comestible", "mesa", "precio", "cantidad"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1pedidosFactura);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(190, 140, 790, 320);
+
+        jButton1agregarATablaFactura.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1agregarATablaFactura.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1agregarATablaFactura.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1agregarATablaFactura.setText("Agregar a tabla");
+        jButton1agregarATablaFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1agregarATablaFacturaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1agregarATablaFactura);
+        jButton1agregarATablaFactura.setBounds(720, 20, 150, 40);
+
+        jButton2salir.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2salir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2salir.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2salir.setText("Salir");
+        jButton2salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2salirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2salir);
+        jButton2salir.setBounds(890, 480, 90, 40);
+
+        jButton1guardarFactura.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1guardarFactura.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1guardarFactura.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1guardarFactura.setText("Guardar");
+        jButton1guardarFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1guardarFacturaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1guardarFactura);
+        jButton1guardarFactura.setBounds(190, 480, 110, 40);
+        getContentPane().add(jTextField1total_factura);
+        jTextField1total_factura.setBounds(50, 130, 60, 10);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Mesas ocupadas:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(340, 30, 130, 30);
+        getContentPane().add(jTextField1montoAgregado);
+        jTextField1montoAgregado.setBounds(500, 90, 190, 30);
+
+        jButton1verFactura.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1verFactura.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1verFactura.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1verFactura.setText("Ver Factura");
+        jButton1verFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1verFacturaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1verFactura);
+        jButton1verFactura.setBounds(510, 480, 160, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo rojo pizzeria2.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -20, 1010, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2salirActionPerformed
+       dispose();
+    }//GEN-LAST:event_jButton2salirActionPerformed
+
+    private void jButton1agregarATablaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1agregarATablaFacturaActionPerformed
+       this.presentador.agregarATablaFactura();
+    }//GEN-LAST:event_jButton1agregarATablaFacturaActionPerformed
+
+    private void jButton1guardarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1guardarFacturaActionPerformed
+       this.presentador.guardarFacturaApretado();
+    }//GEN-LAST:event_jButton1guardarFacturaActionPerformed
+
+    private void jButton1verFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1verFacturaActionPerformed
+      this.presentador.verFacturaApretado();
+    }//GEN-LAST:event_jButton1verFacturaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       this.presentador.llenarComboMesasOcupadasFactura();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +244,20 @@ public class FacturaVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1agregarATablaFactura;
+    private javax.swing.JButton jButton1guardarFactura;
+    private javax.swing.JButton jButton1verFactura;
+    private javax.swing.JButton jButton2salir;
+    private javax.swing.JComboBox<Object> jComboBox1mesasOcupadas_Factura;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    public static javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1pedidosFactura;
+    private javax.swing.JTextField jTextField1montoAgregado;
+    private javax.swing.JTextField jTextField1total_factura;
     // End of variables declaration//GEN-END:variables
 }

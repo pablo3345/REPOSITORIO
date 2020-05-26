@@ -172,14 +172,7 @@ public class ServicioFactura {
        return arrayId;
     }
     
-//    public ArrayList<Object> arrayTodosSegunIdMayorAlUltimo(int ultimiId){
-//    
-//    ArrayList<Object> ultimoIdMayor = this.repositorioFactura.obtenerPrdidosSegunElUltimoIdMayor(ultimiId);
-//    
-//    
-//    
-//    return ultimoIdMayor;
-//    }
+
              
           
 

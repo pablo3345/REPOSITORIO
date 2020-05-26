@@ -83,6 +83,7 @@ public class Presentador {
         this.mesaVistas = mesaVistas;
         this.servicioMesa = new ServicioMesa();
         this.servicioFactura = new ServicioFactura();
+        this.servicioPedido = new ServicioPedido();
         
         
        
@@ -673,6 +674,7 @@ public class Presentador {
         
       
     }
+  
     
 
         

@@ -6,13 +6,16 @@
 package presentador;
 
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Mesa;
+import modelo.Pedido;
 import modelo.Plato;
 import servicios.ServicioCliente;
+import servicios.ServicioFactura;
 import servicios.ServicioMesa;
 import servicios.ServicioPedido;
 import servicios.ServicioPlato;
@@ -41,6 +44,7 @@ public class Presentador {
     private ServicioPlato servicioPlato;
     private ServicioMesa servicioMesa;
     private ServicioPedido servicioPedido;
+    private ServicioFactura servicioFactura;
 
     public Presentador(VistaPrincipal vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -50,8 +54,7 @@ public class Presentador {
     public Presentador(PlatoVista platoVista) {
         this.platoVista = platoVista;
         this.servicioPlato = new ServicioPlato();
-        
-        
+
     }
 
     public Presentador(MesasVista mesasVista) {
@@ -62,13 +65,14 @@ public class Presentador {
     public Presentador(ClientesVista clientesVista) {
         this.clientesVista = clientesVista;
         this.servicioCliente = new ServicioCliente();
-       
-        
 
     }
 
     public Presentador(FacturaVista facturaVista) {
         this.facturaVista = facturaVista;
+        this.servicioMesa = new ServicioMesa();
+        this.llenarComboMesasOcupadasFactura();
+        this.servicioFactura = new ServicioFactura();
     }
 
     public Presentador(PropietarioVista propietarioVista) {
@@ -80,8 +84,11 @@ public class Presentador {
         this.servicioPedido = new ServicioPedido();
         this.servicioCliente = new ServicioCliente();
         this.servicioPlato = new ServicioPlato();
+        this.servicioMesa = new ServicioMesa();
         this.llenarComboCliente_pedido();
-        this.llenarComboComestiblePedido();
+        this.llenarComboTipoPedido();
+        this.llenarComboMesasPedido();
+
     }
 
     public void guardarClienteApretado() {
@@ -166,9 +173,6 @@ public class Presentador {
 
             try {
                 this.servicioPlato.guardarPlato(nombre, costoDelPlato, precioAlPublico, tipo);
-                
-                
-               
 
                 this.platoVista.getjTextField2nombrePlato().setText("");
                 this.platoVista.getjTextField1costoDelPlato().setText("");
@@ -223,19 +227,192 @@ public class Presentador {
         this.pedidoVista.getjComboBox2cliente_pedido().setModel(modeloCliente);
 
     }
-    
-    private void llenarComboComestiblePedido(){
-    
-    ArrayList<Plato> arrayPlato = this.servicioPlato.obtenerTodosPlato();
-    
-    DefaultComboBoxModel modeloPlato = new DefaultComboBoxModel(arrayPlato.toArray());
-    
-    this.pedidoVista. getjComboBox3comestible_pedido().setModel(modeloPlato);
-    
+
+    public void llenarComboTipoPedido() {
+
+        ArrayList tipoArrayList = new ArrayList();
+
+        ArrayList arrayTipo = new ArrayList();
+        arrayTipo.add("fria");
+        arrayTipo.add("caliente");
+        arrayTipo.add("ensaladas");
+        arrayTipo.add("postres");
+        arrayTipo.add("bebidas");
+
+        DefaultComboBoxModel modelo2 = new DefaultComboBoxModel(arrayTipo.toArray());
+
+        this.pedidoVista.getjComboBox1tipo_pedido().setModel(modelo2);
+
+    }
+
+    public void agregarComestiblesApretado() {
+        String tipo = (String) this.pedidoVista.getjComboBox1tipo_pedido().getSelectedItem();
+
+        ArrayList<Plato> agregarPlato = this.servicioPlato.obtenerComestibleSegunPedido(tipo);
+
+        DefaultComboBoxModel modeloCombo1 = new DefaultComboBoxModel(agregarPlato.toArray());
+
+        this.pedidoVista.getjComboBox3comestible_pedido().setModel(modeloCombo1);
+    }
+
+    public void llenarComboMesasPedido() {
+
+        ArrayList<Mesa> obtenerMesasCombo = this.servicioMesa.obtenerMesas();
+
+        DefaultComboBoxModel modeloMesas = new DefaultComboBoxModel(obtenerMesasCombo.toArray());
+
+        this.pedidoVista.getjComboBox1mesa_pedido().setModel(modeloMesas);
+
     }
 
     public void guardarPedidoApretado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Cliente cliente = (Cliente) this.pedidoVista.getjComboBox2cliente_pedido().getSelectedItem();
+        Mesa mesa = (Mesa) this.pedidoVista.getjComboBox1mesa_pedido().getSelectedItem();
+        Plato plato = (Plato) this.pedidoVista.getjComboBox3comestible_pedido().getSelectedItem();
+        String demora = this.pedidoVista.getjTextField2demora_pedido().getText();
+        String cantidad = this.pedidoVista.getjTextField3cantidad_pedido().getText();
+        this.pedidoVista.getjRadioButton1activo_pedido().setActionCommand("activo");
+        String estado = this.pedidoVista.getButtonGroup1().getSelection().getActionCommand();
+
+        try {
+            this.servicioPedido.guardarPedido(cliente, mesa, plato, demora, cantidad, estado);
+
+            this.pedidoVista.getjTextField2demora_pedido().setText("");
+            this.pedidoVista.getjTextField3cantidad_pedido().setText("");
+            
+            FacturaVista.jMenuItem1.doClick();
+            this.llenarComboMesasPedido();
+
+            JOptionPane.showMessageDialog(null, "el pedido se guardo correctamente");
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
+
+    public void cargarTablaPedido() {
+        ArrayList<Pedido> arrayPedido = this.servicioPedido.obtenerTodoPedido();
+        DefaultTableModel modeloPedido = (DefaultTableModel) this.pedidoVista.getjTable1pedido_pedido().getModel();
+        modeloPedido.setRowCount(0);
+        for (Pedido pedido : arrayPedido) {
+            Object[] agregarPedido = {pedido.getIdPedido(), pedido.getCliente().getIdCliente(), pedido.getMesa().getIdMesa(), pedido.getPlato().getIdPlato(), pedido.getCantidad(),
+                pedido.getDemora(), pedido.getEstado()};
+            modeloPedido.addRow(agregarPedido);
+
+        }
+
+    }
+
+    public void llenarComboMesasOcupadasFactura() {
+
+        ArrayList<Mesa> mesasOcup = this.servicioMesa.mesasOcupadas();
+
+        DefaultComboBoxModel modeloMesas = new DefaultComboBoxModel(mesasOcup.toArray());
+
+        this.facturaVista.getjComboBox1mesasOcupadas_Factura().setModel(modeloMesas);
+
+    }
+
+    public void agregarATablaFactura() {
+        try {
+              Mesa mesa = (Mesa) this.facturaVista.getjComboBox1mesasOcupadas_Factura().getSelectedItem();
+        int idMesa = mesa.getIdMesa();
+        ArrayList<Object> gragarAtabla = this.servicioFactura.agregarATabla(idMesa);
+
+        DefaultTableModel modeloTablaFactura = (DefaultTableModel) this.facturaVista.getjTable1pedidosFactura().getModel();
+
+        modeloTablaFactura.setRowCount(0);
+
+        for (Object object : gragarAtabla) {
+            modeloTablaFactura.addRow((Object[]) object);
+
+        }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no hay mesas ocupadas");
+        }
+        
+        this.limpiarTablaFactura();
+      
+
+    }
+
+    public void guardarFacturaApretado() {
+        try {
+             int fila = this.facturaVista.getjTable1pedidosFactura().getSelectedRow();
+        String cliente = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 1).toString();
+        String platosYbebidas = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 2).toString();
+        String mesa = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 3).toString();
+        String precio = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 4).toString();
+        String cantidad = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 5).toString();
+        String total = this.facturaVista.getjTextField1total_factura().getText();
+
+        try {
+            this.servicioFactura.guardarFactura(cliente, platosYbebidas, mesa, precio, cantidad, total);
+
+            this.facturaVista.getjTextField1montoAgregado().setText(precio);
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            String idDelPedido = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 0).toString();
+            int idPedido = Integer.parseInt(idDelPedido);
+            
+            int idMesa = Integer.valueOf(mesa);
+            
+            
+            this.servicioFactura.ponerPedidoPasivo(idPedido);
+            this.servicioFactura.ponerMesasDisponiblesFactura(idMesa);
+            this.llenarComboMesasOcupadasFactura();
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            JOptionPane.showMessageDialog(null, "la factura se guardo correctamente");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+       
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "debe seleccionar un pedido");
+        }
+       
+
+    }
+
+    public void limpiarTablaFactura() {
+
+        try {
+            this.servicioFactura.truncarTablaFactura();
+            JOptionPane.showMessageDialog(null, "la tabla se limpio correctamente");
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+    }
+
+    public void verFacturaApretado() {
+        
+        try {
+               ArrayList<Double> valorTotalFactura = this.servicioFactura.traerElTotalFactura();
+        double totalFacturaUltimo = valorTotalFactura.get(valorTotalFactura.size() - 1);
+        //JOptionPane.showMessageDialog(null, totalFacturaUltimo);
+        
+        this.servicioFactura.ponerElTotal(totalFacturaUltimo);
+        PedidoVista.jMenuItem1.doClick();
+      
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        int fila = this.facturaVista.getjTable1pedidosFactura().getSelectedRow();
+        String mesa = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 3).toString();
+        int idMesa = Integer.valueOf(mesa);
+        this.servicioFactura.ponerMesasDisponiblesFactura(idMesa);
+        ///////////////////////////////////////////////////////////////////////////////////
+        this.servicioFactura.verFactura();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no guardo ningun pedido");
+        }
+
+     
+
+    }
+    
 
 }

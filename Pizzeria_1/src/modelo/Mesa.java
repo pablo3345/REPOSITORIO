@@ -59,6 +59,14 @@ public class Mesa  implements java.io.Serializable {
         this.pedidos = pedidos;
     }
 
+    @Override
+    public String toString() {
+        return   numero + " " + estado;
+    }
+    
+    
+    
+
 
 
 
