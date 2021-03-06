@@ -237,15 +237,13 @@ public class Presentador {
             this.pedidoVistas.getjTextField1demora_pedido().setText("");
 
             JOptionPane.showMessageDialog(null, "el pedido se guardo correctamente");
-           // this.llenarComboMesaPedido();
-            //llenarComboMesasOcupadas_Factura();
-//            JComboBox modeloCombo = new JComboBox();
-//            this.ComboMesasOcupadas_Factura();
+ 
               
 
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+         FacturaVistas.botonCmbo.doClick();
 
     }
 
@@ -474,7 +472,7 @@ public class Presentador {
             JOptionPane.showMessageDialog(null, "debe seleccionar un pedido");
         }
   
-        // this.llenarComboMesaPedido();
+        
     }
 
     public void verFacturaApretado() {
@@ -482,20 +480,23 @@ public class Presentador {
 
         try {
             ArrayList<Double> botonTotal = this.servicioFactura.obtenerTotalFactura();
+            
+            double ultimo = botonTotal.get(botonTotal.size()-1);
 
             // ArrayList<Double> menor = new ArrayList<>();
-            String ultimoParaGuardae = "";
-            double min = 1000000000;
-
-            for (int i = 0; i < botonTotal.size(); i++) {
-                if (botonTotal.get(i) < min) {
-                    min = botonTotal.get(i);
-
-                    ultimoParaGuardae = String.valueOf(min);
-
-                }
-
-            }
+//            String ultimoParaGuardae = "";
+//            double min = 1000000000;
+//
+//            for (int i = 0; i < botonTotal.size(); i++) {
+//                if (botonTotal.get(i) < min) {
+//                    min = botonTotal.get(i);
+//
+//                   
+//
+//                }
+//
+//            }
+              String ultimoParaGuardae = String.valueOf(ultimo);
             try {
                 this.servicioFactura.verComprobanteReporter(ultimoParaGuardae);
 
@@ -549,85 +550,8 @@ public class Presentador {
 
     }
 
-    public void modificarPedido_pedido() {
 
-        try {
-            int fila = this.pedidoVistas.getjTable1Pedido_pedido().getSelectedRow();
 
-            int index1 = (int) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 1);
-            int index2 = (int) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 2);
-            // int index3 = (int) this.pedidoVistas. getjTable1Pedido_pedido().getValueAt(fila, 3);
-
-            if (fila != -1) {
-                this.pedidoVistas.getjComboBox1mesa_pedido().setSelectedIndex(index2 - 1);
-                this.pedidoVistas.getjComboBox1cliente_pedido().setSelectedIndex(index1 - 1);
-                this.pedidoVistas.getjTextField1cantidad_pedido().setText((String) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 4).toString());
-                //this.pedidoVistas.getjComboBox1comidasTbebidas_pedido().addItem(index3);
-                this.pedidoVistas.getjTextField1demora_pedido().setText(this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 5).toString());
-
-            }
-            
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "debe elegir un pedido y seleccionar todos los campos");
-        }
-
-    }
-
-    public void actualizarPedido_Pedido() {
-        try {
-            Cliente cliente = (Cliente) this.pedidoVistas.getjComboBox1cliente_pedido().getSelectedItem();
-            Mesa mesa = (Mesa) this.pedidoVistas.getjComboBox1mesa_pedido().getSelectedItem();
-            Platosybebidas platosybebidas = (Platosybebidas) this.pedidoVistas.getjComboBox1comidasTbebidas_pedido().getSelectedItem();
-
-            Double cantidad = Double.valueOf(this.pedidoVistas.getjTextField1cantidad_pedido().getText());
-            // String cantidad = this.pedidoVistas.getjTextField1cantidad_pedido().getText();
-
-            Double demora = Double.valueOf(this.pedidoVistas.getjTextField1demora_pedido().getText());
-            // String demora = this.pedidoVistas.getjTextField1demora_pedido().getText();
-
-            ///////////////////////////////////////////////////////////////////////////////////////////
-            int fila = this.pedidoVistas.getjTable1Pedido_pedido().getSelectedRow();
-
-            int idPedido = (int) this.pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 0);
-
-            this.servicioPedido.actulizarPedido(idPedido, cliente, mesa, platosybebidas, cantidad, demora);
-
-            // this.llenarComboMesasOcupadas_Factura();
-           // this.llenarComboMesaPedido();
-//            JComboBox modeloCombo = new JComboBox();
-             //  this.ComboMesasOcupadas_Factura();
-          
-             
-             FacturaVistas.jMenuItem1.doClick();
-            
-            this.cargarMesasPedidoApretado();
-            
-            
-           
-          
-            
-             
-              
-              
-             
-           
-          
-           
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "debe seleccionar los comestibles y los demas campos");
-
-        }
-        
-        
-     
-         
-           
-          
-
-      
-    }
 
 
     public void mesasDisponiblesApretado() {
@@ -673,6 +597,31 @@ public class Presentador {
         this.facturaVistas. getjComboBox1comboMesasOcupadas().setModel(modeloCombo);
         
       
+    }
+
+    public void eliminarPedidoApretado() {
+         int fila = this.pedidoVistas.getjTable1Pedido_pedido().getSelectedRow();
+         String idPedido = pedidoVistas.getjTable1Pedido_pedido().getValueAt(fila, 0).toString();
+        
+       
+         int idPedidos = Integer.valueOf(idPedido);
+          JOptionPane.showMessageDialog(null, idPedido);
+          
+          try {
+               this.servicioPedido.eliminarPedido(idPedidos);
+               JOptionPane.showMessageDialog(null, "el pedido se elimino correctamente");
+            
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+         
+          
+      
+         
+         
+        
+        
+       
     }
   
     

@@ -388,11 +388,12 @@ public class Presentador {
     }
 
     public void verFacturaApretado() {
+       
         
         try {
                ArrayList<Double> valorTotalFactura = this.servicioFactura.traerElTotalFactura();
         double totalFacturaUltimo = valorTotalFactura.get(valorTotalFactura.size() - 1);
-        //JOptionPane.showMessageDialog(null, totalFacturaUltimo);
+       
         
         this.servicioFactura.ponerElTotal(totalFacturaUltimo);
         PedidoVista.jMenuItem1.doClick();
@@ -402,13 +403,17 @@ public class Presentador {
         int fila = this.facturaVista.getjTable1pedidosFactura().getSelectedRow();
         String mesa = this.facturaVista.getjTable1pedidosFactura().getValueAt(fila, 3).toString();
         int idMesa = Integer.valueOf(mesa);
+        
+         
         this.servicioFactura.ponerMesasDisponiblesFactura(idMesa);
         ///////////////////////////////////////////////////////////////////////////////////
-        this.servicioFactura.verFactura();
+       // this.servicioFactura.verFactura();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "no guardo ningun pedido");
         }
+        
+        this.servicioFactura.verFactura();
 
      
 

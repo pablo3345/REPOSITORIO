@@ -152,8 +152,8 @@ public class ServicioPedido {
             preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "el pedido se actualizo correctamente");
 
-            this.ponerMesasOcupadasPedido(mesa);
-            this.ponerMesaDisponiblePedido(mesa);
+           // this.ponerMesasOcupadasPedido(mesa);
+           // this.ponerMesaDisponiblePedido(mesa);
          
             
            // con.close();
@@ -169,68 +169,64 @@ public class ServicioPedido {
 
     }
 
-    public void ponerMesasOcupadasPedido(Mesa mesa) {
+//    public void ponerMesasOcupadasPedido(Mesa mesa) {
+//
+//        Conexion conexion = new Conexion();
+//        Connection con = conexion.getConection();
+//
+//        int idMesa = mesa.getIdmesa();
+//
+//        //Pedido pedido1 = this.repositorioPedido.obtenerPedidoGuardado(idMesa);
+//
+//        //int idMesa = pedido1.getMesa().getIdmesa();
+//        String ocupada = "ocupada";
+//
+//        String sql = "UPDATE mesa SET  estado= '" + ocupada + "' WHERE  idmesa='" + idMesa + "'";
+//
+//        try {
+//            PreparedStatement preparedStatement = con.prepareStatement(sql);
+//            preparedStatement.executeUpdate();
+//            
+//            
+//            JOptionPane.showMessageDialog(null, "la mesa se actualizo correctamente");
+//           // this.mesasOcupadas_Factura();
+//           // this.obtenerMesasOcupadas();
+//           // this.mesasOcupadas_Factura();
+//          
+//           // con.close();
+//           
+//            
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
+//        
+//         
+//
+//    }
 
-        Conexion conexion = new Conexion();
-        Connection con = conexion.getConection();
-
-        int idMesa = mesa.getIdmesa();
-
-        //Pedido pedido1 = this.repositorioPedido.obtenerPedidoGuardado(idMesa);
-
-        //int idMesa = pedido1.getMesa().getIdmesa();
-        String ocupada = "ocupada";
-
-        String sql = "UPDATE mesa SET  estado= '" + ocupada + "' WHERE  idmesa='" + idMesa + "'";
-
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.executeUpdate();
-            
-            
-            JOptionPane.showMessageDialog(null, "la mesa se actualizo correctamente");
-           // this.mesasOcupadas_Factura();
-           // this.obtenerMesasOcupadas();
-           // this.mesasOcupadas_Factura();
-          
-           // con.close();
-           
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        
-         
-
-    }
-
-    public void ponerMesaDisponiblePedido(Mesa mesa) {
-
-        //////////////////////////////////////////////////////////
-        Conexion conexion = new Conexion();
-        Connection con = conexion.getConection();
-
-        ArrayList<Object> idMesasDesocupadas = this.repositorioPedido.obtenerIdDeMesasDesocupadas();
-        int id = 0;
-        for (int i = 0; i < idMesasDesocupadas.size(); i++) {
-            if (mesa.getIdmesa().equals(idMesasDesocupadas.get(i)));
-            id = (int) idMesasDesocupadas.get(i);
-
-            //int id =(int) idMesasDesocupadas.get(i);
-            String disponible = "disponible";
-
-            String sql = "UPDATE mesa SET  estado= '" + disponible + "' WHERE  idmesa='" + id + "'";
-
-            try {
-                PreparedStatement preparedStatement = con.prepareStatement(sql);
-                preparedStatement.executeUpdate();
-                 //con.close();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-            }
-        }
-
-    }
+//    public void ponerMesaDisponibleActualizarPedido(Mesa mesa) {
+//
+//        //////////////////////////////////////////////////////////
+////        Conexion conexion = new Conexion();
+////        Connection con = conexion.getConection();
+////
+////    
+////
+////            //int id =(int) idMesasDesocupadas.get(i);
+////            String disponible = "disponible";
+////
+////            String sql = "UPDATE mesa SET  estado= '" + disponible + "' WHERE  idmesa='" + id + "'";
+////
+////            try {
+////                PreparedStatement preparedStatement = con.prepareStatement(sql);
+////                preparedStatement.executeUpdate();
+////                 //con.close();
+////            } catch (SQLException e) {
+////                JOptionPane.showMessageDialog(null, e.getMessage());
+////            }
+//        
+//
+//    }
 
     private void validarPlatosYbebidas(Platosybebidas platosybebidas) {
        if(platosybebidas==null){
@@ -290,6 +286,10 @@ public class ServicioPedido {
     }
     
     return mesasOcupadas;
+    }
+
+    public void eliminarPedido(int idPedidos) {
+        this.repositorioPedido.eliminarPedido(idPedidos);
     }
     
 

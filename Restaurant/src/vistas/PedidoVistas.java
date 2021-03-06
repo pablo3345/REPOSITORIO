@@ -67,6 +67,12 @@ public class PedidoVistas extends javax.swing.JFrame {
         return jTextField1demora_pedido;
     }
 
+   
+    
+    
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,9 +102,8 @@ public class PedidoVistas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1Pedido_pedido = new javax.swing.JTable();
         jButton1CargarTablaPedido = new javax.swing.JButton();
-        jButton1modificarPedido = new javax.swing.JButton();
-        jButton1actualizarPedido = new javax.swing.JButton();
         jButton1cargarMesasPedido = new javax.swing.JButton();
+        jButton1eliminarPedido = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton4.setText("jButton1");
@@ -222,31 +227,7 @@ public class PedidoVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1CargarTablaPedido);
-        jButton1CargarTablaPedido.setBounds(180, 480, 150, 40);
-
-        jButton1modificarPedido.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1modificarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1modificarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1modificarPedido.setText("Modificar");
-        jButton1modificarPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1modificarPedidoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1modificarPedido);
-        jButton1modificarPedido.setBounds(370, 480, 110, 40);
-
-        jButton1actualizarPedido.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1actualizarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1actualizarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1actualizarPedido.setText("Actualizar");
-        jButton1actualizarPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1actualizarPedidoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1actualizarPedido);
-        jButton1actualizarPedido.setBounds(503, 480, 140, 40);
+        jButton1CargarTablaPedido.setBounds(250, 480, 150, 40);
 
         jButton1cargarMesasPedido.setBackground(new java.awt.Color(0, 0, 0));
         jButton1cargarMesasPedido.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -259,6 +240,18 @@ public class PedidoVistas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1cargarMesasPedido);
         jButton1cargarMesasPedido.setBounds(660, 20, 81, 30);
+
+        jButton1eliminarPedido.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1eliminarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1eliminarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1eliminarPedido.setText("Eliminar");
+        jButton1eliminarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1eliminarPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1eliminarPedido);
+        jButton1eliminarPedido.setBounds(480, 480, 110, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -283,22 +276,16 @@ public class PedidoVistas extends javax.swing.JFrame {
         this.presentador.cargarTablaPedido_Pedido();
     }//GEN-LAST:event_jButton1CargarTablaPedidoActionPerformed
 
-    private void jButton1modificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1modificarPedidoActionPerformed
-        this.presentador.modificarPedido_pedido();
-    }//GEN-LAST:event_jButton1modificarPedidoActionPerformed
-
-    private void jButton1actualizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1actualizarPedidoActionPerformed
-       
-        this.presentador.actualizarPedido_Pedido();
-
-    }//GEN-LAST:event_jButton1actualizarPedidoActionPerformed
-
     private void jButton1cargarMesasPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1cargarMesasPedidoActionPerformed
         this.presentador.cargarMesasPedidoApretado();
         
         // FacturaVistas.jTextField1costoAgregado.setText("PABLO");
       
     }//GEN-LAST:event_jButton1cargarMesasPedidoActionPerformed
+
+    private void jButton1eliminarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1eliminarPedidoActionPerformed
+      this.presentador.eliminarPedidoApretado();
+    }//GEN-LAST:event_jButton1eliminarPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,11 +324,10 @@ public class PedidoVistas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1CargarTablaPedido;
-    public static javax.swing.JButton jButton1actualizarPedido;
     public static javax.swing.JButton jButton1buscarTipo_pedido;
     public static javax.swing.JButton jButton1cargarMesasPedido;
+    private javax.swing.JButton jButton1eliminarPedido;
     private javax.swing.JButton jButton1guardar_pedido;
-    private javax.swing.JButton jButton1modificarPedido;
     private javax.swing.JButton jButton1salir_pedido;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;

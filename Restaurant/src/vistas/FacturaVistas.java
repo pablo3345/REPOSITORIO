@@ -107,8 +107,7 @@ public class FacturaVistas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
         jLabel3 = new javax.swing.JLabel();
         jButton1salir = new javax.swing.JButton();
         jTextField2total_factura = new javax.swing.JTextField();
@@ -124,13 +123,13 @@ public class FacturaVistas extends javax.swing.JFrame {
         jComboBox1comboMesasOcupadas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
-        jMenuItem1.setText("FacturaVistas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        botonCmbo.setText("jMenuItem3");
+        botonCmbo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                botonCmboActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(jMenuItem1);
+        jPopupMenu3.add(botonCmbo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 550));
@@ -152,7 +151,7 @@ public class FacturaVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1salir);
-        jButton1salir.setBounds(660, 450, 90, 40);
+        jButton1salir.setBounds(650, 450, 90, 40);
         getContentPane().add(jTextField2total_factura);
         jTextField2total_factura.setBounds(30, 120, 80, 10);
 
@@ -234,13 +233,13 @@ public class FacturaVistas extends javax.swing.JFrame {
         getContentPane().add(jTextField1costoAgregado);
         jTextField1costoAgregado.setBounds(330, 70, 170, 30);
 
-        jComboBox1comboMesasOcupadas.setComponentPopupMenu(jPopupMenu1);
+        jComboBox1comboMesasOcupadas.setComponentPopupMenu(jPopupMenu3);
         getContentPane().add(jComboBox1comboMesasOcupadas);
         jComboBox1comboMesasOcupadas.setBounds(330, 20, 170, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo negro.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 776, 536);
+        jLabel1.setBounds(0, 0, 780, 536);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -265,9 +264,9 @@ public class FacturaVistas extends javax.swing.JFrame {
       this.presentador.limpiarFacturaApretado();
     }//GEN-LAST:event_jButton1LimpiarFacturaApretadoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void botonCmboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCmboActionPerformed
        this.presentador.ComboMesasOcupadas_Factura();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_botonCmboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,6 +304,7 @@ public class FacturaVistas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static final javax.swing.JMenuItem botonCmbo = new javax.swing.JMenuItem();
     private javax.swing.JButton jButton1LimpiarFacturaApretado;
     private javax.swing.JButton jButton1VerFactura;
     private javax.swing.JButton jButton1botonAgregarPedidosFactura;
@@ -315,8 +315,7 @@ public class FacturaVistas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    public static javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1pedido_factura;
     public static javax.swing.JTextField jTextField1costoAgregado;

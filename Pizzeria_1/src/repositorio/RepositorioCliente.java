@@ -79,8 +79,7 @@ public class RepositorioCliente {
             
            
                 String hql = "UPDATE Cliente SET nombre =  :nombre, apellido= :apellido, direccion = :direccion, localidad = :localidad  where idCliente = :idClienteConvertido";
-//             String hql = "UPDATE Cliente c SET c.nombre='" + nombre + "'," + "c.apellido='" + apellido + "'," + "c.direccion='"
-//                + direccion + "'," + "c.localidad='" + localidad + "'WHERE c.idCliente='" + idClienteConvertido + "'";
+
              Query consultaActualizarCliente = session.createQuery(hql);
              consultaActualizarCliente.setParameter("nombre", nombre);
              consultaActualizarCliente.setParameter("apellido", apellido);

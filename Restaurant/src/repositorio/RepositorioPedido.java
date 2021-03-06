@@ -11,6 +11,7 @@ import modelo.Cliente;
 import modelo.Mesa;
 import modelo.Pedido;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -198,33 +199,29 @@ public class RepositorioPedido {
         return arrayADevolver;
     }
     
-       public ArrayList<Object> obtenerIdDeMesasDesocupadas() //ArrayList<Empleado> = significa que el arrayList es solo de Foto
-    {
-        ArrayList<Object> arrayADevolver = null;
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-
+       public void eliminarPedido(int idPedidos) {
+        Session session = HibernateUtil.getSessionFactory().openSession();//getSessionFactory() inicia la sesion
+        Transaction tx = null;//la transaccion cuando inicia es null
+        //aprender a leer esto
         try {
-            tx = session.beginTransaction();
-            //aca poner para mostrar todos los datos copie el mismo codigo de arriba del metodo guardar()
-            //from Foto es el tipo de consulta HQL  para obtener una lista de todos los Empleado
-            arrayADevolver = (ArrayList<Object>) session.createQuery("select m.idmesa from Pedido as p right join p.mesa as m where p.idpedido is null").list();
-            
-            tx.commit();
-            
-           
-
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-        return arrayADevolver;
+         tx = session.beginTransaction();
+         String hql = "delete from Pedido where idpedido = :idPedidos";
+         Query query = session.createQuery(hql);
+         query.setInteger("idPedidos", idPedidos);
+         query.executeUpdate();
+          
+         
+        
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+      
     }
+    
+    
 
 }
