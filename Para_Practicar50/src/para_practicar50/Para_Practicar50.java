@@ -73,6 +73,8 @@ public class Para_Practicar50 {
 
                         columna = Integer.parseInt(JOptionPane.showInputDialog("ingrese la columna del-------- JUGADOR X--------"));
                            mostrar_tablero(array);
+                         
+                        
                         
                     } while ( array[fila - 1][columna - 1] == PRIMERO ||  array[fila - 1][columna - 1] == SEGUNDO);
                      array[fila - 1][columna - 1] = PRIMERO;
@@ -132,11 +134,13 @@ public class Para_Practicar50 {
                 mostrar_tablero(array);
                 contador++;
 
-                if (contador == 13) {
-                    System.out.println("hubo empate");
+//                if (contador == 13) {
+//                    System.out.println("hubo empate");
+//
+//                    break;
+//                }
 
-                    break;
-                }
+                 empate(array);
 
                  System.out.println("ingrese el jugador o");
                 // System.out.println("ingrese la fila");
@@ -159,6 +163,7 @@ public class Para_Practicar50 {
 
                 columna = Integer.parseInt(JOptionPane.showInputDialog("ingrese la columna del-------- JUGADOR O--------"));
                            mostrar_tablero(array);
+                         
                         
                     } while ( array[fila - 1][columna - 1] == PRIMERO ||  array[fila - 1][columna - 1] == SEGUNDO);
                      array[fila - 1][columna - 1] = SEGUNDO;
@@ -206,18 +211,19 @@ public class Para_Practicar50 {
                     System.out.println("ha ganado el jugador o");
                  
 
-                   
+                   break;
 
                 }
 
                 contador++;
 
-                if (contador == 13) {
-                    System.out.println("hubo empate");
-
-                    break;
-
-                }
+//                if (contador == 13) {
+//                    System.out.println("hubo empate");
+//
+//                    break;
+//
+//                }
+                empate(array);
 
                 contador++;
 
@@ -225,6 +231,7 @@ public class Para_Practicar50 {
 
         } catch (RuntimeException e) {
             System.out.println("OPCION INGRESADA INCORRECTA... INTENTALO NUEVAMENTE!!!");
+            
         }
 
     }
@@ -276,7 +283,8 @@ public class Para_Practicar50 {
         else if (array[2][0] == SEGUNDO && array[2][1] == SEGUNDO && array[2][2] == SEGUNDO) {
 
             sw = true;
-
+            
+            
         }
         else if (array[0][0] == SEGUNDO && array[0][1] == SEGUNDO && array[2][2] == SEGUNDO) {
             sw = true;
@@ -306,9 +314,24 @@ public class Para_Practicar50 {
         else if (array[0][2] == PRIMERO && array[1][1] == PRIMERO && array[2][0] == PRIMERO) {
             sw = true;
         }
+        mostrar_tablero(array);
 
         return sw;
 
+    }
+    
+    private static void empate(char array[][]){
+    
+        if (array[0][0] != VACIO && array[0][1] != VACIO && array[0][2] != VACIO && array[1][0] != VACIO && array[1][1] != VACIO && array[1][2] != VACIO &&
+               array[2][0] != VACIO && array[2][1] != VACIO && array[2][2] != VACIO) {
+            System.out.println("Hubo empate!!!...");
+            
+             System.exit(0);
+        }
+        
+        
+        
+    
     }
 
 }
