@@ -239,7 +239,7 @@ public class PedidoVistas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1cargarMesasPedido);
-        jButton1cargarMesasPedido.setBounds(660, 20, 81, 30);
+        jButton1cargarMesasPedido.setBounds(660, 20, 79, 30);
 
         jButton1eliminarPedido.setBackground(new java.awt.Color(0, 0, 0));
         jButton1eliminarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

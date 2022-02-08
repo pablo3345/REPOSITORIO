@@ -113,7 +113,7 @@ public class MesaVistas extends javax.swing.JFrame {
         jRadioButton1disponible.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1disponible.setText("DISPONIBLE");
         getContentPane().add(jRadioButton1disponible);
-        jRadioButton1disponible.setBounds(330, 100, 110, 25);
+        jRadioButton1disponible.setBounds(330, 100, 110, 28);
 
         jRadioButton2ocupado.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(jRadioButton2ocupado);
@@ -121,7 +121,7 @@ public class MesaVistas extends javax.swing.JFrame {
         jRadioButton2ocupado.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2ocupado.setText("OCUPADA");
         getContentPane().add(jRadioButton2ocupado);
-        jRadioButton2ocupado.setBounds(470, 100, 93, 25);
+        jRadioButton2ocupado.setBounds(470, 100, 93, 28);
 
         jButton1guardarMesa.setBackground(new java.awt.Color(0, 0, 0));
         jButton1guardarMesa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
