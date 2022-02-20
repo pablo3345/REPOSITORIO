@@ -25,6 +25,7 @@ public class FacturaVista extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         this.presentador = new Presentador(this);
         this.jTextField1total_factura.setEditable(false);
+        
         this.jTextField1montoAgregado.setEditable(false);
        
     }
@@ -158,7 +159,7 @@ public class FacturaVista extends javax.swing.JFrame {
         getContentPane().add(jButton1guardarFactura);
         jButton1guardarFactura.setBounds(190, 480, 110, 40);
         getContentPane().add(jTextField1total_factura);
-        jTextField1total_factura.setBounds(40, 130, 70, 10);
+        jTextField1total_factura.setBounds(40, 130, 80, 10);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
