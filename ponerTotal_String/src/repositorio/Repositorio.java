@@ -51,7 +51,7 @@ public class Repositorio {
 
         try {
             tx = session.beginTransaction();
-             String hql = "update TotalString set total = "+ponerTotal+" where idtotalString = 6";
+             String hql = "update TotalString set total = "+ponerTotal+" where idtotalString = 5";
             Query actualizarMesa=session.createQuery(hql);
             actualizarMesa.executeUpdate();
             tx.commit();

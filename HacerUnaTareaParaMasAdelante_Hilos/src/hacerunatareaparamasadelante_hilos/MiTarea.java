@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hacerunatareaparamasadelante_contimer;
+package hacerunatareaparamasadelante_hilos;
 
 import java.util.Date;
 import java.util.TimerTask;
@@ -14,7 +14,20 @@ import java.util.logging.Logger;
  *
  * @author pablo
  */
-public class MiTarea extends Thread { //clase abstracta TimerTask con su respectivo metodo abajo
+public class MiTarea extends Thread { 
+
+  
+//clase abstracta TimerTask con su respectivo metodo abajo
+    
+    
+    public MiTarea(String msg){ //esto va siempre aca es el constructor, msg puede tener cualquier nombre
+    
+    super(msg);
+    
+    }
+    
+    
+    
 
     @Override
     public void run() {

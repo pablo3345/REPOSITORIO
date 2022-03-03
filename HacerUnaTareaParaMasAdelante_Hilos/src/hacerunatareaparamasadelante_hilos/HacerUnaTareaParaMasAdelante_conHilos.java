@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hacerunatareaparamasadelante_contimer;
+package hacerunatareaparamasadelante_hilos;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -12,7 +12,7 @@ import java.util.Timer;
  *
  * @author pablo
  */
-public class HacerUnaTareaParaMasAdelante_conTimer {
+public class HacerUnaTareaParaMasAdelante_conHilos {
 
     /**
      * @param args the command line arguments
@@ -21,7 +21,12 @@ public class HacerUnaTareaParaMasAdelante_conTimer {
        
         
         Calendar calendar = Calendar.getInstance();
-        MiTarea tarea = new MiTarea(); //instancia de la clase que cree
+        //MiTarea tarea = new MiTarea(); //instancia de la clase que cree
+        
+        Thread tarea = new MiTarea("tarea 1"); //dos objetos de la misma clase
+        Thread tarea2 = new MiTarea("tarea 2");
+        
+    //    Thread hilo = new MiTarea(); asi lo declaran en un video que vi
 //        
 //        calendar.set(Calendar.DAY_OF_MONTH, 8);
 //        calendar.set(Calendar.YEAR, 2022);
@@ -32,8 +37,8 @@ public class HacerUnaTareaParaMasAdelante_conTimer {
         
        ///////////hora a que programo//////////////////
        int horas =19;
-       int minutos=06;
-       int dia =20;
+       int minutos=48;
+       int dia =24;
        
        
        ////////////7fecha actual///////////
@@ -45,12 +50,14 @@ public class HacerUnaTareaParaMasAdelante_conTimer {
        if(horas == horas2 && minutos== minutos2 && dia == diaDelMes){
        
        tarea.start();
+       tarea2.start();
        
        
        }
        else{
        
        tarea.stop();
+       tarea2.stop();
        
        }
        
