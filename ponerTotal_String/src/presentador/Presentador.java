@@ -92,7 +92,7 @@ public class Presentador {
        int dia =21;
        
        
-       ////////////7fecha actual///////////
+       ////////////7fecha actual/////////////
        int horas2 = calendar.get(Calendar.HOUR_OF_DAY);
        int minutos2 = calendar.get(Calendar.MINUTE);
        int diaDelMes = calendar.get(Calendar.DAY_OF_MONTH);
