@@ -157,14 +157,14 @@ public class PlatoVista extends javax.swing.JFrame {
         jRadioButton1caliente.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1caliente.setText("Caliente");
         getContentPane().add(jRadioButton1caliente);
-        jRadioButton1caliente.setBounds(370, 220, 81, 25);
+        jRadioButton1caliente.setBounds(370, 220, 87, 28);
 
         buttonGroup1.add(jRadioButton2fria);
         jRadioButton2fria.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jRadioButton2fria.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2fria.setText("Fria");
         getContentPane().add(jRadioButton2fria);
-        jRadioButton2fria.setBounds(490, 220, 51, 25);
+        jRadioButton2fria.setBounds(490, 220, 57, 28);
 
         buttonGroup1.add(jRadioButton3bebidas);
         jRadioButton3bebidas.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
@@ -178,14 +178,14 @@ public class PlatoVista extends javax.swing.JFrame {
         jRadioButton4ensaladas.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton4ensaladas.setText("Ensaladas");
         getContentPane().add(jRadioButton4ensaladas);
-        jRadioButton4ensaladas.setBounds(710, 220, 93, 25);
+        jRadioButton4ensaladas.setBounds(710, 220, 100, 28);
 
         buttonGroup1.add(jRadioButton5postres);
         jRadioButton5postres.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jRadioButton5postres.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton5postres.setText("Postres");
         getContentPane().add(jRadioButton5postres);
-        jRadioButton5postres.setBounds(840, 220, 77, 25);
+        jRadioButton5postres.setBounds(840, 220, 84, 28);
 
         jButton1salirPlato.setBackground(new java.awt.Color(0, 0, 0));
         jButton1salirPlato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -213,7 +213,7 @@ public class PlatoVista extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo rojo pizzeria2.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -10, 1008, 590);
+        jLabel1.setBounds(0, 0, 1008, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

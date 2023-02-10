@@ -21,7 +21,7 @@ import util.HibernateUtil;
 public class RepositorioPedido {
 
     public void guardarPedido(Pedido pedido) {
-        //este codigo lo copie de la pagina Tutorial spoint y borre lo que no me sirve
+        //este codigo lo copie de la pagina Tutorial spoint y borre lo que no me sirve 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
 

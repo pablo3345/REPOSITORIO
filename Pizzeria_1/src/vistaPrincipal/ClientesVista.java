@@ -23,8 +23,9 @@ public class ClientesVista extends javax.swing.JFrame {
     public ClientesVista() {
         initComponents();
         setLocationRelativeTo(this);
-        this.presentador = new Presentador(this);
+        this.presentador = new Presentador(this); 
         this.jTextField1id_cliente.setEditable(false);
+      
         
     }
 

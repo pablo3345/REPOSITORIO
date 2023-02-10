@@ -74,6 +74,7 @@ public class Presentador {
            
        } catch (Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage());
+           
        }
  
    
@@ -90,6 +91,7 @@ public class Presentador {
          int horas =23;
        int minutos=26;
        int dia =21;
+       
        
        
        ////////////7fecha actual/////////////
